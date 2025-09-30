@@ -1,4 +1,4 @@
-[gd_scene load_steps=458 format=3 uid="uid://bmrh33qw4yulm"]
+[gd_scene load_steps=250 format=3 uid="uid://bmrh33qw4yulm"]
 
 [ext_resource type="TileSet" uid="uid://20txynywv3yh" path="res://materials/tileset.tres" id="1_icrif"]
 [ext_resource type="Script" uid="uid://ce60pkk68q7ns" path="res://core/maze_tilemap.gd" id="1_oaaqp"]
@@ -135,8 +135,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
+shader_parameter/tint = Color(0.6, 0.6, 0.3, 1)
+shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_iyohm"]
 size = Vector2(16, 16)
@@ -155,8 +155,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
+shader_parameter/tint = Color(0.3, 0.6, 0.6, 1)
+shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rc5l1"]
 size = Vector2(16, 16)
@@ -175,7 +175,7 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint = Color(0.6, 0.3, 0.3, 1)
 shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_nfuvd"]
@@ -195,7 +195,7 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0, 1, 0, 1)
+shader_parameter/tint = Color(0.3, 0.3, 0.6, 1)
 shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8x666"]
@@ -215,7 +215,7 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0, 0, 1, 1)
+shader_parameter/tint = Color(1, 0, 0, 1)
 shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_anx08"]
@@ -235,8 +235,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 1, 0, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8jynj"]
 size = Vector2(16, 16)
@@ -255,8 +255,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 1, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_r5212"]
 size = Vector2(16, 16)
@@ -275,8 +275,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0, 1, 1, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fii8q"]
 size = Vector2(16, 16)
@@ -295,8 +295,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0.5, 0, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vrfuc"]
 size = Vector2(16, 16)
@@ -355,8 +355,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
+shader_parameter/tint = Color(0, 1, 0, 1)
+shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_endw1"]
 size = Vector2(16, 16)
@@ -375,8 +375,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
+shader_parameter/tint = Color(0, 0, 1, 1)
+shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_me2jc"]
 size = Vector2(16, 16)
@@ -395,8 +395,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
+shader_parameter/tint = Color(1, 1, 0, 1)
+shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3w4us"]
 size = Vector2(16, 16)
@@ -415,8 +415,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
+shader_parameter/tint = Color(1, 0, 1, 1)
+shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kpe0j"]
 size = Vector2(16, 16)
@@ -435,8 +435,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
+shader_parameter/tint = Color(0, 1, 1, 1)
+shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vu8fn"]
 size = Vector2(16, 16)
@@ -475,8 +475,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.5, 1, 0, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lgtgm"]
 size = Vector2(16, 16)
@@ -495,8 +495,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0, 1, 0.5, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_msuwb"]
 size = Vector2(16, 16)
@@ -515,8 +515,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.5, 0, 1, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_a8xr2"]
 size = Vector2(16, 16)
@@ -535,8 +535,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0.5, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rnby4"]
 size = Vector2(16, 16)
@@ -555,8 +555,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.5, 1, 1, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pjlko"]
 size = Vector2(16, 16)
@@ -575,7 +575,7 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 1, 0.5, 1)
+shader_parameter/tint = Color(1, 0.5, 0, 1)
 shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sq0w2"]
@@ -595,7 +595,7 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.5, 0.5, 1, 1)
+shader_parameter/tint = Color(0.5, 1, 0, 1)
 shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xaat0"]
@@ -615,8 +615,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
+shader_parameter/tint = Color(0, 1, 0.5, 1)
+shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pp42h"]
 size = Vector2(16, 16)
@@ -635,8 +635,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
+shader_parameter/tint = Color(0.5, 0, 1, 1)
+shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c1gg7"]
 size = Vector2(16, 16)
@@ -655,8 +655,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
+shader_parameter/tint = Color(1, 0, 0.5, 1)
+shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4twqw"]
 size = Vector2(16, 16)
@@ -775,8 +775,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0.5, 1, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ur6hj"]
 size = Vector2(16, 16)
@@ -795,7 +795,7 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.25, 0.75, 0.25, 1)
+shader_parameter/tint = Color(0.5, 1, 1, 1)
 shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_urfse"]
@@ -815,7 +815,7 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.75, 0.25, 0.75, 1)
+shader_parameter/tint = Color(1, 1, 0.5, 1)
 shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t6np1"]
@@ -835,7 +835,7 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.25, 0.25, 0.75, 1)
+shader_parameter/tint = Color(0.5, 0.5, 1, 1)
 shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_noqy0"]
@@ -855,7 +855,7 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.75, 0.75, 0.25, 1)
+shader_parameter/tint = Color(1, 0.5, 1, 1)
 shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g4rf0"]
@@ -875,7 +875,7 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.25, 0.75, 0.75, 1)
+shader_parameter/tint = Color(0.25, 0.75, 0.25, 1)
 shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_uhe40"]
@@ -895,8 +895,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.6, 0.2, 0.2, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_57bkd"]
 size = Vector2(16, 16)
@@ -1015,8 +1015,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
+shader_parameter/tint = Color(0.75, 0.25, 0.75, 1)
+shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_12vds"]
 size = Vector2(16, 16)
@@ -1035,8 +1035,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
+shader_parameter/tint = Color(0.25, 0.25, 0.75, 1)
+shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rfsyn"]
 size = Vector2(16, 16)
@@ -1055,8 +1055,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
+shader_parameter/tint = Color(0.75, 0.75, 0.25, 1)
+shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_th57u"]
 size = Vector2(16, 16)
@@ -1075,7 +1075,7 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.2, 0.6, 0.2, 1)
+shader_parameter/tint = Color(0.25, 0.75, 0.75, 1)
 shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ca7pr"]
@@ -1095,7 +1095,7 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.2, 0.2, 0.6, 1)
+shader_parameter/tint = Color(0.6, 0.2, 0.2, 1)
 shader_parameter/tint_amount = 0.5
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jlir2"]
@@ -1115,8 +1115,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.6, 0.6, 0.2, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_000kv"]
 size = Vector2(16, 16)
@@ -1135,8 +1135,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.6, 0.2, 0.6, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jiocw"]
 size = Vector2(16, 16)
@@ -1155,8 +1155,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.2, 0.6, 0.6, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qpm6u"]
 size = Vector2(16, 16)
@@ -1175,8 +1175,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.9, 0.3, 0.3, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ljxvf"]
 size = Vector2(16, 16)
@@ -1195,8 +1195,8 @@ size = Vector2(16, 16)
 shader = ExtResource("3_7gm15")
 shader_parameter/atlas_texture = ExtResource("4_54t4n")
 shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.3, 0.9, 0.3, 1)
-shader_parameter/tint_amount = 0.5
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.01
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_k3n2s"]
 size = Vector2(16, 16)
@@ -1221,1051 +1221,11 @@ shader_parameter/tint_amount = 0.01
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4lpxv"]
 size = Vector2(16, 16)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4at1r"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_r6qr4"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hn7ul"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2oxrw"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vif85"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s6bxl"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u08iu"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rqhm2"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e2ixo"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cqwi5"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lkqdf"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xk240"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4wiy"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mxrp8"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pjx4c"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jmsxx"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7cj6b"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bl528"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qnpsm"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sagrb"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwhn4"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_o6cgc"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f0tem"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_o777f"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdxrj"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vn2of"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6201a"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_on6gu"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rkgh1"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_20ihf"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fp460"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.3, 0.3, 0.9, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_06rg5"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_73c33"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3f7xl"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_14oh0"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.9, 0.9, 0.3, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_h7ae1"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4bqts"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0mlmk"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i1by5"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.9, 0.3, 0.9, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_l6nfg"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d4kea"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8rxvw"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgdrq"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.3, 0.9, 0.9, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_daxru"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5wh2s"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n5y2f"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5dnj8"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.8, 0.4, 0.2, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6fkup"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2lh2e"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wi54o"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vldk1"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.2, 0.8, 0.4, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i0xr2"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajg0y"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gg8ut"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hpq20"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.4, 0.2, 0.8, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t82xf"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2su4u"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_klmtn"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ig11l"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_toqhj"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogjts"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_v3gry"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eol2l"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ceb05"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_73b47"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5kma4"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0njl"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kiwds"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnykx"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_oiewk"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bviu6"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_q6pdb"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b0wwl"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0rkgg"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1un0c"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qb2xk"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvr00"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dqhkj"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oo6sw"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ywsnu"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdtnc"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_e1fr6"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kysge"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lb6jo"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_th3jd"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ehskw"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g6did"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_avf3m"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4ijh"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_153d3"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0br7"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.8, 0.2, 0.4, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_htqg1"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_amfds"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_683c6"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4exr7"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.4, 0.8, 0.2, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fj7yw"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4bjpc"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mta4h"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t344u"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.2, 0.4, 0.8, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ep451"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xjf5"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_onjhb"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pyk32"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.7, 0.3, 0.5, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8hul8"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wrlx7"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3ycar"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xqhf"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.5, 0.7, 0.3, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_gh58d"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsgol"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b47tg"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_reqt2"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.3, 0.5, 0.7, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ni5t8"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_en10d"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_itiqp"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6d7s3"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.7, 0.5, 0.3, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vnunb"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kx5i8"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jr83n"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdt7j"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_avf60"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqwgc"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_55nb8"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_soe3d"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vbfpf"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ng5bw"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_de66u"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rcop5"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7ii08"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jwvai"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n57c1"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mtw5"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_best2"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_leiyi"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2qa62"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jg8mv"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j4u15"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nucor"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5v2qq"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8sl6"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_85gj7"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fotxe"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pwx8p"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_utdes"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_205vw"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_70ap2"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wxtno"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngaxs"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2ewg8"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ykog"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_alr01"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pisnn"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.5, 0.3, 0.7, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_arobg"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u582o"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3fglp"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vjddv"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.3, 0.7, 0.5, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m5oqw"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ny64a"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ngla5"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0mvw"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.6, 0.3, 0.6, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tyt6s"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8u43j"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5snlp"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfwtc"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.3, 0.6, 0.3, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5xi42"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y8rri"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xmqc7"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jn3er"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.6, 0.6, 0.3, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_dkih0"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1jwik"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rndb2"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1xf24"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.3, 0.6, 0.6, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ss7qv"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yur76"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d58rl"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s3r4b"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.6, 0.3, 0.3, 1)
-shader_parameter/tint_amount = 0.5
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jj3cr"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lo13l"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kb5mi"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_74xwx"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3lvka"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_55vx3"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_savhv"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbxy5"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_en603"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggma4"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5oeok"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_oy5s7"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_s864s"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbhol"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_j1uew"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e6oh3"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_f3uha"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rs73j"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_pjyn8"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sc6qg"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b778j"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nsytd"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4jbet"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ptgfj"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lo404"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcit5"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bxq6h"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vwaqm"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cwnr7"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvhv4"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8r67l"]
-size = Vector2(16, 16)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2urjc"]
-shader = ExtResource("3_7gm15")
-shader_parameter/atlas_texture = ExtResource("4_54t4n")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(1, 0, 0, 1)
-shader_parameter/tint_amount = 0.01
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u4w31"]
-size = Vector2(16, 16)
-
 [node name="TileMapLayer" type="TileMapLayer"]
 position = Vector2(0, 2)
 tile_set = ExtResource("1_icrif")
 script = ExtResource("1_oaaqp")
-ui_size = 7
+ui_size = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(204, 183)
@@ -2278,14 +1238,14 @@ texture = SubResource("AtlasTexture_7qn0m")
 
 [node name="Tiles" type="Node2D" parent="."]
 
-[node name="@Sprite2D@20594" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123832" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_54t4n")
 position = Vector2(8, 8)
 texture = SubResource("PlaceholderTexture2D_pj6q1")
 script = ExtResource("4_7qn0m")
 
-[node name="@Sprite2D@20596" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123834" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lrlfx")
 position = Vector2(24, 8)
@@ -2293,7 +1253,7 @@ texture = SubResource("PlaceholderTexture2D_nwsxi")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 0)
 
-[node name="@Sprite2D@20598" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123836" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_yco2g")
 position = Vector2(40, 8)
@@ -2301,7 +1261,7 @@ texture = SubResource("PlaceholderTexture2D_8bc3i")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 0)
 
-[node name="@Sprite2D@20600" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123838" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_vh4fh")
 position = Vector2(56, 8)
@@ -2309,7 +1269,7 @@ texture = SubResource("PlaceholderTexture2D_7ubop")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 0)
 
-[node name="@Sprite2D@20602" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123840" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_xnntf")
 position = Vector2(72, 8)
@@ -2317,7 +1277,7 @@ texture = SubResource("PlaceholderTexture2D_2vdv0")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 0)
 
-[node name="@Sprite2D@20604" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123842" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_jevav")
 position = Vector2(88, 8)
@@ -2325,7 +1285,7 @@ texture = SubResource("PlaceholderTexture2D_4vtj7")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 0)
 
-[node name="@Sprite2D@20606" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123844" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_nea3f")
 position = Vector2(104, 8)
@@ -2333,7 +1293,7 @@ texture = SubResource("PlaceholderTexture2D_07ljg")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 0)
 
-[node name="@Sprite2D@20608" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123846" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_t8d2e")
 position = Vector2(120, 8)
@@ -2341,7 +1301,7 @@ texture = SubResource("PlaceholderTexture2D_jl75f")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 0)
 
-[node name="@Sprite2D@20610" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123848" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_t5ps0")
 position = Vector2(136, 8)
@@ -2349,7 +1309,7 @@ texture = SubResource("PlaceholderTexture2D_giqv4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 0)
 
-[node name="@Sprite2D@20612" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123850" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lagx4")
 position = Vector2(152, 8)
@@ -2357,7 +1317,7 @@ texture = SubResource("PlaceholderTexture2D_3bloh")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 0)
 
-[node name="@Sprite2D@20614" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123852" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_s8rcj")
 position = Vector2(168, 8)
@@ -2365,1814 +1325,935 @@ texture = SubResource("PlaceholderTexture2D_fka1j")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 0)
 
-[node name="@Sprite2D@20616" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123854" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ra0hg")
-position = Vector2(184, 8)
-texture = SubResource("PlaceholderTexture2D_ux4kc")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(11, 0)
-
-[node name="@Sprite2D@20618" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_0yw73")
-position = Vector2(200, 8)
-texture = SubResource("PlaceholderTexture2D_iyohm")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 0)
-
-[node name="@Sprite2D@20620" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_lf8cf")
-position = Vector2(216, 8)
-texture = SubResource("PlaceholderTexture2D_m8vhm")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(13, 0)
-
-[node name="@Sprite2D@20622" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_u5obq")
-position = Vector2(232, 8)
-texture = SubResource("PlaceholderTexture2D_rc5l1")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 0)
-
-[node name="@Sprite2D@20624" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_giubk")
 position = Vector2(8, 24)
-texture = SubResource("PlaceholderTexture2D_6owiy")
+texture = SubResource("PlaceholderTexture2D_ux4kc")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 1)
 
-[node name="@Sprite2D@20626" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123856" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_lbwsc")
+material = SubResource("ShaderMaterial_0yw73")
 position = Vector2(24, 24)
-texture = SubResource("PlaceholderTexture2D_nfuvd")
+texture = SubResource("PlaceholderTexture2D_iyohm")
 script = ExtResource("4_7qn0m")
+group_id = 146
 cell_type = 1
 world_grid_pos = Vector2i(1, 1)
 
-[node name="@Sprite2D@20628" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123858" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_lb12n")
+material = SubResource("ShaderMaterial_lf8cf")
 position = Vector2(40, 24)
-texture = SubResource("PlaceholderTexture2D_kx70r")
+texture = SubResource("PlaceholderTexture2D_m8vhm")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 1)
 
-[node name="@Sprite2D@20630" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123860" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_8b6hu")
+material = SubResource("ShaderMaterial_u5obq")
 position = Vector2(56, 24)
-texture = SubResource("PlaceholderTexture2D_8x666")
+texture = SubResource("PlaceholderTexture2D_rc5l1")
 script = ExtResource("4_7qn0m")
-group_id = 1
+group_id = 147
 cell_type = 1
 world_grid_pos = Vector2i(3, 1)
 
-[node name="@Sprite2D@20632" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123862" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_2h4mb")
+material = SubResource("ShaderMaterial_giubk")
 position = Vector2(72, 24)
-texture = SubResource("PlaceholderTexture2D_cg6om")
+texture = SubResource("PlaceholderTexture2D_6owiy")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 1)
 
-[node name="@Sprite2D@20634" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123864" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_70k50")
+material = SubResource("ShaderMaterial_lbwsc")
 position = Vector2(88, 24)
-texture = SubResource("PlaceholderTexture2D_anx08")
+texture = SubResource("PlaceholderTexture2D_nfuvd")
 script = ExtResource("4_7qn0m")
-group_id = 2
+group_id = 148
 cell_type = 1
 world_grid_pos = Vector2i(5, 1)
 
-[node name="@Sprite2D@20636" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123866" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_p7ccl")
+material = SubResource("ShaderMaterial_lb12n")
 position = Vector2(104, 24)
-texture = SubResource("PlaceholderTexture2D_enurv")
+texture = SubResource("PlaceholderTexture2D_kx70r")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 1)
 
-[node name="@Sprite2D@20638" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123868" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_d612c")
+material = SubResource("ShaderMaterial_8b6hu")
 position = Vector2(120, 24)
-texture = SubResource("PlaceholderTexture2D_8jynj")
+texture = SubResource("PlaceholderTexture2D_8x666")
 script = ExtResource("4_7qn0m")
-group_id = 3
+group_id = 149
 cell_type = 1
 world_grid_pos = Vector2i(7, 1)
 
-[node name="@Sprite2D@20640" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123870" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_p61gb")
+material = SubResource("ShaderMaterial_2h4mb")
 position = Vector2(136, 24)
-texture = SubResource("PlaceholderTexture2D_otr2i")
+texture = SubResource("PlaceholderTexture2D_cg6om")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 1)
 
-[node name="@Sprite2D@20642" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123872" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_b3404")
+material = SubResource("ShaderMaterial_70k50")
 position = Vector2(152, 24)
-texture = SubResource("PlaceholderTexture2D_r5212")
+texture = SubResource("PlaceholderTexture2D_anx08")
 script = ExtResource("4_7qn0m")
-group_id = 4
+group_id = 150
 cell_type = 1
 world_grid_pos = Vector2i(9, 1)
 
-[node name="@Sprite2D@20644" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123874" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_75xy1")
+material = SubResource("ShaderMaterial_p7ccl")
 position = Vector2(168, 24)
-texture = SubResource("PlaceholderTexture2D_vdyli")
+texture = SubResource("PlaceholderTexture2D_enurv")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 1)
 
-[node name="@Sprite2D@20646" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123876" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_ht4ge")
-position = Vector2(184, 24)
-texture = SubResource("PlaceholderTexture2D_fii8q")
-script = ExtResource("4_7qn0m")
-group_id = 5
-cell_type = 1
-world_grid_pos = Vector2i(11, 1)
-
-[node name="@Sprite2D@20648" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_vy68v")
-position = Vector2(200, 24)
-texture = SubResource("PlaceholderTexture2D_kbrkx")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 1)
-
-[node name="@Sprite2D@20650" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_8rsup")
-position = Vector2(216, 24)
-texture = SubResource("PlaceholderTexture2D_vrfuc")
-script = ExtResource("4_7qn0m")
-group_id = 6
-cell_type = 1
-world_grid_pos = Vector2i(13, 1)
-
-[node name="@Sprite2D@20652" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_5605s")
-position = Vector2(232, 24)
-texture = SubResource("PlaceholderTexture2D_lpsvm")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 1)
-
-[node name="@Sprite2D@20654" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_vorp3")
+material = SubResource("ShaderMaterial_d612c")
 position = Vector2(8, 40)
-texture = SubResource("PlaceholderTexture2D_m7so2")
+texture = SubResource("PlaceholderTexture2D_8jynj")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 2)
 
-[node name="@Sprite2D@20656" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123878" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_x43xm")
+material = SubResource("ShaderMaterial_p61gb")
 position = Vector2(24, 40)
-texture = SubResource("PlaceholderTexture2D_0gicf")
+texture = SubResource("PlaceholderTexture2D_otr2i")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 2)
 
-[node name="@Sprite2D@20658" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123880" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_xtky5")
+material = SubResource("ShaderMaterial_b3404")
 position = Vector2(40, 40)
-texture = SubResource("PlaceholderTexture2D_6okrn")
+texture = SubResource("PlaceholderTexture2D_r5212")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 2)
 
-[node name="@Sprite2D@20660" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123882" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_hdwf7")
+material = SubResource("ShaderMaterial_75xy1")
 position = Vector2(56, 40)
-texture = SubResource("PlaceholderTexture2D_kfhkd")
+texture = SubResource("PlaceholderTexture2D_vdyli")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 2)
 
-[node name="@Sprite2D@20662" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123884" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_vvjb5")
+material = SubResource("ShaderMaterial_ht4ge")
 position = Vector2(72, 40)
-texture = SubResource("PlaceholderTexture2D_endw1")
+texture = SubResource("PlaceholderTexture2D_fii8q")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 2)
 
-[node name="@Sprite2D@20664" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123886" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_o2cbr")
+material = SubResource("ShaderMaterial_vy68v")
 position = Vector2(88, 40)
-texture = SubResource("PlaceholderTexture2D_fi7vy")
+texture = SubResource("PlaceholderTexture2D_kbrkx")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 2)
 
-[node name="@Sprite2D@20666" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123888" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_j3gk2")
+material = SubResource("ShaderMaterial_8rsup")
 position = Vector2(104, 40)
-texture = SubResource("PlaceholderTexture2D_me2jc")
+texture = SubResource("PlaceholderTexture2D_vrfuc")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 2)
 
-[node name="@Sprite2D@20668" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123890" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_ptnr6")
+material = SubResource("ShaderMaterial_5605s")
 position = Vector2(120, 40)
-texture = SubResource("PlaceholderTexture2D_4cpyr")
+texture = SubResource("PlaceholderTexture2D_lpsvm")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 2)
 
-[node name="@Sprite2D@20670" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123892" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_1l666")
+material = SubResource("ShaderMaterial_vorp3")
 position = Vector2(136, 40)
-texture = SubResource("PlaceholderTexture2D_3w4us")
+texture = SubResource("PlaceholderTexture2D_m7so2")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 2)
 
-[node name="@Sprite2D@20672" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123894" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_h63hq")
+material = SubResource("ShaderMaterial_x43xm")
 position = Vector2(152, 40)
-texture = SubResource("PlaceholderTexture2D_h8lrf")
+texture = SubResource("PlaceholderTexture2D_0gicf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 2)
 
-[node name="@Sprite2D@20674" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123896" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_uce00")
+material = SubResource("ShaderMaterial_xtky5")
 position = Vector2(168, 40)
-texture = SubResource("PlaceholderTexture2D_kpe0j")
+texture = SubResource("PlaceholderTexture2D_6okrn")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 2)
 
-[node name="@Sprite2D@20676" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123898" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_8l50p")
-position = Vector2(184, 40)
-texture = SubResource("PlaceholderTexture2D_v5bme")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(11, 2)
-
-[node name="@Sprite2D@20678" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_yrjke")
-position = Vector2(200, 40)
-texture = SubResource("PlaceholderTexture2D_vu8fn")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 2)
-
-[node name="@Sprite2D@20680" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_hj7pe")
-position = Vector2(216, 40)
-texture = SubResource("PlaceholderTexture2D_l2u5w")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(13, 2)
-
-[node name="@Sprite2D@20682" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_2qys3")
-position = Vector2(232, 40)
-texture = SubResource("PlaceholderTexture2D_l6b1h")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 2)
-
-[node name="@Sprite2D@20684" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_7ky6c")
+material = SubResource("ShaderMaterial_hdwf7")
 position = Vector2(8, 56)
-texture = SubResource("PlaceholderTexture2D_yd6p2")
+texture = SubResource("PlaceholderTexture2D_kfhkd")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 3)
 
-[node name="@Sprite2D@20686" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123900" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_uaov2")
+material = SubResource("ShaderMaterial_vvjb5")
 position = Vector2(24, 56)
-texture = SubResource("PlaceholderTexture2D_lgtgm")
+texture = SubResource("PlaceholderTexture2D_endw1")
 script = ExtResource("4_7qn0m")
-group_id = 7
+group_id = 151
 cell_type = 1
 world_grid_pos = Vector2i(1, 3)
 
-[node name="@Sprite2D@20688" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123902" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_eneat")
+material = SubResource("ShaderMaterial_o2cbr")
 position = Vector2(40, 56)
-texture = SubResource("PlaceholderTexture2D_fg3ih")
+texture = SubResource("PlaceholderTexture2D_fi7vy")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 3)
 
-[node name="@Sprite2D@20690" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123904" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_j3mfu")
+material = SubResource("ShaderMaterial_j3gk2")
 position = Vector2(56, 56)
-texture = SubResource("PlaceholderTexture2D_msuwb")
+texture = SubResource("PlaceholderTexture2D_me2jc")
 script = ExtResource("4_7qn0m")
-group_id = 8
+group_id = 152
 cell_type = 1
 world_grid_pos = Vector2i(3, 3)
 
-[node name="@Sprite2D@20692" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123906" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_grqnc")
+material = SubResource("ShaderMaterial_ptnr6")
 position = Vector2(72, 56)
-texture = SubResource("PlaceholderTexture2D_bactq")
+texture = SubResource("PlaceholderTexture2D_4cpyr")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 3)
 
-[node name="@Sprite2D@20694" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123908" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_omcns")
+material = SubResource("ShaderMaterial_1l666")
 position = Vector2(88, 56)
-texture = SubResource("PlaceholderTexture2D_a8xr2")
+texture = SubResource("PlaceholderTexture2D_3w4us")
 script = ExtResource("4_7qn0m")
-group_id = 9
+group_id = 153
 cell_type = 1
 world_grid_pos = Vector2i(5, 3)
 
-[node name="@Sprite2D@20696" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123910" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_n02st")
+material = SubResource("ShaderMaterial_h63hq")
 position = Vector2(104, 56)
-texture = SubResource("PlaceholderTexture2D_bnkom")
+texture = SubResource("PlaceholderTexture2D_h8lrf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 3)
 
-[node name="@Sprite2D@20698" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123912" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_gxtd5")
+material = SubResource("ShaderMaterial_uce00")
 position = Vector2(120, 56)
-texture = SubResource("PlaceholderTexture2D_rnby4")
+texture = SubResource("PlaceholderTexture2D_kpe0j")
 script = ExtResource("4_7qn0m")
-group_id = 10
+group_id = 154
 cell_type = 1
 world_grid_pos = Vector2i(7, 3)
 
-[node name="@Sprite2D@20700" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123914" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_uxcbu")
+material = SubResource("ShaderMaterial_8l50p")
 position = Vector2(136, 56)
-texture = SubResource("PlaceholderTexture2D_camxb")
+texture = SubResource("PlaceholderTexture2D_v5bme")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 3)
 
-[node name="@Sprite2D@20702" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123916" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_vyyxc")
+material = SubResource("ShaderMaterial_yrjke")
 position = Vector2(152, 56)
-texture = SubResource("PlaceholderTexture2D_pjlko")
+texture = SubResource("PlaceholderTexture2D_vu8fn")
 script = ExtResource("4_7qn0m")
-group_id = 11
+group_id = 155
 cell_type = 1
 world_grid_pos = Vector2i(9, 3)
 
-[node name="@Sprite2D@20704" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123918" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_c6rsi")
+material = SubResource("ShaderMaterial_hj7pe")
 position = Vector2(168, 56)
-texture = SubResource("PlaceholderTexture2D_i83w4")
+texture = SubResource("PlaceholderTexture2D_l2u5w")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 3)
 
-[node name="@Sprite2D@20706" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123920" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_bx1op")
-position = Vector2(184, 56)
-texture = SubResource("PlaceholderTexture2D_sq0w2")
-script = ExtResource("4_7qn0m")
-group_id = 12
-cell_type = 1
-world_grid_pos = Vector2i(11, 3)
-
-[node name="@Sprite2D@20708" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_2ebp0")
-position = Vector2(200, 56)
-texture = SubResource("PlaceholderTexture2D_ewlmb")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 3)
-
-[node name="@Sprite2D@20710" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_ylvip")
-position = Vector2(216, 56)
-texture = SubResource("PlaceholderTexture2D_xaat0")
-script = ExtResource("4_7qn0m")
-group_id = 13
-cell_type = 1
-world_grid_pos = Vector2i(13, 3)
-
-[node name="@Sprite2D@20712" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_qonpv")
-position = Vector2(232, 56)
-texture = SubResource("PlaceholderTexture2D_87ihl")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 3)
-
-[node name="@Sprite2D@20714" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_esgnd")
+material = SubResource("ShaderMaterial_2qys3")
 position = Vector2(8, 72)
-texture = SubResource("PlaceholderTexture2D_pp42h")
+texture = SubResource("PlaceholderTexture2D_l6b1h")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 4)
 
-[node name="@Sprite2D@20716" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123922" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_x6df7")
+material = SubResource("ShaderMaterial_7ky6c")
 position = Vector2(24, 72)
-texture = SubResource("PlaceholderTexture2D_rarow")
+texture = SubResource("PlaceholderTexture2D_yd6p2")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 4)
 
-[node name="@Sprite2D@20718" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123924" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_ug64u")
+material = SubResource("ShaderMaterial_uaov2")
 position = Vector2(40, 72)
-texture = SubResource("PlaceholderTexture2D_c1gg7")
+texture = SubResource("PlaceholderTexture2D_lgtgm")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 4)
 
-[node name="@Sprite2D@20720" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123926" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_va221")
+material = SubResource("ShaderMaterial_eneat")
 position = Vector2(56, 72)
-texture = SubResource("PlaceholderTexture2D_0jel7")
+texture = SubResource("PlaceholderTexture2D_fg3ih")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 4)
 
-[node name="@Sprite2D@20722" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123928" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_3jjly")
+material = SubResource("ShaderMaterial_j3mfu")
 position = Vector2(72, 72)
-texture = SubResource("PlaceholderTexture2D_4twqw")
+texture = SubResource("PlaceholderTexture2D_msuwb")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 4)
 
-[node name="@Sprite2D@20724" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123930" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_wycqk")
+material = SubResource("ShaderMaterial_grqnc")
 position = Vector2(88, 72)
-texture = SubResource("PlaceholderTexture2D_rqolf")
+texture = SubResource("PlaceholderTexture2D_bactq")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 4)
 
-[node name="@Sprite2D@20726" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123932" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_3sfcu")
+material = SubResource("ShaderMaterial_omcns")
 position = Vector2(104, 72)
-texture = SubResource("PlaceholderTexture2D_njmib")
+texture = SubResource("PlaceholderTexture2D_a8xr2")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 4)
 
-[node name="@Sprite2D@20728" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123934" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_4ru5j")
+material = SubResource("ShaderMaterial_n02st")
 position = Vector2(120, 72)
-texture = SubResource("PlaceholderTexture2D_weh8a")
+texture = SubResource("PlaceholderTexture2D_bnkom")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 4)
 
-[node name="@Sprite2D@20730" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123936" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_cjq2i")
+material = SubResource("ShaderMaterial_gxtd5")
 position = Vector2(136, 72)
-texture = SubResource("PlaceholderTexture2D_ajtls")
+texture = SubResource("PlaceholderTexture2D_rnby4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 4)
 
-[node name="@Sprite2D@20732" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123938" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_h2xyk")
+material = SubResource("ShaderMaterial_uxcbu")
 position = Vector2(152, 72)
-texture = SubResource("PlaceholderTexture2D_qea1s")
+texture = SubResource("PlaceholderTexture2D_camxb")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 4)
 
-[node name="@Sprite2D@20734" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123940" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_ptkbh")
+material = SubResource("ShaderMaterial_vyyxc")
 position = Vector2(168, 72)
-texture = SubResource("PlaceholderTexture2D_7uhqf")
+texture = SubResource("PlaceholderTexture2D_pjlko")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 4)
 
-[node name="@Sprite2D@20736" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123942" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_bvhnd")
-position = Vector2(184, 72)
-texture = SubResource("PlaceholderTexture2D_0rsbe")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(11, 4)
-
-[node name="@Sprite2D@20738" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_inhya")
-position = Vector2(200, 72)
-texture = SubResource("PlaceholderTexture2D_yehhg")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 4)
-
-[node name="@Sprite2D@20740" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_vx7e4")
-position = Vector2(216, 72)
-texture = SubResource("PlaceholderTexture2D_njk1v")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(13, 4)
-
-[node name="@Sprite2D@20742" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_wen2a")
-position = Vector2(232, 72)
-texture = SubResource("PlaceholderTexture2D_dlugf")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 4)
-
-[node name="@Sprite2D@20744" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_3k1es")
+material = SubResource("ShaderMaterial_c6rsi")
 position = Vector2(8, 88)
-texture = SubResource("PlaceholderTexture2D_cynmn")
+texture = SubResource("PlaceholderTexture2D_i83w4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 5)
 
-[node name="@Sprite2D@20746" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123944" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_oycp2")
+material = SubResource("ShaderMaterial_bx1op")
 position = Vector2(24, 88)
-texture = SubResource("PlaceholderTexture2D_ur6hj")
+texture = SubResource("PlaceholderTexture2D_sq0w2")
 script = ExtResource("4_7qn0m")
-group_id = 14
+group_id = 156
 cell_type = 1
 world_grid_pos = Vector2i(1, 5)
 
-[node name="@Sprite2D@20748" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123946" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_yj27o")
+material = SubResource("ShaderMaterial_2ebp0")
 position = Vector2(40, 88)
-texture = SubResource("PlaceholderTexture2D_or73y")
+texture = SubResource("PlaceholderTexture2D_ewlmb")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 5)
 
-[node name="@Sprite2D@20750" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123948" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_1ih76")
+material = SubResource("ShaderMaterial_ylvip")
 position = Vector2(56, 88)
-texture = SubResource("PlaceholderTexture2D_urfse")
+texture = SubResource("PlaceholderTexture2D_xaat0")
 script = ExtResource("4_7qn0m")
-group_id = 15
+group_id = 157
 cell_type = 1
 world_grid_pos = Vector2i(3, 5)
 
-[node name="@Sprite2D@20752" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123950" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_nv0l5")
+material = SubResource("ShaderMaterial_qonpv")
 position = Vector2(72, 88)
-texture = SubResource("PlaceholderTexture2D_5dll6")
+texture = SubResource("PlaceholderTexture2D_87ihl")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 5)
 
-[node name="@Sprite2D@20754" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123952" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_7a4th")
+material = SubResource("ShaderMaterial_esgnd")
 position = Vector2(88, 88)
-texture = SubResource("PlaceholderTexture2D_t6np1")
+texture = SubResource("PlaceholderTexture2D_pp42h")
 script = ExtResource("4_7qn0m")
-group_id = 16
+group_id = 158
 cell_type = 1
 world_grid_pos = Vector2i(5, 5)
 
-[node name="@Sprite2D@20756" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123954" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_8n8nr")
+material = SubResource("ShaderMaterial_x6df7")
 position = Vector2(104, 88)
-texture = SubResource("PlaceholderTexture2D_swfgc")
+texture = SubResource("PlaceholderTexture2D_rarow")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 5)
 
-[node name="@Sprite2D@20758" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123956" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_jnse5")
+material = SubResource("ShaderMaterial_ug64u")
 position = Vector2(120, 88)
-texture = SubResource("PlaceholderTexture2D_noqy0")
+texture = SubResource("PlaceholderTexture2D_c1gg7")
 script = ExtResource("4_7qn0m")
-group_id = 17
+group_id = 159
 cell_type = 1
 world_grid_pos = Vector2i(7, 5)
 
-[node name="@Sprite2D@20760" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123958" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_kptme")
+material = SubResource("ShaderMaterial_va221")
 position = Vector2(136, 88)
-texture = SubResource("PlaceholderTexture2D_e6val")
+texture = SubResource("PlaceholderTexture2D_0jel7")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 5)
 
-[node name="@Sprite2D@20762" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123960" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_j4ldf")
+material = SubResource("ShaderMaterial_3jjly")
 position = Vector2(152, 88)
-texture = SubResource("PlaceholderTexture2D_g4rf0")
+texture = SubResource("PlaceholderTexture2D_4twqw")
 script = ExtResource("4_7qn0m")
-group_id = 18
+group_id = 160
 cell_type = 1
 world_grid_pos = Vector2i(9, 5)
 
-[node name="@Sprite2D@20764" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123962" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_b4v6l")
+material = SubResource("ShaderMaterial_wycqk")
 position = Vector2(168, 88)
-texture = SubResource("PlaceholderTexture2D_ccfbi")
+texture = SubResource("PlaceholderTexture2D_rqolf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 5)
 
-[node name="@Sprite2D@20766" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123964" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_ej80i")
-position = Vector2(184, 88)
-texture = SubResource("PlaceholderTexture2D_uhe40")
-script = ExtResource("4_7qn0m")
-group_id = 19
-cell_type = 1
-world_grid_pos = Vector2i(11, 5)
-
-[node name="@Sprite2D@20768" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_b8m5s")
-position = Vector2(200, 88)
-texture = SubResource("PlaceholderTexture2D_y5uip")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 5)
-
-[node name="@Sprite2D@20770" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_eibus")
-position = Vector2(216, 88)
-texture = SubResource("PlaceholderTexture2D_57bkd")
-script = ExtResource("4_7qn0m")
-group_id = 20
-cell_type = 1
-world_grid_pos = Vector2i(13, 5)
-
-[node name="@Sprite2D@20772" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_ayut4")
-position = Vector2(232, 88)
-texture = SubResource("PlaceholderTexture2D_iw6m2")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 5)
-
-[node name="@Sprite2D@20774" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_w7yxn")
+material = SubResource("ShaderMaterial_3sfcu")
 position = Vector2(8, 104)
-texture = SubResource("PlaceholderTexture2D_74amf")
+texture = SubResource("PlaceholderTexture2D_njmib")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 6)
 
-[node name="@Sprite2D@20776" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123966" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_lbmr7")
+material = SubResource("ShaderMaterial_4ru5j")
 position = Vector2(24, 104)
-texture = SubResource("PlaceholderTexture2D_eyp5y")
+texture = SubResource("PlaceholderTexture2D_weh8a")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 6)
 
-[node name="@Sprite2D@20778" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123968" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_0qkct")
+material = SubResource("ShaderMaterial_cjq2i")
 position = Vector2(40, 104)
-texture = SubResource("PlaceholderTexture2D_3pt0g")
+texture = SubResource("PlaceholderTexture2D_ajtls")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 6)
 
-[node name="@Sprite2D@20780" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123970" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_5cpwa")
+material = SubResource("ShaderMaterial_h2xyk")
 position = Vector2(56, 104)
-texture = SubResource("PlaceholderTexture2D_ont2k")
+texture = SubResource("PlaceholderTexture2D_qea1s")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 6)
 
-[node name="@Sprite2D@20782" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123972" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_84eo5")
+material = SubResource("ShaderMaterial_ptkbh")
 position = Vector2(72, 104)
-texture = SubResource("PlaceholderTexture2D_6o22q")
+texture = SubResource("PlaceholderTexture2D_7uhqf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 6)
 
-[node name="@Sprite2D@20784" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123974" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_a3krq")
+material = SubResource("ShaderMaterial_bvhnd")
 position = Vector2(88, 104)
-texture = SubResource("PlaceholderTexture2D_gqv0d")
+texture = SubResource("PlaceholderTexture2D_0rsbe")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 6)
 
-[node name="@Sprite2D@20786" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123976" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_yhh5e")
+material = SubResource("ShaderMaterial_inhya")
 position = Vector2(104, 104)
-texture = SubResource("PlaceholderTexture2D_15qd4")
+texture = SubResource("PlaceholderTexture2D_yehhg")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 6)
 
-[node name="@Sprite2D@20788" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123978" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_k28vw")
+material = SubResource("ShaderMaterial_vx7e4")
 position = Vector2(120, 104)
-texture = SubResource("PlaceholderTexture2D_uaa5t")
+texture = SubResource("PlaceholderTexture2D_njk1v")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 6)
 
-[node name="@Sprite2D@20790" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123980" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_rh8dm")
+material = SubResource("ShaderMaterial_wen2a")
 position = Vector2(136, 104)
-texture = SubResource("PlaceholderTexture2D_olaqx")
+texture = SubResource("PlaceholderTexture2D_dlugf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 6)
 
-[node name="@Sprite2D@20792" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123982" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_atb71")
+material = SubResource("ShaderMaterial_3k1es")
 position = Vector2(152, 104)
-texture = SubResource("PlaceholderTexture2D_u4jbs")
+texture = SubResource("PlaceholderTexture2D_cynmn")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 6)
 
-[node name="@Sprite2D@20794" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123984" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_ceqkt")
+material = SubResource("ShaderMaterial_oycp2")
 position = Vector2(168, 104)
-texture = SubResource("PlaceholderTexture2D_12vds")
+texture = SubResource("PlaceholderTexture2D_ur6hj")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 6)
 
-[node name="@Sprite2D@20796" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123986" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_nkufq")
-position = Vector2(184, 104)
-texture = SubResource("PlaceholderTexture2D_u0qlr")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(11, 6)
-
-[node name="@Sprite2D@20798" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_jiii8")
-position = Vector2(200, 104)
-texture = SubResource("PlaceholderTexture2D_rfsyn")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 6)
-
-[node name="@Sprite2D@20800" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_mvcqv")
-position = Vector2(216, 104)
-texture = SubResource("PlaceholderTexture2D_vo0p5")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(13, 6)
-
-[node name="@Sprite2D@20802" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_uci0g")
-position = Vector2(232, 104)
-texture = SubResource("PlaceholderTexture2D_th57u")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 6)
-
-[node name="@Sprite2D@20804" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_3okfm")
+material = SubResource("ShaderMaterial_yj27o")
 position = Vector2(8, 120)
-texture = SubResource("PlaceholderTexture2D_1d2ru")
+texture = SubResource("PlaceholderTexture2D_or73y")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 7)
 
-[node name="@Sprite2D@20806" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123988" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_tonww")
+material = SubResource("ShaderMaterial_1ih76")
 position = Vector2(24, 120)
-texture = SubResource("PlaceholderTexture2D_ca7pr")
+texture = SubResource("PlaceholderTexture2D_urfse")
 script = ExtResource("4_7qn0m")
-group_id = 21
+group_id = 161
 cell_type = 1
 world_grid_pos = Vector2i(1, 7)
 
-[node name="@Sprite2D@20808" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123990" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_un080")
+material = SubResource("ShaderMaterial_nv0l5")
 position = Vector2(40, 120)
-texture = SubResource("PlaceholderTexture2D_chbxv")
+texture = SubResource("PlaceholderTexture2D_5dll6")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 7)
 
-[node name="@Sprite2D@20810" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123992" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_hqwwt")
+material = SubResource("ShaderMaterial_7a4th")
 position = Vector2(56, 120)
-texture = SubResource("PlaceholderTexture2D_jlir2")
+texture = SubResource("PlaceholderTexture2D_t6np1")
 script = ExtResource("4_7qn0m")
-group_id = 22
+group_id = 162
 cell_type = 1
 world_grid_pos = Vector2i(3, 7)
 
-[node name="@Sprite2D@20812" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123994" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_idyqj")
+material = SubResource("ShaderMaterial_8n8nr")
 position = Vector2(72, 120)
-texture = SubResource("PlaceholderTexture2D_u6axg")
+texture = SubResource("PlaceholderTexture2D_swfgc")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 7)
 
-[node name="@Sprite2D@20814" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123996" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_mbf2p")
+material = SubResource("ShaderMaterial_jnse5")
 position = Vector2(88, 120)
-texture = SubResource("PlaceholderTexture2D_000kv")
+texture = SubResource("PlaceholderTexture2D_noqy0")
 script = ExtResource("4_7qn0m")
-group_id = 23
+group_id = 163
 cell_type = 1
 world_grid_pos = Vector2i(5, 7)
 
-[node name="@Sprite2D@20816" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@123998" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_icsmm")
+material = SubResource("ShaderMaterial_kptme")
 position = Vector2(104, 120)
-texture = SubResource("PlaceholderTexture2D_tn7l0")
+texture = SubResource("PlaceholderTexture2D_e6val")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 7)
 
-[node name="@Sprite2D@20818" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124000" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_lygxx")
+material = SubResource("ShaderMaterial_j4ldf")
 position = Vector2(120, 120)
-texture = SubResource("PlaceholderTexture2D_jiocw")
+texture = SubResource("PlaceholderTexture2D_g4rf0")
 script = ExtResource("4_7qn0m")
-group_id = 24
+group_id = 164
 cell_type = 1
 world_grid_pos = Vector2i(7, 7)
 
-[node name="@Sprite2D@20820" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124002" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_4gtsh")
+material = SubResource("ShaderMaterial_b4v6l")
 position = Vector2(136, 120)
-texture = SubResource("PlaceholderTexture2D_vv5qu")
+texture = SubResource("PlaceholderTexture2D_ccfbi")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 7)
 
-[node name="@Sprite2D@20822" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124004" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_iocuy")
+material = SubResource("ShaderMaterial_ej80i")
 position = Vector2(152, 120)
-texture = SubResource("PlaceholderTexture2D_qpm6u")
+texture = SubResource("PlaceholderTexture2D_uhe40")
 script = ExtResource("4_7qn0m")
-group_id = 25
+group_id = 165
 cell_type = 1
 world_grid_pos = Vector2i(9, 7)
 
-[node name="@Sprite2D@20824" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124006" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_jabat")
+material = SubResource("ShaderMaterial_b8m5s")
 position = Vector2(168, 120)
-texture = SubResource("PlaceholderTexture2D_qoiwy")
+texture = SubResource("PlaceholderTexture2D_y5uip")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 7)
 
-[node name="@Sprite2D@20826" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124008" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_2lmcw")
-position = Vector2(184, 120)
-texture = SubResource("PlaceholderTexture2D_ljxvf")
-script = ExtResource("4_7qn0m")
-group_id = 26
-cell_type = 1
-world_grid_pos = Vector2i(11, 7)
-
-[node name="@Sprite2D@20828" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_rht5i")
-position = Vector2(200, 120)
-texture = SubResource("PlaceholderTexture2D_6v8c1")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 7)
-
-[node name="@Sprite2D@20830" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_lr7cn")
-position = Vector2(216, 120)
-texture = SubResource("PlaceholderTexture2D_k3n2s")
-script = ExtResource("4_7qn0m")
-group_id = 27
-cell_type = 1
-world_grid_pos = Vector2i(13, 7)
-
-[node name="@Sprite2D@20832" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_huvth")
-position = Vector2(232, 120)
-texture = SubResource("PlaceholderTexture2D_olwb7")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 7)
-
-[node name="@Sprite2D@20834" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_0mcll")
+material = SubResource("ShaderMaterial_eibus")
 position = Vector2(8, 136)
-texture = SubResource("PlaceholderTexture2D_4lpxv")
+texture = SubResource("PlaceholderTexture2D_57bkd")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 8)
 
-[node name="@Sprite2D@20836" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124010" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_4at1r")
+material = SubResource("ShaderMaterial_ayut4")
 position = Vector2(24, 136)
-texture = SubResource("PlaceholderTexture2D_r6qr4")
+texture = SubResource("PlaceholderTexture2D_iw6m2")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 8)
 
-[node name="@Sprite2D@20838" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124012" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_hn7ul")
+material = SubResource("ShaderMaterial_w7yxn")
 position = Vector2(40, 136)
-texture = SubResource("PlaceholderTexture2D_2oxrw")
+texture = SubResource("PlaceholderTexture2D_74amf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 8)
 
-[node name="@Sprite2D@20840" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124014" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_vif85")
+material = SubResource("ShaderMaterial_lbmr7")
 position = Vector2(56, 136)
-texture = SubResource("PlaceholderTexture2D_s6bxl")
+texture = SubResource("PlaceholderTexture2D_eyp5y")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 8)
 
-[node name="@Sprite2D@20842" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124016" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_u08iu")
+material = SubResource("ShaderMaterial_0qkct")
 position = Vector2(72, 136)
-texture = SubResource("PlaceholderTexture2D_rqhm2")
+texture = SubResource("PlaceholderTexture2D_3pt0g")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 8)
 
-[node name="@Sprite2D@20844" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124018" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_e2ixo")
+material = SubResource("ShaderMaterial_5cpwa")
 position = Vector2(88, 136)
-texture = SubResource("PlaceholderTexture2D_cqwi5")
+texture = SubResource("PlaceholderTexture2D_ont2k")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 8)
 
-[node name="@Sprite2D@20846" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124020" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_lkqdf")
+material = SubResource("ShaderMaterial_84eo5")
 position = Vector2(104, 136)
-texture = SubResource("PlaceholderTexture2D_xk240")
+texture = SubResource("PlaceholderTexture2D_6o22q")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 8)
 
-[node name="@Sprite2D@20848" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124022" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_j4wiy")
+material = SubResource("ShaderMaterial_a3krq")
 position = Vector2(120, 136)
-texture = SubResource("PlaceholderTexture2D_mxrp8")
+texture = SubResource("PlaceholderTexture2D_gqv0d")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 8)
 
-[node name="@Sprite2D@20850" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124024" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_pjx4c")
+material = SubResource("ShaderMaterial_yhh5e")
 position = Vector2(136, 136)
-texture = SubResource("PlaceholderTexture2D_jmsxx")
+texture = SubResource("PlaceholderTexture2D_15qd4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 8)
 
-[node name="@Sprite2D@20852" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124026" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_7cj6b")
+material = SubResource("ShaderMaterial_k28vw")
 position = Vector2(152, 136)
-texture = SubResource("PlaceholderTexture2D_bl528")
+texture = SubResource("PlaceholderTexture2D_uaa5t")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 8)
 
-[node name="@Sprite2D@20854" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124028" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_qnpsm")
+material = SubResource("ShaderMaterial_rh8dm")
 position = Vector2(168, 136)
-texture = SubResource("PlaceholderTexture2D_sagrb")
+texture = SubResource("PlaceholderTexture2D_olaqx")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 8)
 
-[node name="@Sprite2D@20856" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124030" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_lwhn4")
-position = Vector2(184, 136)
-texture = SubResource("PlaceholderTexture2D_o6cgc")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(11, 8)
-
-[node name="@Sprite2D@20858" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_f0tem")
-position = Vector2(200, 136)
-texture = SubResource("PlaceholderTexture2D_o777f")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 8)
-
-[node name="@Sprite2D@20860" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_sdxrj")
-position = Vector2(216, 136)
-texture = SubResource("PlaceholderTexture2D_vn2of")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(13, 8)
-
-[node name="@Sprite2D@20862" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_6201a")
-position = Vector2(232, 136)
-texture = SubResource("PlaceholderTexture2D_on6gu")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 8)
-
-[node name="@Sprite2D@20864" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_rkgh1")
+material = SubResource("ShaderMaterial_atb71")
 position = Vector2(8, 152)
-texture = SubResource("PlaceholderTexture2D_20ihf")
+texture = SubResource("PlaceholderTexture2D_u4jbs")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 9)
 
-[node name="@Sprite2D@20866" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124032" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_fp460")
+material = SubResource("ShaderMaterial_ceqkt")
 position = Vector2(24, 152)
-texture = SubResource("PlaceholderTexture2D_06rg5")
+texture = SubResource("PlaceholderTexture2D_12vds")
 script = ExtResource("4_7qn0m")
-group_id = 28
+group_id = 166
 cell_type = 1
 world_grid_pos = Vector2i(1, 9)
 
-[node name="@Sprite2D@20868" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124034" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_73c33")
+material = SubResource("ShaderMaterial_nkufq")
 position = Vector2(40, 152)
-texture = SubResource("PlaceholderTexture2D_3f7xl")
+texture = SubResource("PlaceholderTexture2D_u0qlr")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 9)
 
-[node name="@Sprite2D@20870" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124036" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_14oh0")
+material = SubResource("ShaderMaterial_jiii8")
 position = Vector2(56, 152)
-texture = SubResource("PlaceholderTexture2D_h7ae1")
+texture = SubResource("PlaceholderTexture2D_rfsyn")
 script = ExtResource("4_7qn0m")
-group_id = 29
+group_id = 167
 cell_type = 1
 world_grid_pos = Vector2i(3, 9)
 
-[node name="@Sprite2D@20872" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124038" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_4bqts")
+material = SubResource("ShaderMaterial_mvcqv")
 position = Vector2(72, 152)
-texture = SubResource("PlaceholderTexture2D_0mlmk")
+texture = SubResource("PlaceholderTexture2D_vo0p5")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 9)
 
-[node name="@Sprite2D@20874" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124040" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_i1by5")
+material = SubResource("ShaderMaterial_uci0g")
 position = Vector2(88, 152)
-texture = SubResource("PlaceholderTexture2D_l6nfg")
+texture = SubResource("PlaceholderTexture2D_th57u")
 script = ExtResource("4_7qn0m")
-group_id = 30
+group_id = 168
 cell_type = 1
 world_grid_pos = Vector2i(5, 9)
 
-[node name="@Sprite2D@20876" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124042" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_d4kea")
+material = SubResource("ShaderMaterial_3okfm")
 position = Vector2(104, 152)
-texture = SubResource("PlaceholderTexture2D_8rxvw")
+texture = SubResource("PlaceholderTexture2D_1d2ru")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 9)
 
-[node name="@Sprite2D@20878" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124044" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_pgdrq")
+material = SubResource("ShaderMaterial_tonww")
 position = Vector2(120, 152)
-texture = SubResource("PlaceholderTexture2D_daxru")
+texture = SubResource("PlaceholderTexture2D_ca7pr")
 script = ExtResource("4_7qn0m")
-group_id = 31
+group_id = 169
 cell_type = 1
 world_grid_pos = Vector2i(7, 9)
 
-[node name="@Sprite2D@20880" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124046" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_5wh2s")
+material = SubResource("ShaderMaterial_un080")
 position = Vector2(136, 152)
-texture = SubResource("PlaceholderTexture2D_n5y2f")
+texture = SubResource("PlaceholderTexture2D_chbxv")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 9)
 
-[node name="@Sprite2D@20882" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124048" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_5dnj8")
+material = SubResource("ShaderMaterial_hqwwt")
 position = Vector2(152, 152)
-texture = SubResource("PlaceholderTexture2D_6fkup")
+texture = SubResource("PlaceholderTexture2D_jlir2")
 script = ExtResource("4_7qn0m")
-group_id = 32
+group_id = 170
 cell_type = 1
 world_grid_pos = Vector2i(9, 9)
 
-[node name="@Sprite2D@20884" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124050" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_2lh2e")
+material = SubResource("ShaderMaterial_idyqj")
 position = Vector2(168, 152)
-texture = SubResource("PlaceholderTexture2D_wi54o")
+texture = SubResource("PlaceholderTexture2D_u6axg")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 9)
 
-[node name="@Sprite2D@20886" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124052" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_vldk1")
-position = Vector2(184, 152)
-texture = SubResource("PlaceholderTexture2D_i0xr2")
-script = ExtResource("4_7qn0m")
-group_id = 33
-cell_type = 1
-world_grid_pos = Vector2i(11, 9)
-
-[node name="@Sprite2D@20888" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_ajg0y")
-position = Vector2(200, 152)
-texture = SubResource("PlaceholderTexture2D_gg8ut")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 9)
-
-[node name="@Sprite2D@20890" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_hpq20")
-position = Vector2(216, 152)
-texture = SubResource("PlaceholderTexture2D_t82xf")
-script = ExtResource("4_7qn0m")
-group_id = 34
-cell_type = 1
-world_grid_pos = Vector2i(13, 9)
-
-[node name="@Sprite2D@20892" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_2su4u")
-position = Vector2(232, 152)
-texture = SubResource("PlaceholderTexture2D_klmtn")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 9)
-
-[node name="@Sprite2D@20894" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_ig11l")
+material = SubResource("ShaderMaterial_mbf2p")
 position = Vector2(8, 168)
-texture = SubResource("PlaceholderTexture2D_toqhj")
+texture = SubResource("PlaceholderTexture2D_000kv")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 10)
 
-[node name="@Sprite2D@20896" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124054" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_ogjts")
+material = SubResource("ShaderMaterial_icsmm")
 position = Vector2(24, 168)
-texture = SubResource("PlaceholderTexture2D_v3gry")
+texture = SubResource("PlaceholderTexture2D_tn7l0")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 10)
 
-[node name="@Sprite2D@20898" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124056" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_eol2l")
+material = SubResource("ShaderMaterial_lygxx")
 position = Vector2(40, 168)
-texture = SubResource("PlaceholderTexture2D_ceb05")
+texture = SubResource("PlaceholderTexture2D_jiocw")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 10)
 
-[node name="@Sprite2D@20900" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124058" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_73b47")
+material = SubResource("ShaderMaterial_4gtsh")
 position = Vector2(56, 168)
-texture = SubResource("PlaceholderTexture2D_5kma4")
+texture = SubResource("PlaceholderTexture2D_vv5qu")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 10)
 
-[node name="@Sprite2D@20902" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124060" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_u0njl")
+material = SubResource("ShaderMaterial_iocuy")
 position = Vector2(72, 168)
-texture = SubResource("PlaceholderTexture2D_kiwds")
+texture = SubResource("PlaceholderTexture2D_qpm6u")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 10)
 
-[node name="@Sprite2D@20904" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124062" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_hnykx")
+material = SubResource("ShaderMaterial_jabat")
 position = Vector2(88, 168)
-texture = SubResource("PlaceholderTexture2D_oiewk")
+texture = SubResource("PlaceholderTexture2D_qoiwy")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 10)
 
-[node name="@Sprite2D@20906" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124064" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_bviu6")
+material = SubResource("ShaderMaterial_2lmcw")
 position = Vector2(104, 168)
-texture = SubResource("PlaceholderTexture2D_q6pdb")
+texture = SubResource("PlaceholderTexture2D_ljxvf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 10)
 
-[node name="@Sprite2D@20908" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124066" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_b0wwl")
+material = SubResource("ShaderMaterial_rht5i")
 position = Vector2(120, 168)
-texture = SubResource("PlaceholderTexture2D_0rkgg")
+texture = SubResource("PlaceholderTexture2D_6v8c1")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 10)
 
-[node name="@Sprite2D@20910" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124068" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_1un0c")
+material = SubResource("ShaderMaterial_lr7cn")
 position = Vector2(136, 168)
-texture = SubResource("PlaceholderTexture2D_qb2xk")
+texture = SubResource("PlaceholderTexture2D_k3n2s")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 10)
 
-[node name="@Sprite2D@20912" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124070" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_vvr00")
+material = SubResource("ShaderMaterial_huvth")
 position = Vector2(152, 168)
-texture = SubResource("PlaceholderTexture2D_dqhkj")
+texture = SubResource("PlaceholderTexture2D_olwb7")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 10)
 
-[node name="@Sprite2D@20914" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@124072" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
-material = SubResource("ShaderMaterial_oo6sw")
+material = SubResource("ShaderMaterial_0mcll")
 position = Vector2(168, 168)
-texture = SubResource("PlaceholderTexture2D_ywsnu")
+texture = SubResource("PlaceholderTexture2D_4lpxv")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 10)
-
-[node name="@Sprite2D@20916" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_cdtnc")
-position = Vector2(184, 168)
-texture = SubResource("PlaceholderTexture2D_e1fr6")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(11, 10)
-
-[node name="@Sprite2D@20918" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_kysge")
-position = Vector2(200, 168)
-texture = SubResource("PlaceholderTexture2D_lb6jo")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 10)
-
-[node name="@Sprite2D@20920" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_th3jd")
-position = Vector2(216, 168)
-texture = SubResource("PlaceholderTexture2D_ehskw")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(13, 10)
-
-[node name="@Sprite2D@20922" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_g6did")
-position = Vector2(232, 168)
-texture = SubResource("PlaceholderTexture2D_avf3m")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 10)
-
-[node name="@Sprite2D@20924" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_w4ijh")
-position = Vector2(8, 184)
-texture = SubResource("PlaceholderTexture2D_153d3")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(0, 11)
-
-[node name="@Sprite2D@20926" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_r0br7")
-position = Vector2(24, 184)
-texture = SubResource("PlaceholderTexture2D_htqg1")
-script = ExtResource("4_7qn0m")
-group_id = 35
-cell_type = 1
-world_grid_pos = Vector2i(1, 11)
-
-[node name="@Sprite2D@20928" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_amfds")
-position = Vector2(40, 184)
-texture = SubResource("PlaceholderTexture2D_683c6")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(2, 11)
-
-[node name="@Sprite2D@20930" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_4exr7")
-position = Vector2(56, 184)
-texture = SubResource("PlaceholderTexture2D_fj7yw")
-script = ExtResource("4_7qn0m")
-group_id = 36
-cell_type = 1
-world_grid_pos = Vector2i(3, 11)
-
-[node name="@Sprite2D@20932" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_4bjpc")
-position = Vector2(72, 184)
-texture = SubResource("PlaceholderTexture2D_mta4h")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(4, 11)
-
-[node name="@Sprite2D@20934" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_t344u")
-position = Vector2(88, 184)
-texture = SubResource("PlaceholderTexture2D_ep451")
-script = ExtResource("4_7qn0m")
-group_id = 37
-cell_type = 1
-world_grid_pos = Vector2i(5, 11)
-
-[node name="@Sprite2D@20936" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_2xjf5")
-position = Vector2(104, 184)
-texture = SubResource("PlaceholderTexture2D_onjhb")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(6, 11)
-
-[node name="@Sprite2D@20938" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_pyk32")
-position = Vector2(120, 184)
-texture = SubResource("PlaceholderTexture2D_8hul8")
-script = ExtResource("4_7qn0m")
-group_id = 38
-cell_type = 1
-world_grid_pos = Vector2i(7, 11)
-
-[node name="@Sprite2D@20940" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_wrlx7")
-position = Vector2(136, 184)
-texture = SubResource("PlaceholderTexture2D_3ycar")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(8, 11)
-
-[node name="@Sprite2D@20942" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_2xqhf")
-position = Vector2(152, 184)
-texture = SubResource("PlaceholderTexture2D_gh58d")
-script = ExtResource("4_7qn0m")
-group_id = 39
-cell_type = 1
-world_grid_pos = Vector2i(9, 11)
-
-[node name="@Sprite2D@20944" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_lsgol")
-position = Vector2(168, 184)
-texture = SubResource("PlaceholderTexture2D_b47tg")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(10, 11)
-
-[node name="@Sprite2D@20946" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_reqt2")
-position = Vector2(184, 184)
-texture = SubResource("PlaceholderTexture2D_ni5t8")
-script = ExtResource("4_7qn0m")
-group_id = 40
-cell_type = 1
-world_grid_pos = Vector2i(11, 11)
-
-[node name="@Sprite2D@20948" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_en10d")
-position = Vector2(200, 184)
-texture = SubResource("PlaceholderTexture2D_itiqp")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 11)
-
-[node name="@Sprite2D@20950" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_6d7s3")
-position = Vector2(216, 184)
-texture = SubResource("PlaceholderTexture2D_vnunb")
-script = ExtResource("4_7qn0m")
-group_id = 41
-cell_type = 1
-world_grid_pos = Vector2i(13, 11)
-
-[node name="@Sprite2D@20952" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_kx5i8")
-position = Vector2(232, 184)
-texture = SubResource("PlaceholderTexture2D_jr83n")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 11)
-
-[node name="@Sprite2D@20954" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_cdt7j")
-position = Vector2(8, 200)
-texture = SubResource("PlaceholderTexture2D_avf60")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(0, 12)
-
-[node name="@Sprite2D@20956" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_dqwgc")
-position = Vector2(24, 200)
-texture = SubResource("PlaceholderTexture2D_55nb8")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(1, 12)
-
-[node name="@Sprite2D@20958" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_soe3d")
-position = Vector2(40, 200)
-texture = SubResource("PlaceholderTexture2D_vbfpf")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(2, 12)
-
-[node name="@Sprite2D@20960" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_ng5bw")
-position = Vector2(56, 200)
-texture = SubResource("PlaceholderTexture2D_de66u")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(3, 12)
-
-[node name="@Sprite2D@20962" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_rcop5")
-position = Vector2(72, 200)
-texture = SubResource("PlaceholderTexture2D_7ii08")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(4, 12)
-
-[node name="@Sprite2D@20964" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_jwvai")
-position = Vector2(88, 200)
-texture = SubResource("PlaceholderTexture2D_n57c1")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(5, 12)
-
-[node name="@Sprite2D@20966" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_3mtw5")
-position = Vector2(104, 200)
-texture = SubResource("PlaceholderTexture2D_best2")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(6, 12)
-
-[node name="@Sprite2D@20968" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_leiyi")
-position = Vector2(120, 200)
-texture = SubResource("PlaceholderTexture2D_2qa62")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(7, 12)
-
-[node name="@Sprite2D@20970" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_jg8mv")
-position = Vector2(136, 200)
-texture = SubResource("PlaceholderTexture2D_j4u15")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(8, 12)
-
-[node name="@Sprite2D@20972" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_nucor")
-position = Vector2(152, 200)
-texture = SubResource("PlaceholderTexture2D_5v2qq")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(9, 12)
-
-[node name="@Sprite2D@20974" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_i8sl6")
-position = Vector2(168, 200)
-texture = SubResource("PlaceholderTexture2D_85gj7")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(10, 12)
-
-[node name="@Sprite2D@20976" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_fotxe")
-position = Vector2(184, 200)
-texture = SubResource("PlaceholderTexture2D_pwx8p")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(11, 12)
-
-[node name="@Sprite2D@20978" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_utdes")
-position = Vector2(200, 200)
-texture = SubResource("PlaceholderTexture2D_205vw")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 12)
-
-[node name="@Sprite2D@20980" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_70ap2")
-position = Vector2(216, 200)
-texture = SubResource("PlaceholderTexture2D_wxtno")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(13, 12)
-
-[node name="@Sprite2D@20982" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_ngaxs")
-position = Vector2(232, 200)
-texture = SubResource("PlaceholderTexture2D_2ewg8")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 12)
-
-[node name="@Sprite2D@20984" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_6ykog")
-position = Vector2(8, 216)
-texture = SubResource("PlaceholderTexture2D_alr01")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(0, 13)
-
-[node name="@Sprite2D@20986" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_pisnn")
-position = Vector2(24, 216)
-texture = SubResource("PlaceholderTexture2D_arobg")
-script = ExtResource("4_7qn0m")
-group_id = 42
-cell_type = 1
-world_grid_pos = Vector2i(1, 13)
-
-[node name="@Sprite2D@20988" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_u582o")
-position = Vector2(40, 216)
-texture = SubResource("PlaceholderTexture2D_3fglp")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(2, 13)
-
-[node name="@Sprite2D@20990" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_vjddv")
-position = Vector2(56, 216)
-texture = SubResource("PlaceholderTexture2D_m5oqw")
-script = ExtResource("4_7qn0m")
-group_id = 43
-cell_type = 1
-world_grid_pos = Vector2i(3, 13)
-
-[node name="@Sprite2D@20992" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_ny64a")
-position = Vector2(72, 216)
-texture = SubResource("PlaceholderTexture2D_ngla5")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(4, 13)
-
-[node name="@Sprite2D@20994" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_u0mvw")
-position = Vector2(88, 216)
-texture = SubResource("PlaceholderTexture2D_tyt6s")
-script = ExtResource("4_7qn0m")
-group_id = 44
-cell_type = 1
-world_grid_pos = Vector2i(5, 13)
-
-[node name="@Sprite2D@20996" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_8u43j")
-position = Vector2(104, 216)
-texture = SubResource("PlaceholderTexture2D_5snlp")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(6, 13)
-
-[node name="@Sprite2D@20998" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_xfwtc")
-position = Vector2(120, 216)
-texture = SubResource("PlaceholderTexture2D_5xi42")
-script = ExtResource("4_7qn0m")
-group_id = 45
-cell_type = 1
-world_grid_pos = Vector2i(7, 13)
-
-[node name="@Sprite2D@21000" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_y8rri")
-position = Vector2(136, 216)
-texture = SubResource("PlaceholderTexture2D_xmqc7")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(8, 13)
-
-[node name="@Sprite2D@21002" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_jn3er")
-position = Vector2(152, 216)
-texture = SubResource("PlaceholderTexture2D_dkih0")
-script = ExtResource("4_7qn0m")
-group_id = 46
-cell_type = 1
-world_grid_pos = Vector2i(9, 13)
-
-[node name="@Sprite2D@21004" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_1jwik")
-position = Vector2(168, 216)
-texture = SubResource("PlaceholderTexture2D_rndb2")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(10, 13)
-
-[node name="@Sprite2D@21006" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_1xf24")
-position = Vector2(184, 216)
-texture = SubResource("PlaceholderTexture2D_ss7qv")
-script = ExtResource("4_7qn0m")
-group_id = 47
-cell_type = 1
-world_grid_pos = Vector2i(11, 13)
-
-[node name="@Sprite2D@21008" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_yur76")
-position = Vector2(200, 216)
-texture = SubResource("PlaceholderTexture2D_d58rl")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 13)
-
-[node name="@Sprite2D@21010" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_s3r4b")
-position = Vector2(216, 216)
-texture = SubResource("PlaceholderTexture2D_jj3cr")
-script = ExtResource("4_7qn0m")
-group_id = 48
-cell_type = 1
-world_grid_pos = Vector2i(13, 13)
-
-[node name="@Sprite2D@21012" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_lo13l")
-position = Vector2(232, 216)
-texture = SubResource("PlaceholderTexture2D_kb5mi")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 13)
-
-[node name="@Sprite2D@21014" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_74xwx")
-position = Vector2(8, 232)
-texture = SubResource("PlaceholderTexture2D_3lvka")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(0, 14)
-
-[node name="@Sprite2D@21016" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_55vx3")
-position = Vector2(24, 232)
-texture = SubResource("PlaceholderTexture2D_savhv")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(1, 14)
-
-[node name="@Sprite2D@21018" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_jbxy5")
-position = Vector2(40, 232)
-texture = SubResource("PlaceholderTexture2D_en603")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(2, 14)
-
-[node name="@Sprite2D@21020" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_ggma4")
-position = Vector2(56, 232)
-texture = SubResource("PlaceholderTexture2D_5oeok")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(3, 14)
-
-[node name="@Sprite2D@21022" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_oy5s7")
-position = Vector2(72, 232)
-texture = SubResource("PlaceholderTexture2D_s864s")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(4, 14)
-
-[node name="@Sprite2D@21024" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_pbhol")
-position = Vector2(88, 232)
-texture = SubResource("PlaceholderTexture2D_j1uew")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(5, 14)
-
-[node name="@Sprite2D@21026" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_e6oh3")
-position = Vector2(104, 232)
-texture = SubResource("PlaceholderTexture2D_f3uha")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(6, 14)
-
-[node name="@Sprite2D@21028" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_rs73j")
-position = Vector2(120, 232)
-texture = SubResource("PlaceholderTexture2D_pjyn8")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(7, 14)
-
-[node name="@Sprite2D@21030" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_sc6qg")
-position = Vector2(136, 232)
-texture = SubResource("PlaceholderTexture2D_b778j")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(8, 14)
-
-[node name="@Sprite2D@21032" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_nsytd")
-position = Vector2(152, 232)
-texture = SubResource("PlaceholderTexture2D_4jbet")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(9, 14)
-
-[node name="@Sprite2D@21034" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_ptgfj")
-position = Vector2(168, 232)
-texture = SubResource("PlaceholderTexture2D_lo404")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(10, 14)
-
-[node name="@Sprite2D@21036" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_wcit5")
-position = Vector2(184, 232)
-texture = SubResource("PlaceholderTexture2D_bxq6h")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(11, 14)
-
-[node name="@Sprite2D@21038" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_vwaqm")
-position = Vector2(200, 232)
-texture = SubResource("PlaceholderTexture2D_cwnr7")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(12, 14)
-
-[node name="@Sprite2D@21040" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_lvhv4")
-position = Vector2(216, 232)
-texture = SubResource("PlaceholderTexture2D_8r67l")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(13, 14)
-
-[node name="@Sprite2D@21042" type="Sprite2D" parent="Tiles"]
-texture_filter = 1
-material = SubResource("ShaderMaterial_2urjc")
-position = Vector2(232, 232)
-texture = SubResource("PlaceholderTexture2D_u4w31")
-script = ExtResource("4_7qn0m")
-world_grid_pos = Vector2i(14, 14)
 
 [node name="Label" type="Label" parent="."]
 offset_left = -105.0

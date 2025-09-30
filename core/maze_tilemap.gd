@@ -5,7 +5,9 @@
 		ui_size = value
 		_reset_grid()
 
-@export_tool_button("Generate until cellgroups = size") var kruskal_multi_btn := kruskal_until_sqrt_group
+@export_tool_button("One step kruskal") var one_step := one_step_kruskal
+
+@export_tool_button("Generate kruskal forest") var kruskal_multi_btn := kruskal_forest
 
 @onready var tiles_parent := $Tiles as Node2D
 @onready var player := $Player as Sprite2D
@@ -19,30 +21,35 @@ const WALL := 9
 const ORIG_CELL := 0
 const JOINED_CELLS := 1
 
-class GroupNeighbor:
-	var connecting_wall := -1
-	var group: CellGroup
-
-class CellGroup:
+class CellsNode:
 	var id := 0
-	var cells: Dictionary[int, int] = {}
-	var nbors: Dictionary[int, GroupNeighbor] = {}
+	var cells: Dictionary[int, TileSprite] = {}
+	var edges: Array[Edge] = []
 	var keys := []
-	var nbors_processed_step := 0
-	var min_key_required_to_access := 10000
+	var processed_step := 0
 
-var tiles: Array[TileSprite] = []
-var walls: Dictionary[int, int] = {}
-var potential_walls: Dictionary[int, int] = {}
-var cell_groups: Dictionary[int, CellGroup] = {}
-var cells: Dictionary[int, int] = {}
-var group_counts: Dictionary[int, int] = {}
+class Edge:
+	var a: int
+	var b: int
+	var type := TileSprite.CellType.WALL
+	var one_way_from: int
+	var tile: TileSprite
+	var pos: Vector2i
+
+	func id() -> String:
+		var node_ids := [a, b]
+		if a > b:
+			node_ids = [b, a]
+		return "{0}-{1}".format(node_ids)
+
+var visual_tiles: Array[TileSprite] = []
+var edges: Array[Edge] = []
+var cells_nodes: Dictionary[int, CellsNode] = {}
 var player_pos := Vector2i.ZERO
-var _last_move := 0
-var player_spawn_cell_group: CellGroup
 var collected_keys: Array[int] = []
 var player_path: Array[int] = []
 var player_sight := 3
+var start_node: CellsNode
 
 var powerups: Array[String] = ["metro1", "sight", "metro2", "sight2"]
 var plus_sight_cell := -1
@@ -59,31 +66,34 @@ func _init() -> void:
 	tile_set = preload("res://materials/tileset.tres")
 
 func _ready() -> void:
-	seed(4)
 	await _reset_grid()
 	if !Engine.is_editor_hint():
-		kruskal_until_sqrt_group()
-		_form_cell_group_progress_graph()
-		var cell_i: int = _get_player_spawn_cell()
-		player_pos = i_to_xy(cell_i)
+		kruskal_forest()
+		set_start_node()
+		player_pos = i_to_xy(start_node.cells.keys().pick_random())
+		generate_doors()
+
+func _get_cells_node_at_i(i: int) -> CellsNode:
+	if i < 0 || i > visual_tiles.size() - 1:
+		return
+
+	return cells_nodes[visual_tiles[i].group_id]
 
 func _reset_grid() -> void:
 	size = ui_size * 2 + 1
 	size2 = size * size
-	walls.clear()
-	potential_walls.clear()
-	cells.clear()
-	tiles.clear()
+	edges.clear()
+	visual_tiles.clear()
 	clear()
 	if !is_node_ready():
 		return
 
-	tiles.resize(size2)
+	visual_tiles.resize(size2)
 
 	for child in tiles_parent.get_children():
-		print("freeing child ", child)
+		#print("freeing child ", child)
 		child.queue_free()
-		print("freed")
+		#print("freed")
 
 
 	for y in range(0, size):
@@ -93,23 +103,41 @@ func _reset_grid() -> void:
 			var i := xy_to_i(xy)
 			tile_sprite.world_grid_pos = xy
 			tiles_parent.add_child(tile_sprite)
-			tiles[i] = tile_sprite
+			visual_tiles[i] = tile_sprite
 			tile_sprite.owner = self
 
 			var type := TileSprite.CellType.WALL
 			if x % 2 == 1 && y % 2 == 1:
 				type = TileSprite.CellType.ORIG_CELL
-				var group := CellGroup.new()
-				group.id = cell_groups.size()
-				group.cells[i] = group.id
-				cell_groups[group.id] = group
-				var group_id := cells.size()
-				cells[i] = group_id
-				tile_sprite.group_id = group.id
-			if x % 2 != y % 2 && x > 0 && y > 0 && x < size - 1 && y < size - 1:
-				walls[i] = 1
-				potential_walls[i] = 1
+
+				var cells_node := CellsNode.new()
+				cells_node.cells[i] = tile_sprite
+				cells_node.id = cells_nodes.size()
+				cells_nodes[cells_node.id] = cells_node
+				tile_sprite.group_id = cells_node.id
+
 			tile_sprite.cell_type = type
+
+	for y in range(0, size):
+		for x in range(0, size):
+			if x % 2 != y % 2 && x > 0 && y > 0 && x < size - 1 && y < size - 1:
+				# valid edge
+				var xy := Vector2i(x, y)
+				var i := xy_to_i(xy)
+				var tile_sprite := visual_tiles[i]
+				var edge := Edge.new()
+				edge.tile = tile_sprite
+				edge.pos = xy
+				if y % 2 == 0:
+					edge.a = _get_cells_node_at_i(i - size).id
+					edge.b = _get_cells_node_at_i(i + size).id
+				else:
+					edge.a = _get_cells_node_at_i(i - 1).id
+					edge.b = _get_cells_node_at_i(i + 1).id
+
+				#print("found edge ", edge.id())
+
+				edges.append(edge)
 
 	draw_grid()
 
@@ -119,103 +147,188 @@ func draw_grid() -> void:
 		for x in range(0, size):
 			var xy := Vector2i(x, y)
 			var i := xy_to_i(xy)
-			var type := tiles[i].cell_type
-			var tile_sprite := tiles[i]
+			var type := visual_tiles[i].cell_type
+			var tile_sprite := visual_tiles[i]
 			tile_sprite.cell_type = type
-			
-var biggest_cell_group: CellGroup
-func count_cell_groups() -> int:
-	group_counts.clear()
-	for i in cell_groups:
-		var group := cell_groups[i]
-		if !biggest_cell_group || biggest_cell_group.cells_count < group.cells_count:
-			biggest_cell_group = group
-
-	return group_counts.size()
-
-func get_biggest_group_count() -> int:
-	if !biggest_cell_group:
-		return 1000000
-	
-	return biggest_cell_group.cells_count
 
 
-func _set_player_spawn_group() -> void:
-	if cell_groups.size() < 3:
-		var cell_group_id: int = cells.values().pick_random()
-		player_spawn_cell_group = cell_groups[cell_group_id]
+func set_start_node() -> void:
+	if cells_nodes.size() < 3:
+		start_node = cells_nodes.values().pick_random()
 		return
 
-	var cell_groups_sorted: Array[CellGroup] = cell_groups.values()
-	cell_groups_sorted.sort_custom(func(a: CellGroup, b: CellGroup) -> bool: return a.cells.size() > b.cells.size())
-	player_spawn_cell_group = cell_groups_sorted[2]
+	var start_nodes_sorted: Array[CellsNode] = cells_nodes.values()
+	start_nodes_sorted.sort_custom(func(a: CellsNode, b: CellsNode) -> bool: return a.cells.size() > b.cells.size())
+	start_node = start_nodes_sorted[2]
 
 
-func _get_player_spawn_cell() -> int:
-	if !player_spawn_cell_group:
-		return cells.keys().pick_random()
+func _combine_cells_nodes(edge: Edge) -> void:
+	var old_edge_id := edge.id()
+	var cna := cells_nodes[edge.a]
+	var cnb := cells_nodes[edge.b]
+	var old_size := cna.cells.size()
+	var old_id := cnb.id
+	cnb.id = cna.id
+	#print("Combining {0}, a cells: {1}, b cells {2}".format([old_edge_id, cna.cells.size(), cnb.cells.size()]))
+	for cell_i in cnb.cells:
+		#print("a", cell_i)
+		cna.cells[cell_i] = cnb.cells[cell_i]
 
-	var player_spawn_cell: int = player_spawn_cell_group.cells.keys().pick_random()
-	# confirm that it's not a door, key etc
-	return player_spawn_cell
+	for cell_i in cna.cells:
+		#print("b", cell_i)
+		cna.cells[cell_i].group_id = cna.id
 
+	#print("Combined {0}, old_size: {1} new size:  {2}".format([old_edge_id, old_size, cna.cells.size()]))
+	cells_nodes.erase(old_id)
 
-func _update_cell_group_to_other(from: int, to: int) -> void:
-	for i in cells:
-		var group_id := cells[i]
-		var tile_sprite := tiles[i]
-		if group_id == from:
-			cells[i] = to
-			tile_sprite.group_id = to
-			var from_group := cell_groups[from]
-			var to_group := cell_groups[to]
-			from_group.cells.erase(i)
-			to_group.cells[i] = to_group.id
-			if from_group.cells.is_empty():
-				cell_groups.erase(from)
+	for i_edge: Edge in edges:
+		if i_edge.a == old_id:
+			i_edge.a = cnb.id
+		if i_edge.b == old_id:
+			i_edge.b = cnb.id
 
+func find_potential_kruskal_edge() -> Edge:
+	const max_tries := 3
+	for i in range(0, max_tries):
+		var edge: Edge = edges.pick_random()
+		if edge.type != TileSprite.CellType.WALL:
+			continue
 
-func kruskal_until_sqrt_group() -> void:
-	var safety := 100
-	while cell_groups.size() > size && safety > 0:
-		safety -= 1
-		var wall: int = potential_walls.keys().pick_random()
-		var wall_xy := i_to_xy(wall)
+		if i == max_tries - 1:
+			return null
 
-		var cell1_xy := Vector2i.ZERO
-		var cell2_xy := Vector2i.ZERO
-		if wall_xy.x % 2 == 1:
-			# cells are up and down
-			cell1_xy = wall_xy + Vector2i(0, -1)
-			cell2_xy = wall_xy + Vector2i(0, 1)
-		else:
-			cell1_xy = wall_xy + Vector2i(-1, 0)
-			cell2_xy = wall_xy + Vector2i(1, 0)
+		var cna := cells_nodes[edge.a]
+		var cnb := cells_nodes[edge.b]
+		if cna == cnb:
+			#print("found edge with same cellsnodes")
+			continue
 
-		if cell1_xy == Vector2i.ZERO || cell2_xy == Vector2i.ZERO:
-			return
+		var a_size := cna.cells.size()
+		var b_size := cnb.cells.size()
+
+		if a_size == 1 && b_size < size / 2:
+			return edge
+
+		if b_size == 1 && a_size < size / 2:
+			return edge
+
+		if a_size < size / 2 && b_size < size / 2:
+			return edge
+
+	return null
 		
-		var cell1_group_id := cells[xy_to_i(cell1_xy)]
-		var cell2_group_id := cells[xy_to_i(cell2_xy)]
-		var cell1_count := cell_groups[cell1_group_id].cells.size()
-		var cell2_count := cell_groups[cell2_group_id].cells.size()
-		potential_walls.erase(wall)
-		if cell1_group_id != cell2_group_id && cell1_count < size / 2 && cell2_count < size / 2:
-			tiles[wall].cell_type = TileSprite.CellType.JOINED_CELLS
-			_update_cell_group_to_other(cell2_group_id, cell1_group_id)
-			walls.erase(wall)
-			draw_grid()
+
+func one_step_kruskal() -> void:
+	var edge: Edge = find_potential_kruskal_edge()
+	if !edge:
+		return
+	edges.erase(edge)
+	var pos_i := xy_to_i(edge.pos)
+	var cellnode_a := cells_nodes[edge.a]
+	var cellnode_b := cells_nodes[edge.b]
+	if edge.type == TileSprite.CellType.WALL && cellnode_a.id != cellnode_b.id && cellnode_a.cells.size() < size / 2 && cellnode_b.cells.size() < size / 2:
+		visual_tiles[pos_i].cell_type = TileSprite.CellType.JOINED_CELLS
+		_combine_cells_nodes(edge)
+		draw_grid()
+
+
+func kruskal_forest() -> void:
+	var safety := 100
+	while cells_nodes.size() > size && safety > 0:
+		print(cells_nodes.size())
+		safety -= 1
+		one_step_kruskal()
 
 	draw_grid()
+
+func generate_doors() -> void:
+	var edge_dict: Dictionary[String, Edge] = {}
+	for edge in edges:
+		edge_dict[edge.id()] = edge
+
+	var edges_by_node_id: Dictionary[int, Array] = {}
+
+	for edge: Edge in edge_dict.values():
+		if edge.a == edge.b:
+			continue
+		if edges_by_node_id.has(edge.a):
+			edges_by_node_id[edge.a].append(edge)
+		else:
+			edges_by_node_id[edge.a] = [edge]
+
+		if edges_by_node_id.has(edge.b):
+			edges_by_node_id[edge.b].append(edge)
+		else:
+			edges_by_node_id[edge.b] = [edge]
+
+	var valid_edges: Dictionary[String, Edge] = {}
+
+	for node_id in edges_by_node_id:
+		var node_edges := edges_by_node_id[node_id]
+		if node_edges.size() == 1:
+			continue
+		var node := cells_nodes[node_id]
+		if node.cells.size() == 1:
+			var valid_edge: Edge = node_edges.pick_random()
+			valid_edges[valid_edge.id()] = valid_edge
+			for edge in node_edges:
+				if edge.id() == valid_edge.id():
+					continue
+				valid_edges.erase(edge.id())
+			continue
+
+		var max_edges := maxi(node.cells.size() / 2, 2)
+		for i in range(0, max_edges):
+			var valid_edge: Edge = node_edges.pick_random()
+			valid_edges[valid_edge.id()] = valid_edge
+
+	# for node_id in edges_by_node_id:
+	# 	var node := cells_nodes[node_id]
+	# 	var node_edges := edges_by_node_id[node_id]
+	# 	if node.cells.size() == 1 && node_edges.size() > 1:
+	# 		print("LOL?", node.id)
+	edges_by_node_id.clear()
+	for edge: Edge in valid_edges.values():
+		edge.type = TileSprite.CellType.DOOR
+		edge.tile.cell_type = TileSprite.CellType.DOOR
+		if edges_by_node_id.has(edge.a):
+			edges_by_node_id[edge.a].append(edge)
+		else:
+			edges_by_node_id[edge.a] = [edge]
+
+		if edges_by_node_id.has(edge.b):
+			edges_by_node_id[edge.b].append(edge)
+		else:
+			edges_by_node_id[edge.b] = [edge]
+
+	var edge_queue: Array = edges_by_node_id[start_node.id]
+	var door_number := 0
+	var handled_edges: Dictionary[String, bool] = {}
+	while !edge_queue.is_empty():
+		var edge: Edge = edge_queue.pick_random()
+		edge_queue.erase(edge)
+		if handled_edges.has(edge.id()):
+			continue
+		handled_edges[edge.id()] = true
+		edge.tile.door_number = door_number
+		edge.tile.cell_type = TileSprite.CellType.DOOR
+
+		if edges_by_node_id.has(edge.a):
+			edge_queue.append_array(edges_by_node_id[edge.a])
+		if edges_by_node_id.has(edge.b):
+			edge_queue.append_array(edges_by_node_id[edge.b])
+
+		door_number += 1
+
 
 func is_walkable(xy: Vector2i) -> bool:
 	var i := xy_to_i(xy)
 	if i <= 0 || i > size2:
 		return false
-	if tiles[i].is_door():
-		return collected_keys.has(tiles[i].door_number)
+	if visual_tiles[i].is_door():
+		return collected_keys.has(visual_tiles[i].door_number)
 	
-	return tiles[i].cell_type != TileSprite.CellType.WALL
+	return visual_tiles[i].cell_type != TileSprite.CellType.WALL
 
 func _vector2_strongest_value(vec2: Vector2) -> Vector2i:
 	if vec2 == Vector2.ZERO:
@@ -226,24 +339,24 @@ func _vector2_strongest_value(vec2: Vector2) -> Vector2i:
 	return Vector2i(0, signi(vec2.y) * 1)
 
 func floodfill_sight(pos: int, sight_left := 0, visited: Dictionary[int, bool] = {}) -> void:
-	if pos < 0 || pos > tiles.size() - 1:
+	if pos < 0 || pos > visual_tiles.size() - 1:
 		return
 
 	visited[pos] = true
-	tiles[pos].show()
-	# if !tiles[pos].is_wall() && tiles[pos - 1 - size] && tiles[pos - 1 - size].is_wall():
-	# 	tiles[pos - 1 - size].show()
-	# if !tiles[pos].is_wall() && tiles[pos + 1 - size] && tiles[pos + 1 - size].is_wall():
-	# 	tiles[pos + 1 - size].show()
-	# if !tiles[pos].is_wall() && tiles[pos - 1 + size] && tiles[pos - 1 + size].is_wall():
-	# 	tiles[pos - 1 + size].show()
-	# if !tiles[pos].is_wall() && tiles[pos + 1 + size] && tiles[pos + 1 + size].is_wall():
-	# 	tiles[pos + 1 + size].show()
+	visual_tiles[pos].show()
+	# if !visual_tiles[pos].is_wall() && visual_tiles[pos - 1 - size] && visual_tiles[pos - 1 - size].is_wall():
+	# 	visual_tiles[pos - 1 - size].show()
+	# if !visual_tiles[pos].is_wall() && visual_tiles[pos + 1 - size] && visual_tiles[pos + 1 - size].is_wall():
+	# 	visual_tiles[pos + 1 - size].show()
+	# if !visual_tiles[pos].is_wall() && visual_tiles[pos - 1 + size] && visual_tiles[pos - 1 + size].is_wall():
+	# 	visual_tiles[pos - 1 + size].show()
+	# if !visual_tiles[pos].is_wall() && visual_tiles[pos + 1 + size] && visual_tiles[pos + 1 + size].is_wall():
+	# 	visual_tiles[pos + 1 + size].show()
 
 	if sight_left == 0:
 		return
 
-	if tiles[pos].is_wall() || tiles[pos].is_door():
+	if visual_tiles[pos].is_wall() || visual_tiles[pos].is_door():
 		return
 	
 	floodfill_sight(pos - 1, sight_left - 1, visited)
@@ -273,345 +386,30 @@ func _process(delta: float) -> void:
 	
 	if is_walkable(player_pos + dir):
 		player_pos += dir
-		_last_move = Time.get_ticks_msec()
 
 	player.position = player_pos * Vector2i(16, 16) + Vector2i(8, 8)
 
 	var player_i := xy_to_i(player_pos)
-	if tiles[player_i] != null:
-		if tiles[player_i].is_key():
-			collected_keys.append(tiles[player_i].key_number)
-			tiles[player_i].cell_type = TileSprite.CellType.ORIG_CELL
-		if tiles[player_i].cell_type == TileSprite.CellType.PLUSSIGHT:
+	if visual_tiles[player_i] != null:
+		if visual_tiles[player_i].is_key():
+			collected_keys.append(visual_tiles[player_i].key_number)
+			visual_tiles[player_i].cell_type = TileSprite.CellType.ORIG_CELL
+		if visual_tiles[player_i].cell_type == TileSprite.CellType.PLUSSIGHT:
 			player_sight *= 2
-			tiles[player_i].cell_type = TileSprite.CellType.ORIG_CELL
-		if tiles[player_i].is_door():
-			tiles[player_i].cell_type = TileSprite.CellType.OPENED_DOOR
+			visual_tiles[player_i].cell_type = TileSprite.CellType.ORIG_CELL
+		if visual_tiles[player_i].is_door():
+			visual_tiles[player_i].cell_type = TileSprite.CellType.OPENED_DOOR
 
-	var won: bool = tiles[player_i] != null && tiles[player_i].group_id == player_path.back()
-
-	for tile_i in range(0, tiles.size()):
+	#var won: bool = visual_tiles[player_i] != null && visual_tiles[player_i].group_id == player_path.back()
+	var won := false
+	for tile_i in range(0, visual_tiles.size()):
 		if won || true:
-			tiles[tile_i].show()
+			visual_tiles[tile_i].show()
 		else:
-			tiles[tile_i].hide()
+			visual_tiles[tile_i].hide()
 	
 	if !won:
 		floodfill_sight(player_i, player_sight)
 		
 	keys_label.text = ",".join(collected_keys.map(str))
 	playerpos_label.text = str(player_pos)
-
-func _get_cell_nbor_groups(cell_i: int) -> Array[GroupNeighbor]:
-	var i_dirs: Array[int] = [1, -1, -size, size]
-	var nbor_groups: Array[GroupNeighbor] = []
-	for i_dir in i_dirs:
-		var wall_i := cell_i + i_dir
-		var cell_i2 := cell_i + i_dir * 2
-		if walls.has(wall_i) && cells.has(cell_i2) && cells[cell_i2] != cells[cell_i]:
-			var group_nbor := GroupNeighbor.new()
-			group_nbor.connecting_wall = wall_i
-			group_nbor.group = cell_groups[cells[cell_i2]]
-			nbor_groups.append(group_nbor)
-
-	return nbor_groups
-
-func _get_neighbor_groups(this_group: CellGroup) -> Array[GroupNeighbor]:
-	var nbor_groups: Dictionary[int, GroupNeighbor] = {}
-	print("Finding neighbors for group ", this_group)
-	for cell_i in this_group.cells:
-		print("Finding neighbor groups for cell ", (i_to_xy(cell_i)))
-		var cell_nbor_groups := _get_cell_nbor_groups(cell_i)
-		print("Found {0} neighbor groups".format([cell_nbor_groups.size()]))
-		for nbor_group in cell_nbor_groups:
-			if !nbor_groups.has(nbor_group.group.id) || randf() < 0.5:
-				nbor_groups[nbor_group.group.id] = nbor_group
-
-
-	# for nbor_group: GroupNeighbor in nbor_groups.values():
-	# 	var wall_i := nbor_group.connecting_wall
-	# 	potential_walls.erase(wall_i)
-	# 	walls.erase(wall_i)
-	# 	grid[wall_i] = TileSprite.CellType.DOOR
-	# 	#tiles[wall_i].label_text = str(nbor_group.group.id)
-
-	return nbor_groups.values()
-
-func _sever_nbors_randomly(group: CellGroup, prev: Dictionary[int, bool] = {}, depth := 0) -> void:
-	# DFS step
-	if depth > 100:
-		print("depth over 100")
-		return
-
-	if group.nbors.size() > 0:
-		for nbor_id in group.nbors:
-			var nbor := group.nbors[nbor_id].group
-			if !prev.has(nbor_id):
-				prev[group.id] = true
-				_sever_nbors_randomly(nbor, prev, depth + 1)
-	
-
-	group.nbors_processed_step = 2
-	if group.nbors.size() == 1:
-		return
-	print("severing group {0} nbors at depth {1}, prev_groups {2}".format([group.id, depth, prev]))
-
-	var can_be_severed: Array[int] = []
-	
-	if group.cells.size() > 1:
-		for nbor_id in group.nbors:
-			var nbor := group.nbors[nbor_id].group
-			if nbor.nbors_processed_step == 2:
-				continue
-			
-			if nbor.nbors.size() == 1:
-				continue
-			can_be_severed.append(nbor_id)
-	else:
-		can_be_severed = group.nbors.keys().slice(0, -1)
-
-	var severed := can_be_severed.size() - 2
-	for i in range(0, can_be_severed.size() - 1):
-		var nbor_id: int = can_be_severed.pick_random()
-		can_be_severed.erase(nbor_id)
-		print("Severed tie between {0} and {1}, severed options: {2}".format([group.id, nbor_id, severed]))
-		var nbor := group.nbors[nbor_id].group
-		nbor.nbors.erase(group.id)
-		group.nbors.erase(nbor.id)
-
-class Door extends RefCounted:
-	var group1: CellGroup
-	var group2: CellGroup
-	var number := 0
-	var i := 0
-
-	func id() -> String:
-		var groups := [group1.id, group2.id]
-		if group2.id > group1.id:
-			groups = [group2.id, group1.id]
-		return "{0}-{1}".format(groups)
-
-class Doors extends RefCounted:
-	var doors: Array[Door] = []
-
-	func add_door(door: Door) -> void:
-		doors.append(door)
-	
-	func doors_count() -> int:
-		return doors.size()
-
-
-func _get_doors_for_group(group: CellGroup, preexisting: Dictionary[String, Door] = {}) -> Array[Door]:
-	group.nbors_processed_step = 3
-	var doors: Array[Door] = []
-	for nbor_id in group.nbors:
-		var nbor := group.nbors[nbor_id]
-		var wall_i := nbor.connecting_wall
-		var door := Door.new()
-		door.group1 = group
-		door.group2 = nbor.group
-		door.i = wall_i
-
-		if preexisting.has(door.id()):
-			continue
-
-		preexisting[door.id()] = door
-		doors.append(door)
-
-	return doors
-
-
-func _place_doors_and_keys2(starting_group: CellGroup) -> void:
-	var possible_doors_out: Array[Door] = _get_doors_for_group(starting_group)
-	var existing_doors: Dictionary[String, Door] = {}
-	var door_number := 0
-	player_path = [starting_group.id]
-	
-
-	while !possible_doors_out.is_empty():
-		var door: Door = possible_doors_out.pick_random()
-		possible_doors_out.erase(door)
-		existing_doors[door.id()] = door
-		door_number += 1
-		door.number = door_number
-
-		if !player_path.has(door.group2.id):
-			player_path.append(door.group2.id)
-
-		if door.group2.id == starting_group.id:
-			door.number = door.group1.min_key_required_to_access
-		elif door.group2.min_key_required_to_access > door.number:
-			door.group2.min_key_required_to_access = door.number
-		else:
-			door.number = door.group2.min_key_required_to_access
-		
-		if door.group1.nbors_processed_step < 3:
-			possible_doors_out.append_array(_get_doors_for_group(door.group1, existing_doors))
-		elif door.group2.nbors_processed_step < 3:
-			possible_doors_out.append_array(_get_doors_for_group(door.group2, existing_doors))
-
-		# visited_groups[door.group2.id] = door.group2
-		var wall_i := door.i
-		tiles[wall_i].door_number = door.number
-		tiles[wall_i].cell_type = TileSprite.CellType.DOOR
-
-	var doors_sorted: Array[Door] = existing_doors.values()
-	doors_sorted.sort_custom(func(a: Door, b: Door) -> bool: return a.number < b.number)
-	door_number = 0
-	var prev_door_number := -1
-	var keys_needed_dict: Dictionary[int, bool] = {}
-	for i in range(0, doors_sorted.size()):
-		var door := doors_sorted[i]
-		if prev_door_number < door.number:
-			door_number += 1
-			prev_door_number = door.number
-		door.number = door_number
-		tiles[door.i].door_number = door.number
-		tiles[door.i].cell_type = TileSprite.CellType.DOOR
-		keys_needed_dict[door.number] = true
-
-	print(player_path)
-	return
-	
-	var key_i: int = player_spawn_cell_group.cells.keys().pick_random()
-	#tiles[key_i].cell_type = TileSprite.CellType.KEY
-	var keys_needed: Array[int] = keys_needed_dict.keys()
-	keys_needed.sort()
-
-	for group: CellGroup in cell_groups.values():
-		print(group.id, "-minkey: ", group.min_key_required_to_access)
-
-	var plus_sight_group_id: int = player_path.slice(size / 4, -3).pick_random()
-	var plus_sight_group := cell_groups[plus_sight_group_id]
-	while plus_sight_group.cells.size() == 1:
-		plus_sight_group_id = player_path.slice(size / 2, -3).pick_random()
-		plus_sight_group = cell_groups[plus_sight_group_id]
-
-	plus_sight_cell = plus_sight_group.cells.keys().pick_random()
-	while tiles[plus_sight_cell].is_key():
-		plus_sight_cell = plus_sight_group.cells.keys().pick_random()
-	
-	tiles[plus_sight_cell].cell_type = TileSprite.CellType.PLUSSIGHT
-
-	var key_placed := false
-	for group_id in player_path:
-		if keys_needed.is_empty():
-			break
-		var group := cell_groups[group_id]
-		var key: int = keys_needed.pop_front()
-		key_i = group.cells.keys().pick_random()
-		tiles[key_i].key_number = key
-		print(i_to_xy(key_i), tiles[key_i].key_number)
-		tiles[key_i].cell_type = TileSprite.CellType.KEY
-		key_placed = true
-	# while !keys_needed.is_empty():
-	# 	var key: int = keys_needed.pop_front()
-	# 	if !key:
-	# 		return
-
-	# 	for group: CellGroup in cell_groups.values():
-	# 		if group.min_key_required_to_access == key - 1:
-	# 			key_i = group.cells.keys().pick_random()
-	# 			tiles[key_i].key_number = key
-	# 			print(i_to_xy(key_i), tiles[key_i].key_number)
-	# 			tiles[key_i].cell_type = TileSprite.CellType.KEY
-	# 			key_placed = true
-	
-
-func _place_doors_and_keys(starting_group: CellGroup) -> void:
-	var bfs_groups: Array[CellGroup] = [starting_group]
-	var doors_into_group: Dictionary[int, Doors] = {}
-	var door_number := 0
-	var keys_needed: Array[int] = []
-	while !bfs_groups.is_empty():
-		var group: CellGroup = bfs_groups.pick_random()
-		bfs_groups.erase(group)
-		if group.nbors_processed_step >= 3:
-			continue
-		
-		group.nbors_processed_step = 3
-		for nbor_id in group.nbors:
-			var nbor := group.nbors[nbor_id]
-			var wall_i := nbor.connecting_wall
-			potential_walls.erase(wall_i)
-			walls.erase(wall_i)
-			if tiles[wall_i].cell_type != TileSprite.CellType.DOOR:
-				tiles[wall_i].cell_type = TileSprite.CellType.DOOR
-				var what_door_number := door_number
-				if !doors_into_group.has(nbor.group.id):
-					print("Didnt find preexisting doors into group {0}".format([nbor.group.id]))
-					var doors := Doors.new()
-					var door := Door.new()
-					door.group1 = group
-					door.group2 = nbor.group
-					door.number = what_door_number
-					door.i = wall_i
-					doors.add_door(door)
-					doors_into_group[nbor.group.id] = doors
-					keys_needed.append(what_door_number)
-					door_number += 1
-				else:
-					var doors: Doors = doors_into_group[nbor.group.id]
-					print("Found doors into nbor {0}, ".format([nbor.group.id]), doors.doors)
-					what_door_number = doors.doors[0].number
-					
-					var door := Door.new()
-					door.group1 = group
-					door.group2 = nbor.group
-					door.number = what_door_number
-					door.i = wall_i
-					doors.doors.append(door)
-
-				tiles[wall_i].door_number = what_door_number
-			bfs_groups.append(nbor.group)
-	
-	var key_i: int = player_spawn_cell_group.cells.keys().pick_random()
-	tiles[key_i].cell_type = TileSprite.CellType.KEY
-	tiles[key_i].key_number = keys_needed.pop_front()
-
-	while !keys_needed.is_empty():
-		var key: int = keys_needed.pop_front()
-		var key_placed := false
-		for group_id in doors_into_group:
-			if key_placed:
-				break
-			var doors_obj := doors_into_group[group_id]
-			for door in doors_obj.doors:
-				if key_placed:
-					break
-				if door.number < key:
-					key_i = cell_groups[group_id].cells.keys().pick_random()
-					tiles[key_i].key_number = key
-					print(tiles[key_i].key_number)
-					tiles[key_i].cell_type = TileSprite.CellType.KEY
-					key_placed = true
-					doors_into_group.erase(group_id)
-
-
-func _form_cell_group_progress_graph() -> void:
-	_set_player_spawn_group()
-	var next_groups_to_process: Array[CellGroup] = [player_spawn_cell_group]
-	while !next_groups_to_process.is_empty():
-		var next_group: CellGroup = next_groups_to_process.pop_front()
-		next_group.nbors_processed_step = 1
-		var nbors := _get_neighbor_groups(next_group)
-		
-		for nbor in nbors:
-			if !next_group.nbors.has(nbor.group.id):
-				next_group.nbors[nbor.group.id] = nbor
-				var this_neighbor := GroupNeighbor.new()
-				this_neighbor.connecting_wall = nbor.connecting_wall
-				this_neighbor.group = next_group
-				nbor.group.nbors[next_group.id] = this_neighbor
-				if nbor.group.nbors_processed_step == 0:
-					next_groups_to_process.append(nbor.group)
-
-	var door_number := 0
-	var keys_needed: Array[int] = []
-
-	# dfs through player spawn nbors
-	_sever_nbors_randomly(player_spawn_cell_group)
-	_place_doors_and_keys2(player_spawn_cell_group)
-	draw_grid()
-
-	# get possible path ways starting from player spawn group
