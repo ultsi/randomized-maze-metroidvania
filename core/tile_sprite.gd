@@ -106,7 +106,7 @@ func _update() -> void:
 		label.show()
 	elif cell_type == CellType.ORIG_CELL:
 		label.text = str(group_id)
-		label.show()
+		label.hide()
 	else:
 		label.hide()
 
@@ -115,3 +115,6 @@ func is_door() -> bool:
 
 func is_key() -> bool:
 	return cell_type == CellType.KEY
+
+func is_wall() -> bool:
+	return cell_type == CellType.WALL

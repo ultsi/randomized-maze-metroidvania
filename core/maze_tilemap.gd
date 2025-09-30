@@ -11,6 +11,7 @@
 @onready var tiles_parent := $Tiles as Node2D
 @onready var player := $Player as Sprite2D
 @onready var keys_label := $KeysLabel as Label
+@onready var playerpos_label := $PlayerPos as Label
 
 var size := 9
 var size2 := size * size
@@ -29,6 +30,7 @@ class CellGroup:
 	var nbors: Dictionary[int, GroupNeighbor] = {}
 	var keys := []
 	var nbors_processed_step := 0
+	var min_key_required_to_access := 10000
 
 var tiles: Array[TileSprite] = []
 var walls: Dictionary[int, int] = {}
@@ -40,6 +42,10 @@ var player_pos := Vector2i.ZERO
 var _last_move := 0
 var player_spawn_cell_group: CellGroup
 var collected_keys: Array[int] = []
+var player_path: Array[int] = []
+var player_sight := 2
+
+var powerups: Array[String] = ["metro1", "sight", "metro2", "sight2"]
 
 
 func i_to_xy(i: int) -> Vector2i:
@@ -53,7 +59,7 @@ func _init() -> void:
 	tile_set = preload("res://materials/tileset.tres")
 
 func _ready() -> void:
-	#seed(12333)
+	seed(24)
 	await _reset_grid()
 	if !Engine.is_editor_hint():
 		kruskal_until_sqrt_group()
@@ -78,8 +84,6 @@ func _reset_grid() -> void:
 		print("freeing child ", child)
 		child.queue_free()
 		print("freed")
-
-	await get_tree().create_timer(0.01).timeout
 
 
 	for y in range(0, size):
@@ -199,10 +203,38 @@ func one_step_kruskal() -> void:
 		print("Walls left: {0}. Cell groups: {1}".format([walls.size(), cell_groups.size()]))
 		draw_grid()
 
+func try_to_find_single_cell_to_combine() -> Array[int]:
+	for i in range(0, 100):
+		var wall: int = potential_walls.keys().pick_random()
+		var wall_xy := i_to_xy(wall)
+
+		var cell1_xy := Vector2i.ZERO
+		var cell2_xy := Vector2i.ZERO
+		if wall_xy.x % 2 == 1:
+			# cells are up and down
+			cell1_xy = wall_xy + Vector2i(0, -1)
+			cell2_xy = wall_xy + Vector2i(0, 1)
+		else:
+			cell1_xy = wall_xy + Vector2i(-1, 0)
+			cell2_xy = wall_xy + Vector2i(1, 0)
+
+		if cell1_xy == Vector2i.ZERO || cell2_xy == Vector2i.ZERO:
+			continue
+		
+		var cell1 := xy_to_i(cell1_xy)
+		var cell2 := xy_to_i(cell2_xy)
+		var cell1_group_id := cells[cell1]
+		var cell2_group_id := cells[cell2]
+		var cell1_count := cell_groups[cell1_group_id].cells.size()
+		var cell2_count := cell_groups[cell2_group_id].cells.size()
+		if cell1_count == 1 || cell2_count == 1 || i == 99:
+			return [cell1, cell2]
+
+	return []
 
 func kruskal_until_sqrt_group() -> void:
 	var safety := 100
-	while cell_groups.size() > size && safety > 0:
+	while cell_groups.size() > size && safety > 0 && !potential_walls.is_empty():
 		safety -= 1
 		var wall: int = potential_walls.keys().pick_random()
 		var wall_xy := i_to_xy(wall)
@@ -220,8 +252,14 @@ func kruskal_until_sqrt_group() -> void:
 		if cell1_xy == Vector2i.ZERO || cell2_xy == Vector2i.ZERO:
 			return
 		
-		var cell1_group_id := cells[xy_to_i(cell1_xy)]
-		var cell2_group_id := cells[xy_to_i(cell2_xy)]
+		var found_cells := try_to_find_single_cell_to_combine()
+		if found_cells.is_empty():
+			continue
+
+		var cell1 := found_cells[0]
+		var cell2 := found_cells[1]
+		var cell1_group_id := cells[cell1]
+		var cell2_group_id := cells[cell2]
 		var cell1_count := cell_groups[cell1_group_id].cells.size()
 		var cell2_count := cell_groups[cell2_group_id].cells.size()
 		potential_walls.erase(wall)
@@ -250,19 +288,51 @@ func _vector2_strongest_value(vec2: Vector2) -> Vector2i:
 	
 	return Vector2i(0, signi(vec2.y) * 1)
 
+func floodfill_sight(pos: int, sight_left := 0, visited: Dictionary[int, bool] = {}) -> void:
+	if pos < 0 || pos > tiles.size() - 1:
+		return
+
+	visited[pos] = true
+	tiles[pos].show()
+	# if !tiles[pos].is_wall() && tiles[pos - 1 - size] && tiles[pos - 1 - size].is_wall():
+	# 	tiles[pos - 1 - size].show()
+	# if !tiles[pos].is_wall() && tiles[pos + 1 - size] && tiles[pos + 1 - size].is_wall():
+	# 	tiles[pos + 1 - size].show()
+	# if !tiles[pos].is_wall() && tiles[pos - 1 + size] && tiles[pos - 1 + size].is_wall():
+	# 	tiles[pos - 1 + size].show()
+	# if !tiles[pos].is_wall() && tiles[pos + 1 + size] && tiles[pos + 1 + size].is_wall():
+	# 	tiles[pos + 1 + size].show()
+
+	if sight_left == 0:
+		return
+
+	if tiles[pos].is_wall():
+		return
+	
+	floodfill_sight(pos - 1, sight_left - 1, visited)
+	floodfill_sight(pos + 1, sight_left - 1, visited)
+	floodfill_sight(pos - size, sight_left - 1, visited)
+	floodfill_sight(pos + size, sight_left - 1, visited)
+
+
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 
 	var dir := Vector2i.ZERO
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("up"):
 		dir = Vector2i(0, -1)
-	elif Input.is_action_just_pressed("ui_down"):
+	elif Input.is_action_just_pressed("down"):
 		dir = Vector2i(0, 1)
-	elif Input.is_action_just_pressed("ui_left"):
+	elif Input.is_action_just_pressed("left"):
 		dir = Vector2i(-1, 0)
-	elif Input.is_action_just_pressed("ui_right"):
+	elif Input.is_action_just_pressed("right"):
 		dir = Vector2i(1, 0)
+
+	if Input.is_action_just_pressed("plussight"):
+		player_sight += 1
+	if Input.is_action_just_pressed("minussight"):
+		player_sight -= 1
 	
 	if is_walkable(player_pos + dir):
 		player_pos += dir
@@ -270,12 +340,24 @@ func _process(delta: float) -> void:
 
 	player.position = player_pos * Vector2i(16, 16) + Vector2i(8, 8)
 
-	var i := xy_to_i(player_pos)
-	if tiles[i] != null && tiles[i].is_key():
-		collected_keys.append(tiles[i].key_number)
-		tiles[i].cell_type = TileSprite.CellType.ORIG_CELL
+	var player_i := xy_to_i(player_pos)
+	if tiles[player_i] != null && tiles[player_i].is_key():
+		collected_keys.append(tiles[player_i].key_number)
+		tiles[player_i].cell_type = TileSprite.CellType.ORIG_CELL
 
+	var won: bool = tiles[player_i] != null && tiles[player_i].group_id == player_path.back()
+
+	for tile_i in range(0, tiles.size()):
+		if won:
+			tiles[tile_i].show()
+		#else:
+			#tiles[tile_i].hide()
+	
+	if !won:
+		floodfill_sight(player_i, player_sight)
+		
 	keys_label.text = ",".join(collected_keys.map(str))
+	playerpos_label.text = str(player_pos)
 
 func _get_cell_nbor_groups(cell_i: int) -> Array[GroupNeighbor]:
 	var i_dirs: Array[int] = [1, -1, -size, size]
@@ -357,6 +439,12 @@ class Door extends RefCounted:
 	var number := 0
 	var i := 0
 
+	func id() -> String:
+		var groups := [group1.id, group2.id]
+		if group2.id > group1.id:
+			groups = [group2.id, group1.id]
+		return "{0}-{1}".format(groups)
+
 class Doors extends RefCounted:
 	var doors: Array[Door] = []
 
@@ -366,13 +454,110 @@ class Doors extends RefCounted:
 	func doors_count() -> int:
 		return doors.size()
 
-func form_groups_id(group1: CellGroup, group2: CellGroup) -> String:
-	var group_ids := [group1.id, group2.id]
-	if group1.id > group2.id:
-		group_ids = [group2.id, group1.id]
 
-	return "{0}-{1}".format(group_ids)
+func _get_doors_for_group(group: CellGroup, preexisting: Dictionary[String, Door] = {}) -> Array[Door]:
+	group.nbors_processed_step = 3
+	var doors: Array[Door] = []
+	for nbor_id in group.nbors:
+		var nbor := group.nbors[nbor_id]
+		var wall_i := nbor.connecting_wall
+		var door := Door.new()
+		door.group1 = group
+		door.group2 = nbor.group
+		door.i = wall_i
 
+		if preexisting.has(door.id()):
+			continue
+
+		preexisting[door.id()] = door
+		doors.append(door)
+
+	return doors
+
+
+func _place_doors_and_keys2(starting_group: CellGroup) -> void:
+	var possible_doors_out: Array[Door] = _get_doors_for_group(starting_group)
+	var existing_doors: Dictionary[String, Door] = {}
+	var door_number := 0
+	player_path = [starting_group.id]
+	
+
+	while !possible_doors_out.is_empty():
+		var door: Door = possible_doors_out.pick_random()
+		possible_doors_out.erase(door)
+		existing_doors[door.id()] = door
+		door_number += 1
+		door.number = door_number
+
+		if !player_path.has(door.group2.id):
+			player_path.append(door.group2.id)
+
+		if door.group2.id == starting_group.id:
+			door.number = door.group1.min_key_required_to_access
+		elif door.group2.min_key_required_to_access > door.number:
+			door.group2.min_key_required_to_access = door.number
+		else:
+			door.number = door.group2.min_key_required_to_access
+		
+		if door.group1.nbors_processed_step < 3:
+			possible_doors_out.append_array(_get_doors_for_group(door.group1, existing_doors))
+		elif door.group2.nbors_processed_step < 3:
+			possible_doors_out.append_array(_get_doors_for_group(door.group2, existing_doors))
+
+		# visited_groups[door.group2.id] = door.group2
+		var wall_i := door.i
+		tiles[wall_i].door_number = door.number
+		tiles[wall_i].cell_type = TileSprite.CellType.DOOR
+
+	var doors_sorted: Array[Door] = existing_doors.values()
+	doors_sorted.sort_custom(func(a: Door, b: Door) -> bool: return a.number < b.number)
+	door_number = 0
+	var prev_door_number := -1
+	var keys_needed_dict: Dictionary[int, bool] = {}
+	for i in range(0, doors_sorted.size()):
+		var door := doors_sorted[i]
+		if prev_door_number < door.number:
+			door_number += 1
+			prev_door_number = door.number
+		door.number = door_number
+		tiles[door.i].door_number = door.number
+		tiles[door.i].cell_type = TileSprite.CellType.DOOR
+		keys_needed_dict[door.number] = true
+
+	print(player_path)
+	
+	var key_i: int = player_spawn_cell_group.cells.keys().pick_random()
+	#tiles[key_i].cell_type = TileSprite.CellType.KEY
+	var keys_needed: Array[int] = keys_needed_dict.keys()
+	keys_needed.sort()
+
+	for group: CellGroup in cell_groups.values():
+		print(group.id, "-minkey: ", group.min_key_required_to_access)
+
+	var key_placed := false
+	for group_id in player_path:
+		if keys_needed.is_empty():
+			break
+		var group := cell_groups[group_id]
+		var key: int = keys_needed.pop_front()
+		key_i = group.cells.keys().pick_random()
+		tiles[key_i].key_number = key
+		print(i_to_xy(key_i), tiles[key_i].key_number)
+		tiles[key_i].cell_type = TileSprite.CellType.KEY
+		key_placed = true
+	# while !keys_needed.is_empty():
+	# 	var key: int = keys_needed.pop_front()
+	# 	if !key:
+	# 		return
+
+	# 	for group: CellGroup in cell_groups.values():
+	# 		if group.min_key_required_to_access == key - 1:
+	# 			key_i = group.cells.keys().pick_random()
+	# 			tiles[key_i].key_number = key
+	# 			print(i_to_xy(key_i), tiles[key_i].key_number)
+	# 			tiles[key_i].cell_type = TileSprite.CellType.KEY
+	# 			key_placed = true
+	
 
 func _place_doors_and_keys(starting_group: CellGroup) -> void:
 	var bfs_groups: Array[CellGroup] = [starting_group]
@@ -467,7 +652,7 @@ func _form_cell_group_progress_graph() -> void:
 
 	# dfs through player spawn nbors
 	_sever_nbors_randomly(player_spawn_cell_group)
-	_place_doors_and_keys(player_spawn_cell_group)
+	_place_doors_and_keys2(player_spawn_cell_group)
 	draw_grid()
 
 	# get possible path ways starting from player spawn group
