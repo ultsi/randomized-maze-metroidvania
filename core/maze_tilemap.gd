@@ -5,7 +5,6 @@
 		ui_size = value
 		_reset_grid()
 
-@export_tool_button("One step kruskal") var kruskal_btn := one_step_kruskal
 @export_tool_button("Generate until cellgroups = size") var kruskal_multi_btn := kruskal_until_sqrt_group
 
 @onready var tiles_parent := $Tiles as Node2D
@@ -60,6 +59,7 @@ func _init() -> void:
 	tile_set = preload("res://materials/tileset.tres")
 
 func _ready() -> void:
+	seed(4)
 	await _reset_grid()
 	if !Engine.is_editor_hint():
 		kruskal_until_sqrt_group()
@@ -173,35 +173,6 @@ func _update_cell_group_to_other(from: int, to: int) -> void:
 			to_group.cells[i] = to_group.id
 			if from_group.cells.is_empty():
 				cell_groups.erase(from)
-
-
-func one_step_kruskal() -> void:
-	var wall: int = walls.keys().pick_random()
-	var wall_xy := i_to_xy(wall)
-
-	var cell1_xy := Vector2i.ZERO
-	var cell2_xy := Vector2i.ZERO
-	if wall_xy.x % 2 == 1:
-		# cells are up and down
-		cell1_xy = wall_xy + Vector2i(0, -1)
-		cell2_xy = wall_xy + Vector2i(0, 1)
-	else:
-		cell1_xy = wall_xy + Vector2i(-1, 0)
-		cell2_xy = wall_xy + Vector2i(1, 0)
-
-	if cell1_xy == Vector2i.ZERO || cell2_xy == Vector2i.ZERO:
-		print("Something wrong, wall at ", wall_xy, " found cells at (0,0)", cell1_xy, cell2_xy)
-		return
-	
-	var cell1 := cells[xy_to_i(cell1_xy)]
-	var cell2 := cells[xy_to_i(cell2_xy)]
-	walls.erase(wall)
-	if cell1 != cell2:
-		tiles[wall].cell_type = TileSprite.CellType.JOINED_CELLS
-		_update_cell_group_to_other(cell2, cell1)
-
-		print("Walls left: {0}. Cell groups: {1}".format([walls.size(), cell_groups.size()]))
-		draw_grid()
 
 
 func kruskal_until_sqrt_group() -> void:
@@ -320,7 +291,7 @@ func _process(delta: float) -> void:
 	var won: bool = tiles[player_i] != null && tiles[player_i].group_id == player_path.back()
 
 	for tile_i in range(0, tiles.size()):
-		if won:
+		if won || true:
 			tiles[tile_i].show()
 		else:
 			tiles[tile_i].hide()
@@ -379,31 +350,34 @@ func _sever_nbors_randomly(group: CellGroup, prev: Dictionary[int, bool] = {}, d
 				prev[group.id] = true
 				_sever_nbors_randomly(nbor, prev, depth + 1)
 	
-	print("severing group {0} nbors at depth {1}, prev_groups {2}".format([group.id, depth, prev]))
 
 	group.nbors_processed_step = 2
 	if group.nbors.size() == 1:
 		return
+	print("severing group {0} nbors at depth {1}, prev_groups {2}".format([group.id, depth, prev]))
 
 	var can_be_severed: Array[int] = []
-	for nbor_id in group.nbors:
-		var nbor := group.nbors[nbor_id].group
-		if nbor.nbors_processed_step == 2:
-			continue
-		
-		if nbor.nbors.size() == 1:
-			continue
-		can_be_severed.append(nbor_id)
+	
+	if group.cells.size() > 1:
+		for nbor_id in group.nbors:
+			var nbor := group.nbors[nbor_id].group
+			if nbor.nbors_processed_step == 2:
+				continue
+			
+			if nbor.nbors.size() == 1:
+				continue
+			can_be_severed.append(nbor_id)
+	else:
+		can_be_severed = group.nbors.keys().slice(0, -1)
 
-	var severed := can_be_severed.size() - 1
-	if severed > 0:
-		for nbor_id in can_be_severed:
-			if severed > 0 && randf() < 0.5:
-				severed -= 1
-				print("Severed tie between {0} and {1}".format([group.id, nbor_id]))
-				var nbor := group.nbors[nbor_id].group
-				nbor.nbors.erase(group.id)
-				group.nbors.erase(nbor.id)
+	var severed := can_be_severed.size() - 2
+	for i in range(0, can_be_severed.size() - 1):
+		var nbor_id: int = can_be_severed.pick_random()
+		can_be_severed.erase(nbor_id)
+		print("Severed tie between {0} and {1}, severed options: {2}".format([group.id, nbor_id, severed]))
+		var nbor := group.nbors[nbor_id].group
+		nbor.nbors.erase(group.id)
+		group.nbors.erase(nbor.id)
 
 class Door extends RefCounted:
 	var group1: CellGroup
@@ -497,6 +471,7 @@ func _place_doors_and_keys2(starting_group: CellGroup) -> void:
 		keys_needed_dict[door.number] = true
 
 	print(player_path)
+	return
 	
 	var key_i: int = player_spawn_cell_group.cells.keys().pick_random()
 	#tiles[key_i].cell_type = TileSprite.CellType.KEY

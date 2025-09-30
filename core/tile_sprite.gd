@@ -112,7 +112,7 @@ func _update() -> void:
 		label.show()
 	elif cell_type == CellType.ORIG_CELL:
 		label.text = str(group_id)
-		label.hide()
+		label.show()
 	else:
 		label.hide()
 
