@@ -43,9 +43,10 @@ var _last_move := 0
 var player_spawn_cell_group: CellGroup
 var collected_keys: Array[int] = []
 var player_path: Array[int] = []
-var player_sight := 2
+var player_sight := 3
 
 var powerups: Array[String] = ["metro1", "sight", "metro2", "sight2"]
+var plus_sight_cell := -1
 
 
 func i_to_xy(i: int) -> Vector2i:
@@ -59,7 +60,6 @@ func _init() -> void:
 	tile_set = preload("res://materials/tileset.tres")
 
 func _ready() -> void:
-	seed(24)
 	await _reset_grid()
 	if !Engine.is_editor_hint():
 		kruskal_until_sqrt_group()
@@ -203,38 +203,10 @@ func one_step_kruskal() -> void:
 		print("Walls left: {0}. Cell groups: {1}".format([walls.size(), cell_groups.size()]))
 		draw_grid()
 
-func try_to_find_single_cell_to_combine() -> Array[int]:
-	for i in range(0, 100):
-		var wall: int = potential_walls.keys().pick_random()
-		var wall_xy := i_to_xy(wall)
-
-		var cell1_xy := Vector2i.ZERO
-		var cell2_xy := Vector2i.ZERO
-		if wall_xy.x % 2 == 1:
-			# cells are up and down
-			cell1_xy = wall_xy + Vector2i(0, -1)
-			cell2_xy = wall_xy + Vector2i(0, 1)
-		else:
-			cell1_xy = wall_xy + Vector2i(-1, 0)
-			cell2_xy = wall_xy + Vector2i(1, 0)
-
-		if cell1_xy == Vector2i.ZERO || cell2_xy == Vector2i.ZERO:
-			continue
-		
-		var cell1 := xy_to_i(cell1_xy)
-		var cell2 := xy_to_i(cell2_xy)
-		var cell1_group_id := cells[cell1]
-		var cell2_group_id := cells[cell2]
-		var cell1_count := cell_groups[cell1_group_id].cells.size()
-		var cell2_count := cell_groups[cell2_group_id].cells.size()
-		if cell1_count == 1 || cell2_count == 1 || i == 99:
-			return [cell1, cell2]
-
-	return []
 
 func kruskal_until_sqrt_group() -> void:
 	var safety := 100
-	while cell_groups.size() > size && safety > 0 && !potential_walls.is_empty():
+	while cell_groups.size() > size && safety > 0:
 		safety -= 1
 		var wall: int = potential_walls.keys().pick_random()
 		var wall_xy := i_to_xy(wall)
@@ -252,14 +224,8 @@ func kruskal_until_sqrt_group() -> void:
 		if cell1_xy == Vector2i.ZERO || cell2_xy == Vector2i.ZERO:
 			return
 		
-		var found_cells := try_to_find_single_cell_to_combine()
-		if found_cells.is_empty():
-			continue
-
-		var cell1 := found_cells[0]
-		var cell2 := found_cells[1]
-		var cell1_group_id := cells[cell1]
-		var cell2_group_id := cells[cell2]
+		var cell1_group_id := cells[xy_to_i(cell1_xy)]
+		var cell2_group_id := cells[xy_to_i(cell2_xy)]
 		var cell1_count := cell_groups[cell1_group_id].cells.size()
 		var cell2_count := cell_groups[cell2_group_id].cells.size()
 		potential_walls.erase(wall)
@@ -306,7 +272,7 @@ func floodfill_sight(pos: int, sight_left := 0, visited: Dictionary[int, bool] =
 	if sight_left == 0:
 		return
 
-	if tiles[pos].is_wall():
+	if tiles[pos].is_wall() || tiles[pos].is_door():
 		return
 	
 	floodfill_sight(pos - 1, sight_left - 1, visited)
@@ -341,17 +307,23 @@ func _process(delta: float) -> void:
 	player.position = player_pos * Vector2i(16, 16) + Vector2i(8, 8)
 
 	var player_i := xy_to_i(player_pos)
-	if tiles[player_i] != null && tiles[player_i].is_key():
-		collected_keys.append(tiles[player_i].key_number)
-		tiles[player_i].cell_type = TileSprite.CellType.ORIG_CELL
+	if tiles[player_i] != null:
+		if tiles[player_i].is_key():
+			collected_keys.append(tiles[player_i].key_number)
+			tiles[player_i].cell_type = TileSprite.CellType.ORIG_CELL
+		if tiles[player_i].cell_type == TileSprite.CellType.PLUSSIGHT:
+			player_sight *= 2
+			tiles[player_i].cell_type = TileSprite.CellType.ORIG_CELL
+		if tiles[player_i].is_door():
+			tiles[player_i].cell_type = TileSprite.CellType.OPENED_DOOR
 
 	var won: bool = tiles[player_i] != null && tiles[player_i].group_id == player_path.back()
 
 	for tile_i in range(0, tiles.size()):
 		if won:
 			tiles[tile_i].show()
-		#else:
-			#tiles[tile_i].hide()
+		else:
+			tiles[tile_i].hide()
 	
 	if !won:
 		floodfill_sight(player_i, player_sight)
@@ -533,6 +505,18 @@ func _place_doors_and_keys2(starting_group: CellGroup) -> void:
 
 	for group: CellGroup in cell_groups.values():
 		print(group.id, "-minkey: ", group.min_key_required_to_access)
+
+	var plus_sight_group_id: int = player_path.slice(size / 4, -3).pick_random()
+	var plus_sight_group := cell_groups[plus_sight_group_id]
+	while plus_sight_group.cells.size() == 1:
+		plus_sight_group_id = player_path.slice(size / 2, -3).pick_random()
+		plus_sight_group = cell_groups[plus_sight_group_id]
+
+	plus_sight_cell = plus_sight_group.cells.keys().pick_random()
+	while tiles[plus_sight_cell].is_key():
+		plus_sight_cell = plus_sight_group.cells.keys().pick_random()
+	
+	tiles[plus_sight_cell].cell_type = TileSprite.CellType.PLUSSIGHT
 
 	var key_placed := false
 	for group_id in player_path:

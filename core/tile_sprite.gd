@@ -38,7 +38,9 @@ enum CellType {
 	ORIG_CELL,
 	JOINED_CELLS,
 	DOOR,
+	OPENED_DOOR,
 	KEY,
+	PLUSSIGHT,
 }
 
 var shader: ShaderMaterial
@@ -56,8 +58,12 @@ static func get_cell_tile_for_type(type: CellType) -> Vector2i:
 			return Vector2i(0, 1)
 		CellType.DOOR:
 			return Vector2i(1, 1)
+		CellType.OPENED_DOOR:
+			return Vector2i(1, 2)
 		CellType.KEY:
 			return Vector2i(2, 1)
+		CellType.PLUSSIGHT:
+			return Vector2i(3, 1)
 	
 	return Vector2i(1, 0)
 
