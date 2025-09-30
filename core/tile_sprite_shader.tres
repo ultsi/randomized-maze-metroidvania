@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dtvaabyb0q76k"]
+
+[ext_resource type="Shader" uid="uid://gnrhu03jlj7c" path="res://core/tile_sprite.gdshader" id="1_v16m4"]
+[ext_resource type="Texture2D" uid="uid://c2putltgbrngm" path="res://materials/tiles.png" id="2_pisod"]
+
+[resource]
+shader = ExtResource("1_v16m4")
+shader_parameter/atlas_texture = ExtResource("2_pisod")
+shader_parameter/tile_pos = Vector2(0, 0)
+shader_parameter/tint = Color(1, 0, 0, 1)
+shader_parameter/tint_amount = 0.0
