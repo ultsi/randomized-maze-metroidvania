@@ -43,6 +43,8 @@ enum CellType {
 
 var shader: ShaderMaterial
 var label: Label
+var door_number := -1
+var key_number := -1
 
 static func get_cell_tile_for_type(type: CellType) -> Vector2i:
 	match type:
@@ -96,11 +98,20 @@ func _update() -> void:
 	shader.set_shader_parameter("tint", colors[group_id % 50])
 	shader.set_shader_parameter("tint_amount", 0.5 if cell_type == CellType.ORIG_CELL else 0.01)
 
-	if cell_type == CellType.DOOR || cell_type == CellType.KEY:
-		label.text = label_text
+	if cell_type == CellType.KEY:
+		label.text = str(key_number)
+		label.show()
+	elif cell_type == CellType.DOOR:
+		label.text = str(door_number)
 		label.show()
 	elif cell_type == CellType.ORIG_CELL:
 		label.text = str(group_id)
 		label.show()
 	else:
 		label.hide()
+
+func is_door() -> bool:
+	return cell_type == CellType.DOOR
+
+func is_key() -> bool:
+	return cell_type == CellType.KEY

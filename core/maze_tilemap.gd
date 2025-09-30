@@ -9,8 +9,8 @@
 @export_tool_button("Generate until cellgroups = size") var kruskal_multi_btn := kruskal_until_sqrt_group
 
 @onready var tiles_parent := $Tiles as Node2D
-
 @onready var player := $Player as Sprite2D
+@onready var keys_label := $KeysLabel as Label
 
 var size := 9
 var size2 := size * size
@@ -31,7 +31,6 @@ class CellGroup:
 	var nbors_processed_step := 0
 
 var tiles: Array[TileSprite] = []
-var grid: Dictionary[int, TileSprite.CellType] = {}
 var walls: Dictionary[int, int] = {}
 var potential_walls: Dictionary[int, int] = {}
 var cell_groups: Dictionary[int, CellGroup] = {}
@@ -40,6 +39,7 @@ var group_counts: Dictionary[int, int] = {}
 var player_pos := Vector2i.ZERO
 var _last_move := 0
 var player_spawn_cell_group: CellGroup
+var collected_keys: Array[int] = []
 
 
 func i_to_xy(i: int) -> Vector2i:
@@ -53,7 +53,7 @@ func _init() -> void:
 	tile_set = preload("res://materials/tileset.tres")
 
 func _ready() -> void:
-	seed(12333)
+	#seed(12333)
 	await _reset_grid()
 	if !Engine.is_editor_hint():
 		kruskal_until_sqrt_group()
@@ -64,7 +64,6 @@ func _ready() -> void:
 func _reset_grid() -> void:
 	size = ui_size * 2 + 1
 	size2 = size * size
-	grid.clear()
 	walls.clear()
 	potential_walls.clear()
 	cells.clear()
@@ -106,7 +105,6 @@ func _reset_grid() -> void:
 			if x % 2 != y % 2 && x > 0 && y > 0 && x < size - 1 && y < size - 1:
 				walls[i] = 1
 				potential_walls[i] = 1
-			grid[i] = type
 			tile_sprite.cell_type = type
 
 	draw_grid()
@@ -117,7 +115,7 @@ func draw_grid() -> void:
 		for x in range(0, size):
 			var xy := Vector2i(x, y)
 			var i := xy_to_i(xy)
-			var type := grid[i]
+			var type := tiles[i].cell_type
 			var tile_sprite := tiles[i]
 			tile_sprite.cell_type = type
 			
@@ -195,7 +193,7 @@ func one_step_kruskal() -> void:
 	var cell2 := cells[xy_to_i(cell2_xy)]
 	walls.erase(wall)
 	if cell1 != cell2:
-		grid[xy_to_i(wall_xy)] = TileSprite.CellType.JOINED_CELLS
+		tiles[wall].cell_type = TileSprite.CellType.JOINED_CELLS
 		_update_cell_group_to_other(cell2, cell1)
 
 		print("Walls left: {0}. Cell groups: {1}".format([walls.size(), cell_groups.size()]))
@@ -228,7 +226,7 @@ func kruskal_until_sqrt_group() -> void:
 		var cell2_count := cell_groups[cell2_group_id].cells.size()
 		potential_walls.erase(wall)
 		if cell1_group_id != cell2_group_id && cell1_count < size / 2 && cell2_count < size / 2:
-			grid[xy_to_i(wall_xy)] = TileSprite.CellType.JOINED_CELLS
+			tiles[wall].cell_type = TileSprite.CellType.JOINED_CELLS
 			_update_cell_group_to_other(cell2_group_id, cell1_group_id)
 			walls.erase(wall)
 			draw_grid()
@@ -239,7 +237,10 @@ func is_walkable(xy: Vector2i) -> bool:
 	var i := xy_to_i(xy)
 	if i <= 0 || i > size2:
 		return false
-	return grid[i] != TileSprite.CellType.WALL
+	if tiles[i].is_door():
+		return collected_keys.has(tiles[i].door_number)
+	
+	return tiles[i].cell_type != TileSprite.CellType.WALL
 
 func _vector2_strongest_value(vec2: Vector2) -> Vector2i:
 	if vec2 == Vector2.ZERO:
@@ -253,14 +254,28 @@ func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 
-	var dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var dir_norm := _vector2_strongest_value(dir)
-
-	if is_walkable(player_pos + dir_norm) && Time.get_ticks_msec() - _last_move > 100:
-		player_pos += dir_norm
+	var dir := Vector2i.ZERO
+	if Input.is_action_just_pressed("ui_up"):
+		dir = Vector2i(0, -1)
+	elif Input.is_action_just_pressed("ui_down"):
+		dir = Vector2i(0, 1)
+	elif Input.is_action_just_pressed("ui_left"):
+		dir = Vector2i(-1, 0)
+	elif Input.is_action_just_pressed("ui_right"):
+		dir = Vector2i(1, 0)
+	
+	if is_walkable(player_pos + dir):
+		player_pos += dir
 		_last_move = Time.get_ticks_msec()
 
 	player.position = player_pos * Vector2i(16, 16) + Vector2i(8, 8)
+
+	var i := xy_to_i(player_pos)
+	if tiles[i] != null && tiles[i].is_key():
+		collected_keys.append(tiles[i].key_number)
+		tiles[i].cell_type = TileSprite.CellType.ORIG_CELL
+
+	keys_label.text = ",".join(collected_keys.map(str))
 
 func _get_cell_nbor_groups(cell_i: int) -> Array[GroupNeighbor]:
 	var i_dirs: Array[int] = [1, -1, -size, size]
@@ -340,6 +355,7 @@ class Door extends RefCounted:
 	var group1: CellGroup
 	var group2: CellGroup
 	var number := 0
+	var i := 0
 
 class Doors extends RefCounted:
 	var doors: Array[Door] = []
@@ -375,8 +391,8 @@ func _place_doors_and_keys(starting_group: CellGroup) -> void:
 			var wall_i := nbor.connecting_wall
 			potential_walls.erase(wall_i)
 			walls.erase(wall_i)
-			if grid[wall_i] != TileSprite.CellType.DOOR:
-				grid[wall_i] = TileSprite.CellType.DOOR
+			if tiles[wall_i].cell_type != TileSprite.CellType.DOOR:
+				tiles[wall_i].cell_type = TileSprite.CellType.DOOR
 				var what_door_number := door_number
 				if !doors_into_group.has(nbor.group.id):
 					print("Didnt find preexisting doors into group {0}".format([nbor.group.id]))
@@ -385,6 +401,7 @@ func _place_doors_and_keys(starting_group: CellGroup) -> void:
 					door.group1 = group
 					door.group2 = nbor.group
 					door.number = what_door_number
+					door.i = wall_i
 					doors.add_door(door)
 					doors_into_group[nbor.group.id] = doors
 					keys_needed.append(what_door_number)
@@ -398,15 +415,15 @@ func _place_doors_and_keys(starting_group: CellGroup) -> void:
 					door.group1 = group
 					door.group2 = nbor.group
 					door.number = what_door_number
+					door.i = wall_i
 					doors.doors.append(door)
 
-				tiles[wall_i].label_text = str(what_door_number)
+				tiles[wall_i].door_number = what_door_number
 			bfs_groups.append(nbor.group)
 	
 	var key_i: int = player_spawn_cell_group.cells.keys().pick_random()
-	grid[key_i] = TileSprite.CellType.KEY
 	tiles[key_i].cell_type = TileSprite.CellType.KEY
-	tiles[key_i].label_text = "0"
+	tiles[key_i].key_number = keys_needed.pop_front()
 
 	while !keys_needed.is_empty():
 		var key: int = keys_needed.pop_front()
@@ -420,9 +437,9 @@ func _place_doors_and_keys(starting_group: CellGroup) -> void:
 					break
 				if door.number < key:
 					key_i = cell_groups[group_id].cells.keys().pick_random()
-					grid[key_i] = TileSprite.CellType.KEY
+					tiles[key_i].key_number = key
+					print(tiles[key_i].key_number)
 					tiles[key_i].cell_type = TileSprite.CellType.KEY
-					tiles[key_i].label_text = str(key)
 					key_placed = true
 					doors_into_group.erase(group_id)
 
