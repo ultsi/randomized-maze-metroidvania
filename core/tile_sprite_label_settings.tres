@@ -1,6 +1,10 @@
-[gd_resource type="LabelSettings" format=3 uid="uid://d4lkooy4is0y5"]
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://d4lkooy4is0y5"]
+
+[ext_resource type="FontFile" uid="uid://crkugn6nm3qtn" path="res://materials/Super Mario World Text Box.ttf" id="1_wbgam"]
 
 [resource]
-font_size = 12
+font = ExtResource("1_wbgam")
+font_size = 7
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 0

@@ -1,4 +1,4 @@
-@tool class_name MazeTileMap extends TileMapLayer
+@tool class_name Maze extends Node2D
 
 @export_range(3, 30, 2) var ui_size := 3:
 	set(value):
@@ -8,15 +8,28 @@
 @export_tool_button("One step kruskal") var one_step := one_step_kruskal
 
 @export_tool_button("Generate kruskal forest") var kruskal_multi_btn := kruskal_forest
+@export_tool_button("Fix single cells") var fix_singles_btn := fix_single_cell_nodes
+@export_tool_button("Generate doors and keys") var doors_keys_btn := func() -> void:
+	set_start_node()
+	generate_doors_and_keys()
+@export_tool_button("Animate message label") var animate_message_btn := _animate_message_label
 
 @onready var tiles_parent := $Tiles as Node2D
 @onready var player := $Player as Sprite2D
-@onready var keys_label := $KeysLabel as Label
-@onready var playerpos_label := $PlayerPos as Label
+@onready var camera := $Player/Camera2D as Camera2D
+@onready var keys_label := $Player/Camera2D/UI/TopLeft/KeysLabel as Label
+@onready var playerpos_label := $Player/Camera2D/UI/TopLeft/PosLabel as Label
+@onready var time_label := $Player/Camera2D/UI/TopCenter/TimeLabel as Label
+@onready var audio_key_pickup := $AudioKeyPickup as AudioStreamPlayer2D
+@onready var audio_door_open := $AudioDoorOpen as AudioStreamPlayer2D
+@onready var audio_break_wall_impact := $AudioBreakWallImpact as AudioStreamPlayer2D
+@onready var audio_break_wall := $AudioBreakWall as AudioStreamPlayer2D
+@onready var audio_metro_open := $AudioMetroOpen as AudioStreamPlayer2D
+@onready var audio_metro_use := $AudioMetroUse as AudioStreamPlayer2D
+@onready var audio_powerup_pickup := $AudioPowerupPickup as AudioStreamPlayer2D
 
 var size := 9
 var size2 := size * size
-
 const WALL := 9
 const ORIG_CELL := 0
 const JOINED_CELLS := 1
@@ -53,9 +66,10 @@ var visual_tiles: Array[TileSprite] = []
 var edges: Dictionary[int, Edge] = {}
 var cells_nodes: Dictionary[int, CellsNode] = {}
 var player_pos := Vector2i.ZERO
-var collected_keys: Array[int] = []
+var keys_inventory: Array[int] = []
 var player_path: Array[int] = []
 var player_sight := 3
+var player_won := false
 var start_node: CellsNode
 
 var metro_stations: Dictionary[int, MetroStation] = {}
@@ -66,8 +80,11 @@ enum PowerUp {
 	PlusSight
 }
 
-var powerups: Array[PowerUp] = [PowerUp.Metro, PowerUp.PlusSight, PowerUp.Metro, PowerUp.PlusSight]
+var powerups: Array[PowerUp] = [PowerUp.Metro, PowerUp.PlusSight, PowerUp.Metro, PowerUp.PlusSight, PowerUp.Metro, PowerUp.PlusSight]
 var plus_sight_cell := -1
+var bottom_message_scene := preload("res://core/bottom_message.tscn")
+var _last_action_time := 0
+var time_to_clear := 60.0
 
 
 func i_to_xy(i: int) -> Vector2i:
@@ -77,14 +94,16 @@ func i_to_xy(i: int) -> Vector2i:
 func xy_to_i(xy: Vector2i) -> int:
 	return xy.y * size + xy.x
 
-func _init() -> void:
-	tile_set = preload("res://materials/tileset.tres")
+func _animate_message_label() -> void:
+	pass
 
 func _ready() -> void:
-	seed(2)
+	#seed(4)
 	await _reset_grid()
 	if !Engine.is_editor_hint():
+		powerups.resize(ui_size / 4)
 		kruskal_forest()
+		fix_single_cell_nodes()
 		set_start_node()
 		player_pos = i_to_xy(start_node.cells.keys().pick_random())
 		generate_doors_and_keys()
@@ -100,7 +119,6 @@ func _reset_grid() -> void:
 	size2 = size * size
 	edges.clear()
 	visual_tiles.clear()
-	clear()
 	if !is_node_ready():
 		return
 
@@ -179,6 +197,13 @@ func set_start_node() -> void:
 	start_node = start_nodes_sorted[2]
 
 
+func new_message(text: String, speed_scale := 0.5) -> void:
+	var message: BottomMessage = bottom_message_scene.instantiate()
+	message.text = text
+	message.speed_scale = 1.0
+	camera.add_child(message)
+
+
 func _combine_cells_nodes(edge: Edge) -> void:
 	var old_edge_id := edge.id()
 	var cna := cells_nodes[edge.a]
@@ -203,6 +228,8 @@ func _combine_cells_nodes(edge: Edge) -> void:
 			i_edge.a = cnb.id
 		if i_edge.b == old_id:
 			i_edge.b = cnb.id
+	
+	visual_tiles[edge.i].cell_type = TileSprite.CellType.JOINED_CELLS
 
 func find_potential_kruskal_edge() -> Edge:
 	const max_tries := 3
@@ -244,7 +271,6 @@ func one_step_kruskal() -> void:
 	var cellnode_a := cells_nodes[edge.a]
 	var cellnode_b := cells_nodes[edge.b]
 	if edge.type == TileSprite.CellType.WALL && cellnode_a.id != cellnode_b.id && cellnode_a.cells.size() < size / 2 && cellnode_b.cells.size() < size / 2:
-		visual_tiles[pos_i].cell_type = TileSprite.CellType.JOINED_CELLS
 		_combine_cells_nodes(edge)
 		draw_grid()
 
@@ -257,6 +283,36 @@ func kruskal_forest() -> void:
 		one_step_kruskal()
 
 	draw_grid()
+
+func find_edges_for_cell(cell_i: int) -> Array[Edge]:
+	var found_edges: Array[Edge] = []
+	if edges.has(cell_i - 1):
+		found_edges.append(edges[cell_i - 1])
+	if edges.has(cell_i + 1):
+		found_edges.append(edges[cell_i + 1])
+	if edges.has(cell_i - size):
+		found_edges.append(edges[cell_i - size])
+	if edges.has(cell_i + size):
+		found_edges.append(edges[cell_i + size])
+	return found_edges
+
+func fix_single_cell_nodes() -> void:
+	for node_id: int in cells_nodes.keys():
+		if !cells_nodes.has(node_id):
+			continue
+		var node := cells_nodes[node_id]
+		if node.cells.size() > 1:
+			print("Node {0} has too many cells ({1})".format([node_id, node.cells.size()]))
+			continue
+
+		var node_edges := find_edges_for_cell(node.cells.keys()[0])
+		if node_edges.size() == 0:
+			print("No edges found for node_id ", node_id)
+			continue
+		
+		var selected_edge: Edge = node_edges.pick_random()
+		_combine_cells_nodes(selected_edge)
+		draw_grid()
 
 func generate_doors_and_keys() -> void:
 	var edge_dict: Dictionary[String, Edge] = {}
@@ -291,14 +347,14 @@ func generate_doors_and_keys() -> void:
 			valid_edges[node_edges[0].id()] = node_edges[0]
 			continue
 
+		var tmp := node_edges.duplicate()
+		var randomized_edges: Array[Edge] = []
+		for i in range(0, tmp.size()):
+			var edge: Edge = tmp.pick_random()
+			tmp.erase(edge)
+			randomized_edges.append(edge)
 		var node := cells_nodes[node_id]
 		if node.cells.size() == 1:
-			var tmp := node_edges.duplicate()
-			var randomized_edges: Array[Edge] = []
-			for i in range(0, tmp.size()):
-				var edge: Edge = tmp.pick_random()
-				tmp.erase(edge)
-				randomized_edges.append(edge)
 			var valid_edge: Edge
 			for edge: Edge in randomized_edges:
 				valid_edge = edge
@@ -314,9 +370,9 @@ func generate_doors_and_keys() -> void:
 				valid_edges.erase(edge.id())
 			continue
 
-		var max_edges := maxi(node.cells.size() / 2, 2)
-		for i in range(0, max_edges):
-			var valid_edge: Edge = node_edges.pick_random()
+		var max_edges := randomized_edges.size()
+		for i in range(max_edges * randf(), max_edges):
+			var valid_edge: Edge = randomized_edges[i]
 			valid_edges[valid_edge.id()] = valid_edge
 
 	var estr := valid_edges.values().map(func(e: Edge) -> String: return e.id())
@@ -378,7 +434,7 @@ func generate_doors_and_keys() -> void:
 				visited_nodes[edge.b] = true
 				player_path.append(edge.b)
 	
-	for i in range(0, player_path.size()):
+	for i in range(0, player_path.size() - 1):
 		var key_i: int = cells_nodes[player_path[i]].cells.keys().pick_random()
 		visual_tiles[key_i].key_number = i
 		visual_tiles[key_i].cell_type = TileSprite.CellType.KEY
@@ -387,11 +443,15 @@ func generate_doors_and_keys() -> void:
 	var increment := (player_path.size() - next_powerup_node) / powerups.size()
 	print("Powerups starting from {0} with increment of {1}. Total area size {2}, powerups count {3}".format([next_powerup_node, increment, player_path.size(), powerups.size()]))
 	for powerup in powerups:
+		if next_powerup_node >= player_path.size():
+			return
 		var node_id := player_path[next_powerup_node]
 		var node := cells_nodes[node_id]
 		var safety := 3
 		while node.cells.size() == 1 && safety > 0:
 			next_powerup_node += 1
+			if next_powerup_node >= player_path.size():
+				return
 			node_id = player_path[next_powerup_node]
 			node = cells_nodes[node_id]
 			safety -= 1
@@ -400,6 +460,8 @@ func generate_doors_and_keys() -> void:
 		while visual_tiles[powerup_i].cell_type != TileSprite.CellType.ORIG_CELL && safety > 0:
 			powerup_i = node.cells.keys().pick_random()
 			safety -= 1
+		if safety == 0:
+			continue
 
 		if powerup == PowerUp.PlusSight:
 			visual_tiles[powerup_i].cell_type = TileSprite.CellType.PLUSSIGHT
@@ -418,7 +480,7 @@ func is_walkable(xy: Vector2i) -> bool:
 	if i <= 0 || i > size2:
 		return false
 	if visual_tiles[i].is_door():
-		return collected_keys.has(visual_tiles[i].door_number)
+		return keys_inventory.has(visual_tiles[i].door_number)
 	
 	return visual_tiles[i].cell_type != TileSprite.CellType.WALL
 
@@ -469,20 +531,36 @@ func floodfill_sight(pos: int, sight_left := 0, visited: Dictionary[int, bool] =
 	floodfill_sight(pos + size, sight_left - 1, visited)
 
 
-func _process(delta: float) -> void:
+func is_action_valid(action: String) -> bool:
+	var time := Time.get_ticks_msec()
+	return Input.is_action_just_pressed(action) || (Input.is_action_pressed(action) && time - _last_action_time > 100)
+
+
+func get_movement_dir() -> Vector2i:
+	var time := Time.get_ticks_msec()
+	var dir := Vector2i.ZERO
+	if is_action_valid("up"):
+		dir = Vector2i(0, -1)
+		_last_action_time = time
+	elif is_action_valid("down"):
+		dir = Vector2i(0, 1)
+		_last_action_time = time
+	elif is_action_valid("left"):
+		dir = Vector2i(-1, 0)
+		_last_action_time = time
+	elif is_action_valid("right"):
+		dir = Vector2i(1, 0)
+		_last_action_time = time
+
+	return dir
+
+func _process(dt: float) -> void:
 	if Engine.is_editor_hint():
 		return
 
-	var dir := Vector2i.ZERO
-	if Input.is_action_just_pressed("up"):
-		dir = Vector2i(0, -1)
-	elif Input.is_action_just_pressed("down"):
-		dir = Vector2i(0, 1)
-	elif Input.is_action_just_pressed("left"):
-		dir = Vector2i(-1, 0)
-	elif Input.is_action_just_pressed("right"):
-		dir = Vector2i(1, 0)
+	time_to_clear = maxf(0, time_to_clear - dt)
 
+	var dir := get_movement_dir()
 
 	if Input.is_action_just_pressed("plussight"):
 		player_sight += 1
@@ -494,50 +572,67 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("metro1") && player_metros.size() >= 1:
 		player_pos = i_to_xy(player_metros[0].i)
+		audio_metro_use.play()
 
 	if Input.is_action_just_pressed("metro2") && player_metros.size() >= 2:
 		player_pos = i_to_xy(player_metros[1].i)
+		audio_metro_use.play()
 
 	if Input.is_action_just_pressed("metro3") && player_metros.size() >= 3:
 		player_pos = i_to_xy(player_metros[2].i)
+		audio_metro_use.play()
 
 	if Input.is_action_just_pressed("metro4") && player_metros.size() >= 4:
 		player_pos = i_to_xy(player_metros[3].i)
+		audio_metro_use.play()
 
 	player.position = player_pos * Vector2i(16, 16) + Vector2i(8, 8)
 
 	var player_i := xy_to_i(player_pos)
 	if visual_tiles[player_i] != null:
 		if visual_tiles[player_i].is_key():
-			collected_keys.append(visual_tiles[player_i].key_number)
+			keys_inventory.append(visual_tiles[player_i].key_number)
 			visual_tiles[player_i].cell_type = TileSprite.CellType.ORIG_CELL
+			audio_key_pickup.play()
+			new_message("You picked up key {0}".format([str(visual_tiles[player_i].key_number)]))
 		if visual_tiles[player_i].cell_type == TileSprite.CellType.PLUSSIGHT:
 			player_sight += 2
 			visual_tiles[player_i].cell_type = TileSprite.CellType.ORIG_CELL
+			audio_powerup_pickup.play()
+			new_message("You now see further", 0.5)
 		if visual_tiles[player_i].is_door():
 			visual_tiles[player_i].cell_type = TileSprite.CellType.OPENED_DOOR
+			audio_door_open.play()
+			keys_inventory.erase(visual_tiles[player_i].door_number)
 		if visual_tiles[player_i].cell_type == TileSprite.CellType.ONEWAY_WALL:
 			edges[player_i].is_one_way = false
+			audio_break_wall.play()
 			visual_tiles[player_i].cell_type = TileSprite.CellType.BROKEN_WALL
 		if visual_tiles[player_i].cell_type == TileSprite.CellType.METRO && !metro_stations[player_i].activated:
 			metro_stations[player_i].activated = true
 			player_metros.append(metro_stations[player_i])
+			audio_metro_open.play()
+			new_message("Metro activated! Press {0} to warp to it.".format([player_metros.size()]), 0.5)
+			visual_tiles[player_i].constant_light = true
 			
-
-	var won: bool = visual_tiles[player_i] != null && visual_tiles[player_i].group_id != -1 && visual_tiles[player_i].group_id == player_path.back()
+	var win_condition: bool = (visual_tiles[player_i] != null && visual_tiles[player_i].group_id != -1 && visual_tiles[player_i].group_id == player_path.back())
+	if win_condition && !player_won:
+		player_won = true
+		new_message("You won!!!")
 	for tile_i in range(0, visual_tiles.size()):
-		if won:
+		if player_won || visual_tiles[tile_i].constant_light:
 			visual_tiles[tile_i].show()
 		else:
 			visual_tiles[tile_i].hide()
 	
-	if !won:
+	if !player_won:
 		floodfill_sight(player_i, player_sight)
 		
-	keys_label.text = ",".join(collected_keys.map(str))
+	keys_label.text = ",".join(keys_inventory.map(str))
 	playerpos_label.text = str(player_pos)
+	time_label.text = "{0}s".format([str(snappedf(time_to_clear, 0.1))])
 
-	if dir != Vector2i.ZERO:
-		print(player_pos, visual_tiles[player_i].group_id)
-		if edges.has(player_i):
-			print(edges[player_i].id(), edges[player_i].dir)
+	# if dir != Vector2i.ZERO:
+	# 	print(player_pos, visual_tiles[player_i].group_id)
+	# 	if edges.has(player_i):
+	# 		print(edges[player_i].id(), edges[player_i].dir)

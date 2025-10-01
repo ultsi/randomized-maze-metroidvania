@@ -50,6 +50,7 @@ var shader: ShaderMaterial
 var label: Label
 var door_number := -1
 var key_number := -1
+var constant_light := false
 
 static func get_cell_tile_for_type(type: CellType) -> Vector2i:
 	match type:

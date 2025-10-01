@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://jq562yjccjbf"]
+
+[ext_resource type="FontFile" uid="uid://crkugn6nm3qtn" path="res://materials/Super Mario World Text Box.ttf" id="1_cl2ub"]
+
+[resource]
+font = ExtResource("1_cl2ub")
+font_size = 12
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
