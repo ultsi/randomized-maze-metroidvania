@@ -66,6 +66,7 @@ func _init() -> void:
 	tile_set = preload("res://materials/tileset.tres")
 
 func _ready() -> void:
+	seed(7)
 	await _reset_grid()
 	if !Engine.is_editor_hint():
 		kruskal_forest()
@@ -264,12 +265,32 @@ func generate_doors() -> void:
 	var valid_edges: Dictionary[String, Edge] = {}
 
 	for node_id in edges_by_node_id:
+		var edges := edges_by_node_id[node_id]
+		var estr := edges.map(func(e: Edge) -> String: return e.id())
+		print("Node {0} edges: {1}".format([node_id, str(estr)]))
+
+	for node_id in edges_by_node_id:
 		var node_edges := edges_by_node_id[node_id]
 		if node_edges.size() == 1:
+			valid_edges[node_edges[0].id()] = node_edges[0]
 			continue
+
 		var node := cells_nodes[node_id]
 		if node.cells.size() == 1:
-			var valid_edge: Edge = node_edges.pick_random()
+			var tmp := node_edges.duplicate()
+			var randomized_edges: Array[Edge] = []
+			for i in range(0, tmp.size()):
+				var edge: Edge = tmp.pick_random()
+				tmp.erase(edge)
+				randomized_edges.append(edge)
+			var valid_edge: Edge
+			for edge: Edge in randomized_edges:
+				valid_edge = edge
+				var node_a := cells_nodes[edge.a]
+				var node_b := cells_nodes[edge.b]
+				if node_a.cells.size() > 1 || node_b.cells.size() > 1:
+					break
+			
 			valid_edges[valid_edge.id()] = valid_edge
 			for edge in node_edges:
 				if edge.id() == valid_edge.id():
@@ -282,6 +303,9 @@ func generate_doors() -> void:
 			var valid_edge: Edge = node_edges.pick_random()
 			valid_edges[valid_edge.id()] = valid_edge
 
+	var estr := valid_edges.values().map(func(e: Edge) -> String: return e.id())
+	print("Valid edges: ", estr)
+	
 	# for node_id in edges_by_node_id:
 	# 	var node := cells_nodes[node_id]
 	# 	var node_edges := edges_by_node_id[node_id]
