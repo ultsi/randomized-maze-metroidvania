@@ -14,7 +14,7 @@ var colors = [
 	Color(0.3, 0.6, 0.3), Color(0.6, 0.6, 0.3), Color(0.3, 0.6, 0.6), Color(0.6, 0.3, 0.3), Color(0.3, 0.3, 0.6)
 ]
 
-@export_range(0, 200, 1) var group_id := 0:
+@export_range(0, 200, 1) var group_id := -1:
 	set(value):
 		group_id = value
 		_update()
@@ -39,8 +39,11 @@ enum CellType {
 	JOINED_CELLS,
 	DOOR,
 	OPENED_DOOR,
+	ONEWAY_WALL,
+	BROKEN_WALL,
 	KEY,
 	PLUSSIGHT,
+	METRO
 }
 
 var shader: ShaderMaterial
@@ -60,10 +63,16 @@ static func get_cell_tile_for_type(type: CellType) -> Vector2i:
 			return Vector2i(1, 1)
 		CellType.OPENED_DOOR:
 			return Vector2i(1, 2)
+		CellType.ONEWAY_WALL:
+			return Vector2i(0, 2)
+		CellType.BROKEN_WALL:
+			return Vector2i(0, 3)
 		CellType.KEY:
 			return Vector2i(2, 1)
 		CellType.PLUSSIGHT:
 			return Vector2i(3, 1)
+		CellType.METRO:
+			return Vector2i(2, 2)
 	
 	return Vector2i(1, 0)
 
@@ -106,13 +115,16 @@ func _update() -> void:
 
 	if cell_type == CellType.KEY:
 		label.text = str(key_number)
-		label.show()
+		label.hide()
 	elif cell_type == CellType.DOOR:
 		label.text = str(door_number)
 		label.show()
 	elif cell_type == CellType.ORIG_CELL:
 		label.text = str(group_id)
-		label.show()
+		label.hide()
+	elif cell_type == CellType.ONEWAY_WALL:
+		label.text = str(group_id)
+		label.hide()
 	else:
 		label.hide()
 
