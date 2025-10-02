@@ -43,7 +43,8 @@ enum CellType {
 	BROKEN_WALL,
 	KEY,
 	PLUSSIGHT,
-	METRO
+	METRO,
+	TORCH
 }
 
 var shader: ShaderMaterial
@@ -74,6 +75,8 @@ static func get_cell_tile_for_type(type: CellType) -> Vector2i:
 			return Vector2i(3, 1)
 		CellType.METRO:
 			return Vector2i(2, 2)
+		CellType.TORCH:
+			return Vector2i(4, 1)
 	
 	return Vector2i(1, 0)
 

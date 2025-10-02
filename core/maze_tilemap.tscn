@@ -21,7 +21,7 @@ region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="Gradient" id="Gradient_xnntf"]
 offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0, 0, 0, 1)
+colors = PackedColorArray(0.15249994, 0.15249991, 0.15249991, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2vdv0"]
 gradient = SubResource("Gradient_xnntf")
@@ -3720,7 +3720,16 @@ justification_flags = 0
 layout_mode = 2
 label_settings = ExtResource("6_54t4n")
 
-[node name="PosLabel" type="Label" parent="Player/Camera2D/UI/TopLeft"]
+[node name="TorchHeader" type="Label" parent="Player/Camera2D/UI/TopLeft"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+text = "Torches left:"
+label_settings = ExtResource("6_54t4n")
+autowrap_trim_flags = 0
+justification_flags = 0
+
+[node name="TorchesLabel" type="Label" parent="Player/Camera2D/UI/TopLeft"]
 texture_filter = 1
 layout_mode = 2
 text = "(1,3)"
@@ -3742,14 +3751,14 @@ texture = SubResource("GradientTexture2D_2vdv0")
 
 [node name="Tiles" type="Node2D" parent="."]
 
-[node name="@Sprite2D@154911" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20752" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_xnntf")
 position = Vector2(8, 8)
 texture = SubResource("PlaceholderTexture2D_2vdv0")
 script = ExtResource("4_7qn0m")
 
-[node name="@Sprite2D@154913" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20754" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_jevav")
 position = Vector2(24, 8)
@@ -3757,7 +3766,7 @@ texture = SubResource("PlaceholderTexture2D_4vtj7")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 0)
 
-[node name="@Sprite2D@154915" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20756" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_nea3f")
 position = Vector2(40, 8)
@@ -3765,7 +3774,7 @@ texture = SubResource("PlaceholderTexture2D_07ljg")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 0)
 
-[node name="@Sprite2D@154917" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20758" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_t8d2e")
 position = Vector2(56, 8)
@@ -3773,7 +3782,7 @@ texture = SubResource("PlaceholderTexture2D_jl75f")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 0)
 
-[node name="@Sprite2D@154919" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20760" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_t5ps0")
 position = Vector2(72, 8)
@@ -3781,7 +3790,7 @@ texture = SubResource("PlaceholderTexture2D_giqv4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 0)
 
-[node name="@Sprite2D@154921" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20762" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lagx4")
 position = Vector2(88, 8)
@@ -3789,7 +3798,7 @@ texture = SubResource("PlaceholderTexture2D_3bloh")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 0)
 
-[node name="@Sprite2D@154923" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20764" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_s8rcj")
 position = Vector2(104, 8)
@@ -3797,7 +3806,7 @@ texture = SubResource("PlaceholderTexture2D_fka1j")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 0)
 
-[node name="@Sprite2D@154925" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20766" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ra0hg")
 position = Vector2(120, 8)
@@ -3805,7 +3814,7 @@ texture = SubResource("PlaceholderTexture2D_ux4kc")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 0)
 
-[node name="@Sprite2D@154927" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20768" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_0yw73")
 position = Vector2(136, 8)
@@ -3813,7 +3822,7 @@ texture = SubResource("PlaceholderTexture2D_iyohm")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 0)
 
-[node name="@Sprite2D@154929" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20770" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lf8cf")
 position = Vector2(152, 8)
@@ -3821,7 +3830,7 @@ texture = SubResource("PlaceholderTexture2D_m8vhm")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 0)
 
-[node name="@Sprite2D@154931" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20772" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_u5obq")
 position = Vector2(168, 8)
@@ -3829,7 +3838,7 @@ texture = SubResource("PlaceholderTexture2D_rc5l1")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 0)
 
-[node name="@Sprite2D@154933" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20774" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_giubk")
 position = Vector2(184, 8)
@@ -3837,7 +3846,7 @@ texture = SubResource("PlaceholderTexture2D_6owiy")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(11, 0)
 
-[node name="@Sprite2D@154935" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20776" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lbwsc")
 position = Vector2(200, 8)
@@ -3845,7 +3854,7 @@ texture = SubResource("PlaceholderTexture2D_nfuvd")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 0)
 
-[node name="@Sprite2D@154937" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20778" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lb12n")
 position = Vector2(216, 8)
@@ -3853,7 +3862,7 @@ texture = SubResource("PlaceholderTexture2D_kx70r")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(13, 0)
 
-[node name="@Sprite2D@154939" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20780" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_8b6hu")
 position = Vector2(232, 8)
@@ -3861,7 +3870,7 @@ texture = SubResource("PlaceholderTexture2D_8x666")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 0)
 
-[node name="@Sprite2D@154941" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20782" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_2h4mb")
 position = Vector2(248, 8)
@@ -3869,7 +3878,7 @@ texture = SubResource("PlaceholderTexture2D_cg6om")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(15, 0)
 
-[node name="@Sprite2D@154943" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20784" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_70k50")
 position = Vector2(264, 8)
@@ -3877,7 +3886,7 @@ texture = SubResource("PlaceholderTexture2D_anx08")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 0)
 
-[node name="@Sprite2D@154945" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20786" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_p7ccl")
 position = Vector2(280, 8)
@@ -3885,7 +3894,7 @@ texture = SubResource("PlaceholderTexture2D_enurv")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(17, 0)
 
-[node name="@Sprite2D@154947" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20788" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_d612c")
 position = Vector2(296, 8)
@@ -3893,7 +3902,7 @@ texture = SubResource("PlaceholderTexture2D_8jynj")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 0)
 
-[node name="@Sprite2D@154949" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20790" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_p61gb")
 position = Vector2(8, 24)
@@ -3901,7 +3910,7 @@ texture = SubResource("PlaceholderTexture2D_otr2i")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 1)
 
-[node name="@Sprite2D@154951" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20792" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_b3404")
 position = Vector2(24, 24)
@@ -3911,7 +3920,7 @@ group_id = 0
 cell_type = 1
 world_grid_pos = Vector2i(1, 1)
 
-[node name="@Sprite2D@154953" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20794" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_75xy1")
 position = Vector2(40, 24)
@@ -3919,7 +3928,7 @@ texture = SubResource("PlaceholderTexture2D_vdyli")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 1)
 
-[node name="@Sprite2D@154955" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20796" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ht4ge")
 position = Vector2(56, 24)
@@ -3929,7 +3938,7 @@ group_id = 1
 cell_type = 1
 world_grid_pos = Vector2i(3, 1)
 
-[node name="@Sprite2D@154957" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20798" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_vy68v")
 position = Vector2(72, 24)
@@ -3937,7 +3946,7 @@ texture = SubResource("PlaceholderTexture2D_kbrkx")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 1)
 
-[node name="@Sprite2D@154959" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20800" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_8rsup")
 position = Vector2(88, 24)
@@ -3947,7 +3956,7 @@ group_id = 2
 cell_type = 1
 world_grid_pos = Vector2i(5, 1)
 
-[node name="@Sprite2D@154961" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20802" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_5605s")
 position = Vector2(104, 24)
@@ -3955,7 +3964,7 @@ texture = SubResource("PlaceholderTexture2D_lpsvm")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 1)
 
-[node name="@Sprite2D@154963" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20804" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_vorp3")
 position = Vector2(120, 24)
@@ -3965,7 +3974,7 @@ group_id = 3
 cell_type = 1
 world_grid_pos = Vector2i(7, 1)
 
-[node name="@Sprite2D@154965" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20806" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_x43xm")
 position = Vector2(136, 24)
@@ -3973,7 +3982,7 @@ texture = SubResource("PlaceholderTexture2D_0gicf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 1)
 
-[node name="@Sprite2D@154967" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20808" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_xtky5")
 position = Vector2(152, 24)
@@ -3983,7 +3992,7 @@ group_id = 4
 cell_type = 1
 world_grid_pos = Vector2i(9, 1)
 
-[node name="@Sprite2D@154969" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20810" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_hdwf7")
 position = Vector2(168, 24)
@@ -3991,7 +4000,7 @@ texture = SubResource("PlaceholderTexture2D_kfhkd")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 1)
 
-[node name="@Sprite2D@154971" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20812" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_vvjb5")
 position = Vector2(184, 24)
@@ -4001,7 +4010,7 @@ group_id = 5
 cell_type = 1
 world_grid_pos = Vector2i(11, 1)
 
-[node name="@Sprite2D@154973" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20814" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_o2cbr")
 position = Vector2(200, 24)
@@ -4009,7 +4018,7 @@ texture = SubResource("PlaceholderTexture2D_fi7vy")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 1)
 
-[node name="@Sprite2D@154975" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20816" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_j3gk2")
 position = Vector2(216, 24)
@@ -4019,7 +4028,7 @@ group_id = 6
 cell_type = 1
 world_grid_pos = Vector2i(13, 1)
 
-[node name="@Sprite2D@154977" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20818" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ptnr6")
 position = Vector2(232, 24)
@@ -4027,7 +4036,7 @@ texture = SubResource("PlaceholderTexture2D_4cpyr")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 1)
 
-[node name="@Sprite2D@154979" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20820" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_1l666")
 position = Vector2(248, 24)
@@ -4037,7 +4046,7 @@ group_id = 7
 cell_type = 1
 world_grid_pos = Vector2i(15, 1)
 
-[node name="@Sprite2D@154981" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20822" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_h63hq")
 position = Vector2(264, 24)
@@ -4045,7 +4054,7 @@ texture = SubResource("PlaceholderTexture2D_h8lrf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 1)
 
-[node name="@Sprite2D@154983" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20824" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_uce00")
 position = Vector2(280, 24)
@@ -4055,7 +4064,7 @@ group_id = 8
 cell_type = 1
 world_grid_pos = Vector2i(17, 1)
 
-[node name="@Sprite2D@154985" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20826" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_8l50p")
 position = Vector2(296, 24)
@@ -4063,7 +4072,7 @@ texture = SubResource("PlaceholderTexture2D_v5bme")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 1)
 
-[node name="@Sprite2D@154987" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20828" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_yrjke")
 position = Vector2(8, 40)
@@ -4071,7 +4080,7 @@ texture = SubResource("PlaceholderTexture2D_vu8fn")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 2)
 
-[node name="@Sprite2D@154989" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20830" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_hj7pe")
 position = Vector2(24, 40)
@@ -4079,7 +4088,7 @@ texture = SubResource("PlaceholderTexture2D_l2u5w")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 2)
 
-[node name="@Sprite2D@154991" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20832" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_2qys3")
 position = Vector2(40, 40)
@@ -4087,7 +4096,7 @@ texture = SubResource("PlaceholderTexture2D_l6b1h")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 2)
 
-[node name="@Sprite2D@154993" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20834" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_7ky6c")
 position = Vector2(56, 40)
@@ -4095,7 +4104,7 @@ texture = SubResource("PlaceholderTexture2D_yd6p2")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 2)
 
-[node name="@Sprite2D@154995" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20836" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_uaov2")
 position = Vector2(72, 40)
@@ -4103,7 +4112,7 @@ texture = SubResource("PlaceholderTexture2D_lgtgm")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 2)
 
-[node name="@Sprite2D@154997" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20838" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_eneat")
 position = Vector2(88, 40)
@@ -4111,7 +4120,7 @@ texture = SubResource("PlaceholderTexture2D_fg3ih")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 2)
 
-[node name="@Sprite2D@154999" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20840" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_j3mfu")
 position = Vector2(104, 40)
@@ -4119,7 +4128,7 @@ texture = SubResource("PlaceholderTexture2D_msuwb")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 2)
 
-[node name="@Sprite2D@155001" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20842" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_grqnc")
 position = Vector2(120, 40)
@@ -4127,7 +4136,7 @@ texture = SubResource("PlaceholderTexture2D_bactq")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 2)
 
-[node name="@Sprite2D@155003" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20844" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_omcns")
 position = Vector2(136, 40)
@@ -4135,7 +4144,7 @@ texture = SubResource("PlaceholderTexture2D_a8xr2")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 2)
 
-[node name="@Sprite2D@155005" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20846" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_n02st")
 position = Vector2(152, 40)
@@ -4143,7 +4152,7 @@ texture = SubResource("PlaceholderTexture2D_bnkom")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 2)
 
-[node name="@Sprite2D@155007" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20848" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_gxtd5")
 position = Vector2(168, 40)
@@ -4151,7 +4160,7 @@ texture = SubResource("PlaceholderTexture2D_rnby4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 2)
 
-[node name="@Sprite2D@155009" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20850" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_uxcbu")
 position = Vector2(184, 40)
@@ -4159,7 +4168,7 @@ texture = SubResource("PlaceholderTexture2D_camxb")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(11, 2)
 
-[node name="@Sprite2D@155011" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20852" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_vyyxc")
 position = Vector2(200, 40)
@@ -4167,7 +4176,7 @@ texture = SubResource("PlaceholderTexture2D_pjlko")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 2)
 
-[node name="@Sprite2D@155013" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20854" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_c6rsi")
 position = Vector2(216, 40)
@@ -4175,7 +4184,7 @@ texture = SubResource("PlaceholderTexture2D_i83w4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(13, 2)
 
-[node name="@Sprite2D@155015" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20856" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_bx1op")
 position = Vector2(232, 40)
@@ -4183,7 +4192,7 @@ texture = SubResource("PlaceholderTexture2D_sq0w2")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 2)
 
-[node name="@Sprite2D@155017" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20858" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_2ebp0")
 position = Vector2(248, 40)
@@ -4191,7 +4200,7 @@ texture = SubResource("PlaceholderTexture2D_ewlmb")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(15, 2)
 
-[node name="@Sprite2D@155019" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20860" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ylvip")
 position = Vector2(264, 40)
@@ -4199,7 +4208,7 @@ texture = SubResource("PlaceholderTexture2D_xaat0")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 2)
 
-[node name="@Sprite2D@155021" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20862" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_qonpv")
 position = Vector2(280, 40)
@@ -4207,7 +4216,7 @@ texture = SubResource("PlaceholderTexture2D_87ihl")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(17, 2)
 
-[node name="@Sprite2D@155023" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20864" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_esgnd")
 position = Vector2(296, 40)
@@ -4215,7 +4224,7 @@ texture = SubResource("PlaceholderTexture2D_pp42h")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 2)
 
-[node name="@Sprite2D@155025" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20866" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_x6df7")
 position = Vector2(8, 56)
@@ -4223,7 +4232,7 @@ texture = SubResource("PlaceholderTexture2D_rarow")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 3)
 
-[node name="@Sprite2D@155027" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20868" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ug64u")
 position = Vector2(24, 56)
@@ -4233,7 +4242,7 @@ group_id = 9
 cell_type = 1
 world_grid_pos = Vector2i(1, 3)
 
-[node name="@Sprite2D@155029" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20870" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_va221")
 position = Vector2(40, 56)
@@ -4241,7 +4250,7 @@ texture = SubResource("PlaceholderTexture2D_0jel7")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 3)
 
-[node name="@Sprite2D@155031" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20872" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3jjly")
 position = Vector2(56, 56)
@@ -4251,7 +4260,7 @@ group_id = 10
 cell_type = 1
 world_grid_pos = Vector2i(3, 3)
 
-[node name="@Sprite2D@155033" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20874" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_wycqk")
 position = Vector2(72, 56)
@@ -4259,7 +4268,7 @@ texture = SubResource("PlaceholderTexture2D_rqolf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 3)
 
-[node name="@Sprite2D@155035" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20876" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3sfcu")
 position = Vector2(88, 56)
@@ -4269,7 +4278,7 @@ group_id = 11
 cell_type = 1
 world_grid_pos = Vector2i(5, 3)
 
-[node name="@Sprite2D@155037" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20878" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_4ru5j")
 position = Vector2(104, 56)
@@ -4277,7 +4286,7 @@ texture = SubResource("PlaceholderTexture2D_weh8a")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 3)
 
-[node name="@Sprite2D@155039" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20880" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_cjq2i")
 position = Vector2(120, 56)
@@ -4287,7 +4296,7 @@ group_id = 12
 cell_type = 1
 world_grid_pos = Vector2i(7, 3)
 
-[node name="@Sprite2D@155041" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20882" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_h2xyk")
 position = Vector2(136, 56)
@@ -4295,7 +4304,7 @@ texture = SubResource("PlaceholderTexture2D_qea1s")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 3)
 
-[node name="@Sprite2D@155043" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20884" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ptkbh")
 position = Vector2(152, 56)
@@ -4305,7 +4314,7 @@ group_id = 13
 cell_type = 1
 world_grid_pos = Vector2i(9, 3)
 
-[node name="@Sprite2D@155045" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20886" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_bvhnd")
 position = Vector2(168, 56)
@@ -4313,7 +4322,7 @@ texture = SubResource("PlaceholderTexture2D_0rsbe")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 3)
 
-[node name="@Sprite2D@155047" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20888" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_inhya")
 position = Vector2(184, 56)
@@ -4323,7 +4332,7 @@ group_id = 14
 cell_type = 1
 world_grid_pos = Vector2i(11, 3)
 
-[node name="@Sprite2D@155049" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20890" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_vx7e4")
 position = Vector2(200, 56)
@@ -4331,7 +4340,7 @@ texture = SubResource("PlaceholderTexture2D_njk1v")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 3)
 
-[node name="@Sprite2D@155051" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20892" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_wen2a")
 position = Vector2(216, 56)
@@ -4341,7 +4350,7 @@ group_id = 15
 cell_type = 1
 world_grid_pos = Vector2i(13, 3)
 
-[node name="@Sprite2D@155053" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20894" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3k1es")
 position = Vector2(232, 56)
@@ -4349,7 +4358,7 @@ texture = SubResource("PlaceholderTexture2D_cynmn")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 3)
 
-[node name="@Sprite2D@155055" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20896" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_oycp2")
 position = Vector2(248, 56)
@@ -4359,7 +4368,7 @@ group_id = 16
 cell_type = 1
 world_grid_pos = Vector2i(15, 3)
 
-[node name="@Sprite2D@155057" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20898" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_yj27o")
 position = Vector2(264, 56)
@@ -4367,7 +4376,7 @@ texture = SubResource("PlaceholderTexture2D_or73y")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 3)
 
-[node name="@Sprite2D@155059" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20900" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_1ih76")
 position = Vector2(280, 56)
@@ -4377,7 +4386,7 @@ group_id = 17
 cell_type = 1
 world_grid_pos = Vector2i(17, 3)
 
-[node name="@Sprite2D@155061" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20902" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_nv0l5")
 position = Vector2(296, 56)
@@ -4385,7 +4394,7 @@ texture = SubResource("PlaceholderTexture2D_5dll6")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 3)
 
-[node name="@Sprite2D@155063" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20904" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_7a4th")
 position = Vector2(8, 72)
@@ -4393,7 +4402,7 @@ texture = SubResource("PlaceholderTexture2D_t6np1")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 4)
 
-[node name="@Sprite2D@155065" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20906" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_8n8nr")
 position = Vector2(24, 72)
@@ -4401,7 +4410,7 @@ texture = SubResource("PlaceholderTexture2D_swfgc")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 4)
 
-[node name="@Sprite2D@155067" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20908" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_jnse5")
 position = Vector2(40, 72)
@@ -4409,7 +4418,7 @@ texture = SubResource("PlaceholderTexture2D_noqy0")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 4)
 
-[node name="@Sprite2D@155069" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20910" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_kptme")
 position = Vector2(56, 72)
@@ -4417,7 +4426,7 @@ texture = SubResource("PlaceholderTexture2D_e6val")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 4)
 
-[node name="@Sprite2D@155071" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20912" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_j4ldf")
 position = Vector2(72, 72)
@@ -4425,7 +4434,7 @@ texture = SubResource("PlaceholderTexture2D_g4rf0")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 4)
 
-[node name="@Sprite2D@155073" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20914" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_b4v6l")
 position = Vector2(88, 72)
@@ -4433,7 +4442,7 @@ texture = SubResource("PlaceholderTexture2D_ccfbi")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 4)
 
-[node name="@Sprite2D@155075" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20916" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ej80i")
 position = Vector2(104, 72)
@@ -4441,7 +4450,7 @@ texture = SubResource("PlaceholderTexture2D_uhe40")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 4)
 
-[node name="@Sprite2D@155077" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20918" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_b8m5s")
 position = Vector2(120, 72)
@@ -4449,7 +4458,7 @@ texture = SubResource("PlaceholderTexture2D_y5uip")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 4)
 
-[node name="@Sprite2D@155079" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20920" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_eibus")
 position = Vector2(136, 72)
@@ -4457,7 +4466,7 @@ texture = SubResource("PlaceholderTexture2D_57bkd")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 4)
 
-[node name="@Sprite2D@155081" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20922" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ayut4")
 position = Vector2(152, 72)
@@ -4465,7 +4474,7 @@ texture = SubResource("PlaceholderTexture2D_iw6m2")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 4)
 
-[node name="@Sprite2D@155083" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20924" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_w7yxn")
 position = Vector2(168, 72)
@@ -4473,7 +4482,7 @@ texture = SubResource("PlaceholderTexture2D_74amf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 4)
 
-[node name="@Sprite2D@155085" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20926" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lbmr7")
 position = Vector2(184, 72)
@@ -4481,7 +4490,7 @@ texture = SubResource("PlaceholderTexture2D_eyp5y")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(11, 4)
 
-[node name="@Sprite2D@155087" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20928" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_0qkct")
 position = Vector2(200, 72)
@@ -4489,7 +4498,7 @@ texture = SubResource("PlaceholderTexture2D_3pt0g")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 4)
 
-[node name="@Sprite2D@155089" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20930" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_5cpwa")
 position = Vector2(216, 72)
@@ -4497,7 +4506,7 @@ texture = SubResource("PlaceholderTexture2D_ont2k")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(13, 4)
 
-[node name="@Sprite2D@155091" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20932" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_84eo5")
 position = Vector2(232, 72)
@@ -4505,7 +4514,7 @@ texture = SubResource("PlaceholderTexture2D_6o22q")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 4)
 
-[node name="@Sprite2D@155093" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20934" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_a3krq")
 position = Vector2(248, 72)
@@ -4513,7 +4522,7 @@ texture = SubResource("PlaceholderTexture2D_gqv0d")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(15, 4)
 
-[node name="@Sprite2D@155095" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20936" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_yhh5e")
 position = Vector2(264, 72)
@@ -4521,7 +4530,7 @@ texture = SubResource("PlaceholderTexture2D_15qd4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 4)
 
-[node name="@Sprite2D@155097" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20938" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_k28vw")
 position = Vector2(280, 72)
@@ -4529,7 +4538,7 @@ texture = SubResource("PlaceholderTexture2D_uaa5t")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(17, 4)
 
-[node name="@Sprite2D@155099" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20940" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_rh8dm")
 position = Vector2(296, 72)
@@ -4537,7 +4546,7 @@ texture = SubResource("PlaceholderTexture2D_olaqx")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 4)
 
-[node name="@Sprite2D@155101" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20942" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_atb71")
 position = Vector2(8, 88)
@@ -4545,7 +4554,7 @@ texture = SubResource("PlaceholderTexture2D_u4jbs")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 5)
 
-[node name="@Sprite2D@155103" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20944" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ceqkt")
 position = Vector2(24, 88)
@@ -4555,7 +4564,7 @@ group_id = 18
 cell_type = 1
 world_grid_pos = Vector2i(1, 5)
 
-[node name="@Sprite2D@155105" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20946" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_nkufq")
 position = Vector2(40, 88)
@@ -4563,7 +4572,7 @@ texture = SubResource("PlaceholderTexture2D_u0qlr")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 5)
 
-[node name="@Sprite2D@155107" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20948" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_jiii8")
 position = Vector2(56, 88)
@@ -4573,7 +4582,7 @@ group_id = 19
 cell_type = 1
 world_grid_pos = Vector2i(3, 5)
 
-[node name="@Sprite2D@155109" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20950" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_mvcqv")
 position = Vector2(72, 88)
@@ -4581,7 +4590,7 @@ texture = SubResource("PlaceholderTexture2D_vo0p5")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 5)
 
-[node name="@Sprite2D@155111" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20952" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_uci0g")
 position = Vector2(88, 88)
@@ -4591,7 +4600,7 @@ group_id = 20
 cell_type = 1
 world_grid_pos = Vector2i(5, 5)
 
-[node name="@Sprite2D@155113" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20954" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3okfm")
 position = Vector2(104, 88)
@@ -4599,7 +4608,7 @@ texture = SubResource("PlaceholderTexture2D_1d2ru")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 5)
 
-[node name="@Sprite2D@155115" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20956" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_tonww")
 position = Vector2(120, 88)
@@ -4609,7 +4618,7 @@ group_id = 21
 cell_type = 1
 world_grid_pos = Vector2i(7, 5)
 
-[node name="@Sprite2D@155117" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20958" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_un080")
 position = Vector2(136, 88)
@@ -4617,7 +4626,7 @@ texture = SubResource("PlaceholderTexture2D_chbxv")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 5)
 
-[node name="@Sprite2D@155119" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20960" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_hqwwt")
 position = Vector2(152, 88)
@@ -4627,7 +4636,7 @@ group_id = 22
 cell_type = 1
 world_grid_pos = Vector2i(9, 5)
 
-[node name="@Sprite2D@155121" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20962" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_idyqj")
 position = Vector2(168, 88)
@@ -4635,7 +4644,7 @@ texture = SubResource("PlaceholderTexture2D_u6axg")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 5)
 
-[node name="@Sprite2D@155123" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20964" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_mbf2p")
 position = Vector2(184, 88)
@@ -4645,7 +4654,7 @@ group_id = 23
 cell_type = 1
 world_grid_pos = Vector2i(11, 5)
 
-[node name="@Sprite2D@155125" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20966" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_icsmm")
 position = Vector2(200, 88)
@@ -4653,7 +4662,7 @@ texture = SubResource("PlaceholderTexture2D_tn7l0")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 5)
 
-[node name="@Sprite2D@155127" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20968" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lygxx")
 position = Vector2(216, 88)
@@ -4663,7 +4672,7 @@ group_id = 24
 cell_type = 1
 world_grid_pos = Vector2i(13, 5)
 
-[node name="@Sprite2D@155129" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20970" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_4gtsh")
 position = Vector2(232, 88)
@@ -4671,7 +4680,7 @@ texture = SubResource("PlaceholderTexture2D_vv5qu")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 5)
 
-[node name="@Sprite2D@155131" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20972" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_iocuy")
 position = Vector2(248, 88)
@@ -4681,7 +4690,7 @@ group_id = 25
 cell_type = 1
 world_grid_pos = Vector2i(15, 5)
 
-[node name="@Sprite2D@155133" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20974" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_jabat")
 position = Vector2(264, 88)
@@ -4689,7 +4698,7 @@ texture = SubResource("PlaceholderTexture2D_qoiwy")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 5)
 
-[node name="@Sprite2D@155135" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20976" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_2lmcw")
 position = Vector2(280, 88)
@@ -4699,7 +4708,7 @@ group_id = 26
 cell_type = 1
 world_grid_pos = Vector2i(17, 5)
 
-[node name="@Sprite2D@155137" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20978" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_rht5i")
 position = Vector2(296, 88)
@@ -4707,7 +4716,7 @@ texture = SubResource("PlaceholderTexture2D_6v8c1")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 5)
 
-[node name="@Sprite2D@155139" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20980" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lr7cn")
 position = Vector2(8, 104)
@@ -4715,7 +4724,7 @@ texture = SubResource("PlaceholderTexture2D_k3n2s")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 6)
 
-[node name="@Sprite2D@155141" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20982" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_huvth")
 position = Vector2(24, 104)
@@ -4723,7 +4732,7 @@ texture = SubResource("PlaceholderTexture2D_olwb7")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 6)
 
-[node name="@Sprite2D@155143" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20984" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_0mcll")
 position = Vector2(40, 104)
@@ -4731,7 +4740,7 @@ texture = SubResource("PlaceholderTexture2D_4lpxv")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 6)
 
-[node name="@Sprite2D@155145" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20986" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_4at1r")
 position = Vector2(56, 104)
@@ -4739,7 +4748,7 @@ texture = SubResource("PlaceholderTexture2D_r6qr4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 6)
 
-[node name="@Sprite2D@155147" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20988" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_hn7ul")
 position = Vector2(72, 104)
@@ -4747,7 +4756,7 @@ texture = SubResource("PlaceholderTexture2D_2oxrw")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 6)
 
-[node name="@Sprite2D@155149" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20990" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_vif85")
 position = Vector2(88, 104)
@@ -4755,7 +4764,7 @@ texture = SubResource("PlaceholderTexture2D_s6bxl")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 6)
 
-[node name="@Sprite2D@155151" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20992" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_u08iu")
 position = Vector2(104, 104)
@@ -4763,7 +4772,7 @@ texture = SubResource("PlaceholderTexture2D_rqhm2")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 6)
 
-[node name="@Sprite2D@155153" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20994" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_e2ixo")
 position = Vector2(120, 104)
@@ -4771,7 +4780,7 @@ texture = SubResource("PlaceholderTexture2D_cqwi5")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 6)
 
-[node name="@Sprite2D@155155" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20996" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lkqdf")
 position = Vector2(136, 104)
@@ -4779,7 +4788,7 @@ texture = SubResource("PlaceholderTexture2D_xk240")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 6)
 
-[node name="@Sprite2D@155157" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@20998" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_j4wiy")
 position = Vector2(152, 104)
@@ -4787,7 +4796,7 @@ texture = SubResource("PlaceholderTexture2D_mxrp8")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 6)
 
-[node name="@Sprite2D@155159" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21000" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_pjx4c")
 position = Vector2(168, 104)
@@ -4795,7 +4804,7 @@ texture = SubResource("PlaceholderTexture2D_jmsxx")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 6)
 
-[node name="@Sprite2D@155161" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21002" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_7cj6b")
 position = Vector2(184, 104)
@@ -4803,7 +4812,7 @@ texture = SubResource("PlaceholderTexture2D_bl528")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(11, 6)
 
-[node name="@Sprite2D@155163" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21004" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_qnpsm")
 position = Vector2(200, 104)
@@ -4811,7 +4820,7 @@ texture = SubResource("PlaceholderTexture2D_sagrb")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 6)
 
-[node name="@Sprite2D@155165" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21006" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lwhn4")
 position = Vector2(216, 104)
@@ -4819,7 +4828,7 @@ texture = SubResource("PlaceholderTexture2D_o6cgc")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(13, 6)
 
-[node name="@Sprite2D@155167" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21008" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_f0tem")
 position = Vector2(232, 104)
@@ -4827,7 +4836,7 @@ texture = SubResource("PlaceholderTexture2D_o777f")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 6)
 
-[node name="@Sprite2D@155169" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21010" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_sdxrj")
 position = Vector2(248, 104)
@@ -4835,7 +4844,7 @@ texture = SubResource("PlaceholderTexture2D_vn2of")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(15, 6)
 
-[node name="@Sprite2D@155171" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21012" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_6201a")
 position = Vector2(264, 104)
@@ -4843,7 +4852,7 @@ texture = SubResource("PlaceholderTexture2D_on6gu")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 6)
 
-[node name="@Sprite2D@155173" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21014" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_rkgh1")
 position = Vector2(280, 104)
@@ -4851,7 +4860,7 @@ texture = SubResource("PlaceholderTexture2D_20ihf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(17, 6)
 
-[node name="@Sprite2D@155175" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21016" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_fp460")
 position = Vector2(296, 104)
@@ -4859,7 +4868,7 @@ texture = SubResource("PlaceholderTexture2D_06rg5")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 6)
 
-[node name="@Sprite2D@155177" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21018" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_73c33")
 position = Vector2(8, 120)
@@ -4867,7 +4876,7 @@ texture = SubResource("PlaceholderTexture2D_3f7xl")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 7)
 
-[node name="@Sprite2D@155179" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21020" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_14oh0")
 position = Vector2(24, 120)
@@ -4877,7 +4886,7 @@ group_id = 27
 cell_type = 1
 world_grid_pos = Vector2i(1, 7)
 
-[node name="@Sprite2D@155181" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21022" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_4bqts")
 position = Vector2(40, 120)
@@ -4885,7 +4894,7 @@ texture = SubResource("PlaceholderTexture2D_0mlmk")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 7)
 
-[node name="@Sprite2D@155183" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21024" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_i1by5")
 position = Vector2(56, 120)
@@ -4895,7 +4904,7 @@ group_id = 28
 cell_type = 1
 world_grid_pos = Vector2i(3, 7)
 
-[node name="@Sprite2D@155185" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21026" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_d4kea")
 position = Vector2(72, 120)
@@ -4903,7 +4912,7 @@ texture = SubResource("PlaceholderTexture2D_8rxvw")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 7)
 
-[node name="@Sprite2D@155187" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21028" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_pgdrq")
 position = Vector2(88, 120)
@@ -4913,7 +4922,7 @@ group_id = 29
 cell_type = 1
 world_grid_pos = Vector2i(5, 7)
 
-[node name="@Sprite2D@155189" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21030" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_5wh2s")
 position = Vector2(104, 120)
@@ -4921,7 +4930,7 @@ texture = SubResource("PlaceholderTexture2D_n5y2f")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 7)
 
-[node name="@Sprite2D@155191" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21032" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_5dnj8")
 position = Vector2(120, 120)
@@ -4931,7 +4940,7 @@ group_id = 30
 cell_type = 1
 world_grid_pos = Vector2i(7, 7)
 
-[node name="@Sprite2D@155193" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21034" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_2lh2e")
 position = Vector2(136, 120)
@@ -4939,7 +4948,7 @@ texture = SubResource("PlaceholderTexture2D_wi54o")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 7)
 
-[node name="@Sprite2D@155195" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21036" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_vldk1")
 position = Vector2(152, 120)
@@ -4949,7 +4958,7 @@ group_id = 31
 cell_type = 1
 world_grid_pos = Vector2i(9, 7)
 
-[node name="@Sprite2D@155197" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21038" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ajg0y")
 position = Vector2(168, 120)
@@ -4957,7 +4966,7 @@ texture = SubResource("PlaceholderTexture2D_gg8ut")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 7)
 
-[node name="@Sprite2D@155199" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21040" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_hpq20")
 position = Vector2(184, 120)
@@ -4967,7 +4976,7 @@ group_id = 32
 cell_type = 1
 world_grid_pos = Vector2i(11, 7)
 
-[node name="@Sprite2D@155201" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21042" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_2su4u")
 position = Vector2(200, 120)
@@ -4975,7 +4984,7 @@ texture = SubResource("PlaceholderTexture2D_klmtn")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 7)
 
-[node name="@Sprite2D@155203" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21044" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ig11l")
 position = Vector2(216, 120)
@@ -4985,7 +4994,7 @@ group_id = 33
 cell_type = 1
 world_grid_pos = Vector2i(13, 7)
 
-[node name="@Sprite2D@155205" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21046" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ogjts")
 position = Vector2(232, 120)
@@ -4993,7 +5002,7 @@ texture = SubResource("PlaceholderTexture2D_v3gry")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 7)
 
-[node name="@Sprite2D@155207" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21048" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_eol2l")
 position = Vector2(248, 120)
@@ -5003,7 +5012,7 @@ group_id = 34
 cell_type = 1
 world_grid_pos = Vector2i(15, 7)
 
-[node name="@Sprite2D@155209" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21050" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_73b47")
 position = Vector2(264, 120)
@@ -5011,7 +5020,7 @@ texture = SubResource("PlaceholderTexture2D_5kma4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 7)
 
-[node name="@Sprite2D@155211" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21052" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_u0njl")
 position = Vector2(280, 120)
@@ -5021,7 +5030,7 @@ group_id = 35
 cell_type = 1
 world_grid_pos = Vector2i(17, 7)
 
-[node name="@Sprite2D@155213" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21054" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_hnykx")
 position = Vector2(296, 120)
@@ -5029,7 +5038,7 @@ texture = SubResource("PlaceholderTexture2D_oiewk")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 7)
 
-[node name="@Sprite2D@155215" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21056" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_bviu6")
 position = Vector2(8, 136)
@@ -5037,7 +5046,7 @@ texture = SubResource("PlaceholderTexture2D_q6pdb")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 8)
 
-[node name="@Sprite2D@155217" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21058" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_b0wwl")
 position = Vector2(24, 136)
@@ -5045,7 +5054,7 @@ texture = SubResource("PlaceholderTexture2D_0rkgg")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 8)
 
-[node name="@Sprite2D@155219" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21060" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_1un0c")
 position = Vector2(40, 136)
@@ -5053,7 +5062,7 @@ texture = SubResource("PlaceholderTexture2D_qb2xk")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 8)
 
-[node name="@Sprite2D@155221" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21062" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_vvr00")
 position = Vector2(56, 136)
@@ -5061,7 +5070,7 @@ texture = SubResource("PlaceholderTexture2D_dqhkj")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 8)
 
-[node name="@Sprite2D@155223" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21064" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_oo6sw")
 position = Vector2(72, 136)
@@ -5069,7 +5078,7 @@ texture = SubResource("PlaceholderTexture2D_ywsnu")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 8)
 
-[node name="@Sprite2D@155225" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21066" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_cdtnc")
 position = Vector2(88, 136)
@@ -5077,7 +5086,7 @@ texture = SubResource("PlaceholderTexture2D_e1fr6")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 8)
 
-[node name="@Sprite2D@155227" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21068" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_kysge")
 position = Vector2(104, 136)
@@ -5085,7 +5094,7 @@ texture = SubResource("PlaceholderTexture2D_lb6jo")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 8)
 
-[node name="@Sprite2D@155229" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21070" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_th3jd")
 position = Vector2(120, 136)
@@ -5093,7 +5102,7 @@ texture = SubResource("PlaceholderTexture2D_ehskw")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 8)
 
-[node name="@Sprite2D@155231" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21072" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_g6did")
 position = Vector2(136, 136)
@@ -5101,7 +5110,7 @@ texture = SubResource("PlaceholderTexture2D_avf3m")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 8)
 
-[node name="@Sprite2D@155233" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21074" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_w4ijh")
 position = Vector2(152, 136)
@@ -5109,7 +5118,7 @@ texture = SubResource("PlaceholderTexture2D_153d3")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 8)
 
-[node name="@Sprite2D@155235" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21076" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_r0br7")
 position = Vector2(168, 136)
@@ -5117,7 +5126,7 @@ texture = SubResource("PlaceholderTexture2D_htqg1")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 8)
 
-[node name="@Sprite2D@155237" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21078" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_amfds")
 position = Vector2(184, 136)
@@ -5125,7 +5134,7 @@ texture = SubResource("PlaceholderTexture2D_683c6")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(11, 8)
 
-[node name="@Sprite2D@155239" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21080" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_4exr7")
 position = Vector2(200, 136)
@@ -5133,7 +5142,7 @@ texture = SubResource("PlaceholderTexture2D_fj7yw")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 8)
 
-[node name="@Sprite2D@155241" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21082" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_4bjpc")
 position = Vector2(216, 136)
@@ -5141,7 +5150,7 @@ texture = SubResource("PlaceholderTexture2D_mta4h")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(13, 8)
 
-[node name="@Sprite2D@155243" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21084" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_t344u")
 position = Vector2(232, 136)
@@ -5149,7 +5158,7 @@ texture = SubResource("PlaceholderTexture2D_ep451")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 8)
 
-[node name="@Sprite2D@155245" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21086" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_2xjf5")
 position = Vector2(248, 136)
@@ -5157,7 +5166,7 @@ texture = SubResource("PlaceholderTexture2D_onjhb")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(15, 8)
 
-[node name="@Sprite2D@155247" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21088" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_pyk32")
 position = Vector2(264, 136)
@@ -5165,7 +5174,7 @@ texture = SubResource("PlaceholderTexture2D_8hul8")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 8)
 
-[node name="@Sprite2D@155249" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21090" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_wrlx7")
 position = Vector2(280, 136)
@@ -5173,7 +5182,7 @@ texture = SubResource("PlaceholderTexture2D_3ycar")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(17, 8)
 
-[node name="@Sprite2D@155251" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21092" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_2xqhf")
 position = Vector2(296, 136)
@@ -5181,7 +5190,7 @@ texture = SubResource("PlaceholderTexture2D_gh58d")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 8)
 
-[node name="@Sprite2D@155253" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21094" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lsgol")
 position = Vector2(8, 152)
@@ -5189,7 +5198,7 @@ texture = SubResource("PlaceholderTexture2D_b47tg")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 9)
 
-[node name="@Sprite2D@155255" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21096" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_reqt2")
 position = Vector2(24, 152)
@@ -5199,7 +5208,7 @@ group_id = 36
 cell_type = 1
 world_grid_pos = Vector2i(1, 9)
 
-[node name="@Sprite2D@155257" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21098" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_en10d")
 position = Vector2(40, 152)
@@ -5207,7 +5216,7 @@ texture = SubResource("PlaceholderTexture2D_itiqp")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 9)
 
-[node name="@Sprite2D@155259" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21100" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_6d7s3")
 position = Vector2(56, 152)
@@ -5217,7 +5226,7 @@ group_id = 37
 cell_type = 1
 world_grid_pos = Vector2i(3, 9)
 
-[node name="@Sprite2D@155261" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21102" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_kx5i8")
 position = Vector2(72, 152)
@@ -5225,7 +5234,7 @@ texture = SubResource("PlaceholderTexture2D_jr83n")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 9)
 
-[node name="@Sprite2D@155263" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21104" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_cdt7j")
 position = Vector2(88, 152)
@@ -5235,7 +5244,7 @@ group_id = 38
 cell_type = 1
 world_grid_pos = Vector2i(5, 9)
 
-[node name="@Sprite2D@155265" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21106" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_dqwgc")
 position = Vector2(104, 152)
@@ -5243,7 +5252,7 @@ texture = SubResource("PlaceholderTexture2D_55nb8")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 9)
 
-[node name="@Sprite2D@155267" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21108" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_soe3d")
 position = Vector2(120, 152)
@@ -5253,7 +5262,7 @@ group_id = 39
 cell_type = 1
 world_grid_pos = Vector2i(7, 9)
 
-[node name="@Sprite2D@155269" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21110" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ng5bw")
 position = Vector2(136, 152)
@@ -5261,7 +5270,7 @@ texture = SubResource("PlaceholderTexture2D_de66u")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 9)
 
-[node name="@Sprite2D@155271" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21112" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_rcop5")
 position = Vector2(152, 152)
@@ -5271,7 +5280,7 @@ group_id = 40
 cell_type = 1
 world_grid_pos = Vector2i(9, 9)
 
-[node name="@Sprite2D@155273" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21114" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_jwvai")
 position = Vector2(168, 152)
@@ -5279,7 +5288,7 @@ texture = SubResource("PlaceholderTexture2D_n57c1")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 9)
 
-[node name="@Sprite2D@155275" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21116" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3mtw5")
 position = Vector2(184, 152)
@@ -5289,7 +5298,7 @@ group_id = 41
 cell_type = 1
 world_grid_pos = Vector2i(11, 9)
 
-[node name="@Sprite2D@155277" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21118" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_leiyi")
 position = Vector2(200, 152)
@@ -5297,7 +5306,7 @@ texture = SubResource("PlaceholderTexture2D_2qa62")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 9)
 
-[node name="@Sprite2D@155279" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21120" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_jg8mv")
 position = Vector2(216, 152)
@@ -5307,7 +5316,7 @@ group_id = 42
 cell_type = 1
 world_grid_pos = Vector2i(13, 9)
 
-[node name="@Sprite2D@155281" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21122" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_nucor")
 position = Vector2(232, 152)
@@ -5315,7 +5324,7 @@ texture = SubResource("PlaceholderTexture2D_5v2qq")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 9)
 
-[node name="@Sprite2D@155283" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21124" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_i8sl6")
 position = Vector2(248, 152)
@@ -5325,7 +5334,7 @@ group_id = 43
 cell_type = 1
 world_grid_pos = Vector2i(15, 9)
 
-[node name="@Sprite2D@155285" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21126" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_fotxe")
 position = Vector2(264, 152)
@@ -5333,7 +5342,7 @@ texture = SubResource("PlaceholderTexture2D_pwx8p")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 9)
 
-[node name="@Sprite2D@155287" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21128" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_utdes")
 position = Vector2(280, 152)
@@ -5343,7 +5352,7 @@ group_id = 44
 cell_type = 1
 world_grid_pos = Vector2i(17, 9)
 
-[node name="@Sprite2D@155289" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21130" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_70ap2")
 position = Vector2(296, 152)
@@ -5351,7 +5360,7 @@ texture = SubResource("PlaceholderTexture2D_wxtno")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 9)
 
-[node name="@Sprite2D@155291" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21132" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ngaxs")
 position = Vector2(8, 168)
@@ -5359,7 +5368,7 @@ texture = SubResource("PlaceholderTexture2D_2ewg8")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 10)
 
-[node name="@Sprite2D@155293" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21134" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_6ykog")
 position = Vector2(24, 168)
@@ -5367,7 +5376,7 @@ texture = SubResource("PlaceholderTexture2D_alr01")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 10)
 
-[node name="@Sprite2D@155295" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21136" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_pisnn")
 position = Vector2(40, 168)
@@ -5375,7 +5384,7 @@ texture = SubResource("PlaceholderTexture2D_arobg")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 10)
 
-[node name="@Sprite2D@155297" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21138" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_u582o")
 position = Vector2(56, 168)
@@ -5383,7 +5392,7 @@ texture = SubResource("PlaceholderTexture2D_3fglp")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 10)
 
-[node name="@Sprite2D@155299" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21140" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_vjddv")
 position = Vector2(72, 168)
@@ -5391,7 +5400,7 @@ texture = SubResource("PlaceholderTexture2D_m5oqw")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 10)
 
-[node name="@Sprite2D@155301" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21142" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ny64a")
 position = Vector2(88, 168)
@@ -5399,7 +5408,7 @@ texture = SubResource("PlaceholderTexture2D_ngla5")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 10)
 
-[node name="@Sprite2D@155303" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21144" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_u0mvw")
 position = Vector2(104, 168)
@@ -5407,7 +5416,7 @@ texture = SubResource("PlaceholderTexture2D_tyt6s")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 10)
 
-[node name="@Sprite2D@155305" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21146" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_8u43j")
 position = Vector2(120, 168)
@@ -5415,7 +5424,7 @@ texture = SubResource("PlaceholderTexture2D_5snlp")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 10)
 
-[node name="@Sprite2D@155307" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21148" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_xfwtc")
 position = Vector2(136, 168)
@@ -5423,7 +5432,7 @@ texture = SubResource("PlaceholderTexture2D_5xi42")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 10)
 
-[node name="@Sprite2D@155309" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21150" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_y8rri")
 position = Vector2(152, 168)
@@ -5431,7 +5440,7 @@ texture = SubResource("PlaceholderTexture2D_xmqc7")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 10)
 
-[node name="@Sprite2D@155311" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21152" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_jn3er")
 position = Vector2(168, 168)
@@ -5439,7 +5448,7 @@ texture = SubResource("PlaceholderTexture2D_dkih0")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 10)
 
-[node name="@Sprite2D@155313" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21154" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_1jwik")
 position = Vector2(184, 168)
@@ -5447,7 +5456,7 @@ texture = SubResource("PlaceholderTexture2D_rndb2")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(11, 10)
 
-[node name="@Sprite2D@155315" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21156" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_1xf24")
 position = Vector2(200, 168)
@@ -5455,7 +5464,7 @@ texture = SubResource("PlaceholderTexture2D_ss7qv")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 10)
 
-[node name="@Sprite2D@155317" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21158" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_yur76")
 position = Vector2(216, 168)
@@ -5463,7 +5472,7 @@ texture = SubResource("PlaceholderTexture2D_d58rl")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(13, 10)
 
-[node name="@Sprite2D@155319" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21160" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_s3r4b")
 position = Vector2(232, 168)
@@ -5471,7 +5480,7 @@ texture = SubResource("PlaceholderTexture2D_jj3cr")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 10)
 
-[node name="@Sprite2D@155321" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21162" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lo13l")
 position = Vector2(248, 168)
@@ -5479,7 +5488,7 @@ texture = SubResource("PlaceholderTexture2D_kb5mi")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(15, 10)
 
-[node name="@Sprite2D@155323" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21164" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_74xwx")
 position = Vector2(264, 168)
@@ -5487,7 +5496,7 @@ texture = SubResource("PlaceholderTexture2D_3lvka")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 10)
 
-[node name="@Sprite2D@155325" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21166" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_55vx3")
 position = Vector2(280, 168)
@@ -5495,7 +5504,7 @@ texture = SubResource("PlaceholderTexture2D_savhv")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(17, 10)
 
-[node name="@Sprite2D@155327" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21168" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_jbxy5")
 position = Vector2(296, 168)
@@ -5503,7 +5512,7 @@ texture = SubResource("PlaceholderTexture2D_en603")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 10)
 
-[node name="@Sprite2D@155329" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21170" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ggma4")
 position = Vector2(8, 184)
@@ -5511,7 +5520,7 @@ texture = SubResource("PlaceholderTexture2D_5oeok")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 11)
 
-[node name="@Sprite2D@155331" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21172" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_oy5s7")
 position = Vector2(24, 184)
@@ -5521,7 +5530,7 @@ group_id = 45
 cell_type = 1
 world_grid_pos = Vector2i(1, 11)
 
-[node name="@Sprite2D@155333" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21174" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_pbhol")
 position = Vector2(40, 184)
@@ -5529,7 +5538,7 @@ texture = SubResource("PlaceholderTexture2D_j1uew")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 11)
 
-[node name="@Sprite2D@155335" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21176" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_e6oh3")
 position = Vector2(56, 184)
@@ -5539,7 +5548,7 @@ group_id = 46
 cell_type = 1
 world_grid_pos = Vector2i(3, 11)
 
-[node name="@Sprite2D@155337" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21178" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_rs73j")
 position = Vector2(72, 184)
@@ -5547,7 +5556,7 @@ texture = SubResource("PlaceholderTexture2D_pjyn8")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 11)
 
-[node name="@Sprite2D@155339" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21180" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_sc6qg")
 position = Vector2(88, 184)
@@ -5557,7 +5566,7 @@ group_id = 47
 cell_type = 1
 world_grid_pos = Vector2i(5, 11)
 
-[node name="@Sprite2D@155341" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21182" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_nsytd")
 position = Vector2(104, 184)
@@ -5565,7 +5574,7 @@ texture = SubResource("PlaceholderTexture2D_4jbet")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 11)
 
-[node name="@Sprite2D@155343" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21184" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ptgfj")
 position = Vector2(120, 184)
@@ -5575,7 +5584,7 @@ group_id = 48
 cell_type = 1
 world_grid_pos = Vector2i(7, 11)
 
-[node name="@Sprite2D@155345" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21186" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_wcit5")
 position = Vector2(136, 184)
@@ -5583,7 +5592,7 @@ texture = SubResource("PlaceholderTexture2D_bxq6h")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 11)
 
-[node name="@Sprite2D@155347" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21188" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_vwaqm")
 position = Vector2(152, 184)
@@ -5593,7 +5602,7 @@ group_id = 49
 cell_type = 1
 world_grid_pos = Vector2i(9, 11)
 
-[node name="@Sprite2D@155349" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21190" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_lvhv4")
 position = Vector2(168, 184)
@@ -5601,7 +5610,7 @@ texture = SubResource("PlaceholderTexture2D_8r67l")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 11)
 
-[node name="@Sprite2D@155351" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21192" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_2urjc")
 position = Vector2(184, 184)
@@ -5611,7 +5620,7 @@ group_id = 50
 cell_type = 1
 world_grid_pos = Vector2i(11, 11)
 
-[node name="@Sprite2D@155353" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21194" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_uhgiq")
 position = Vector2(200, 184)
@@ -5619,7 +5628,7 @@ texture = SubResource("PlaceholderTexture2D_yxgp1")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 11)
 
-[node name="@Sprite2D@155355" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21196" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_b0h37")
 position = Vector2(216, 184)
@@ -5629,7 +5638,7 @@ group_id = 51
 cell_type = 1
 world_grid_pos = Vector2i(13, 11)
 
-[node name="@Sprite2D@155357" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21198" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_h4qgc")
 position = Vector2(232, 184)
@@ -5637,7 +5646,7 @@ texture = SubResource("PlaceholderTexture2D_7urk1")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 11)
 
-[node name="@Sprite2D@155359" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21200" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ucqmi")
 position = Vector2(248, 184)
@@ -5647,7 +5656,7 @@ group_id = 52
 cell_type = 1
 world_grid_pos = Vector2i(15, 11)
 
-[node name="@Sprite2D@155361" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21202" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_aeunt")
 position = Vector2(264, 184)
@@ -5655,7 +5664,7 @@ texture = SubResource("PlaceholderTexture2D_2vixh")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 11)
 
-[node name="@Sprite2D@155363" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21204" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_cub08")
 position = Vector2(280, 184)
@@ -5665,7 +5674,7 @@ group_id = 53
 cell_type = 1
 world_grid_pos = Vector2i(17, 11)
 
-[node name="@Sprite2D@155365" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21206" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ifpjo")
 position = Vector2(296, 184)
@@ -5673,7 +5682,7 @@ texture = SubResource("PlaceholderTexture2D_vqlei")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 11)
 
-[node name="@Sprite2D@155367" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21208" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_wkscf")
 position = Vector2(8, 200)
@@ -5681,7 +5690,7 @@ texture = SubResource("PlaceholderTexture2D_6nhw6")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 12)
 
-[node name="@Sprite2D@155369" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21210" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_i5bwh")
 position = Vector2(24, 200)
@@ -5689,7 +5698,7 @@ texture = SubResource("PlaceholderTexture2D_e578j")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 12)
 
-[node name="@Sprite2D@155371" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21212" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_faa88")
 position = Vector2(40, 200)
@@ -5697,7 +5706,7 @@ texture = SubResource("PlaceholderTexture2D_7ecu0")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 12)
 
-[node name="@Sprite2D@155373" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21214" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_d2axs")
 position = Vector2(56, 200)
@@ -5705,7 +5714,7 @@ texture = SubResource("PlaceholderTexture2D_b42k4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 12)
 
-[node name="@Sprite2D@155375" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21216" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_biucb")
 position = Vector2(72, 200)
@@ -5713,7 +5722,7 @@ texture = SubResource("PlaceholderTexture2D_7hui1")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 12)
 
-[node name="@Sprite2D@155377" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21218" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_u4oai")
 position = Vector2(88, 200)
@@ -5721,7 +5730,7 @@ texture = SubResource("PlaceholderTexture2D_p5j8a")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 12)
 
-[node name="@Sprite2D@155379" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21220" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_xpt8i")
 position = Vector2(104, 200)
@@ -5729,7 +5738,7 @@ texture = SubResource("PlaceholderTexture2D_67qu0")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 12)
 
-[node name="@Sprite2D@155381" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21222" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ha20f")
 position = Vector2(120, 200)
@@ -5737,7 +5746,7 @@ texture = SubResource("PlaceholderTexture2D_ufk5a")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 12)
 
-[node name="@Sprite2D@155383" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21224" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3feo5")
 position = Vector2(136, 200)
@@ -5745,7 +5754,7 @@ texture = SubResource("PlaceholderTexture2D_crj5n")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 12)
 
-[node name="@Sprite2D@155385" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21226" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_beye8")
 position = Vector2(152, 200)
@@ -5753,7 +5762,7 @@ texture = SubResource("PlaceholderTexture2D_oc6q4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 12)
 
-[node name="@Sprite2D@155387" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21228" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_fqtxg")
 position = Vector2(168, 200)
@@ -5761,7 +5770,7 @@ texture = SubResource("PlaceholderTexture2D_m1j3n")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 12)
 
-[node name="@Sprite2D@155389" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21230" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_munjx")
 position = Vector2(184, 200)
@@ -5769,7 +5778,7 @@ texture = SubResource("PlaceholderTexture2D_0c736")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(11, 12)
 
-[node name="@Sprite2D@155391" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21232" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_5yqll")
 position = Vector2(200, 200)
@@ -5777,7 +5786,7 @@ texture = SubResource("PlaceholderTexture2D_gs1tb")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 12)
 
-[node name="@Sprite2D@155393" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21234" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_80pg2")
 position = Vector2(216, 200)
@@ -5785,7 +5794,7 @@ texture = SubResource("PlaceholderTexture2D_6as8y")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(13, 12)
 
-[node name="@Sprite2D@155395" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21236" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_c66l7")
 position = Vector2(232, 200)
@@ -5793,7 +5802,7 @@ texture = SubResource("PlaceholderTexture2D_0gpqt")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 12)
 
-[node name="@Sprite2D@155397" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21238" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_tpb3r")
 position = Vector2(248, 200)
@@ -5801,7 +5810,7 @@ texture = SubResource("PlaceholderTexture2D_hluwq")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(15, 12)
 
-[node name="@Sprite2D@155399" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21240" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_se0kr")
 position = Vector2(264, 200)
@@ -5809,7 +5818,7 @@ texture = SubResource("PlaceholderTexture2D_17alu")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 12)
 
-[node name="@Sprite2D@155401" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21242" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ehnvd")
 position = Vector2(280, 200)
@@ -5817,7 +5826,7 @@ texture = SubResource("PlaceholderTexture2D_ttir4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(17, 12)
 
-[node name="@Sprite2D@155403" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21244" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ate1u")
 position = Vector2(296, 200)
@@ -5825,7 +5834,7 @@ texture = SubResource("PlaceholderTexture2D_yo3lv")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 12)
 
-[node name="@Sprite2D@155405" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21246" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_v7ia2")
 position = Vector2(8, 216)
@@ -5833,7 +5842,7 @@ texture = SubResource("PlaceholderTexture2D_eg871")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 13)
 
-[node name="@Sprite2D@155407" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21248" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_m2nhd")
 position = Vector2(24, 216)
@@ -5843,7 +5852,7 @@ group_id = 54
 cell_type = 1
 world_grid_pos = Vector2i(1, 13)
 
-[node name="@Sprite2D@155409" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21250" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_fdyy2")
 position = Vector2(40, 216)
@@ -5851,7 +5860,7 @@ texture = SubResource("PlaceholderTexture2D_3ki5p")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 13)
 
-[node name="@Sprite2D@155411" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21252" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_c6pur")
 position = Vector2(56, 216)
@@ -5861,7 +5870,7 @@ group_id = 55
 cell_type = 1
 world_grid_pos = Vector2i(3, 13)
 
-[node name="@Sprite2D@155413" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21254" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_q1h7p")
 position = Vector2(72, 216)
@@ -5869,7 +5878,7 @@ texture = SubResource("PlaceholderTexture2D_kecn0")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 13)
 
-[node name="@Sprite2D@155415" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21256" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_dut7w")
 position = Vector2(88, 216)
@@ -5879,7 +5888,7 @@ group_id = 56
 cell_type = 1
 world_grid_pos = Vector2i(5, 13)
 
-[node name="@Sprite2D@155417" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21258" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_bihq4")
 position = Vector2(104, 216)
@@ -5887,7 +5896,7 @@ texture = SubResource("PlaceholderTexture2D_nyjpm")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 13)
 
-[node name="@Sprite2D@155419" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21260" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_k5rid")
 position = Vector2(120, 216)
@@ -5897,7 +5906,7 @@ group_id = 57
 cell_type = 1
 world_grid_pos = Vector2i(7, 13)
 
-[node name="@Sprite2D@155421" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21262" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_8ahk3")
 position = Vector2(136, 216)
@@ -5905,7 +5914,7 @@ texture = SubResource("PlaceholderTexture2D_enka6")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 13)
 
-[node name="@Sprite2D@155423" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21264" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_n68d5")
 position = Vector2(152, 216)
@@ -5915,7 +5924,7 @@ group_id = 58
 cell_type = 1
 world_grid_pos = Vector2i(9, 13)
 
-[node name="@Sprite2D@155425" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21266" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ks0of")
 position = Vector2(168, 216)
@@ -5923,7 +5932,7 @@ texture = SubResource("PlaceholderTexture2D_jdvsj")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 13)
 
-[node name="@Sprite2D@155427" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21268" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_i6etk")
 position = Vector2(184, 216)
@@ -5933,7 +5942,7 @@ group_id = 59
 cell_type = 1
 world_grid_pos = Vector2i(11, 13)
 
-[node name="@Sprite2D@155429" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21270" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_rc37r")
 position = Vector2(200, 216)
@@ -5941,7 +5950,7 @@ texture = SubResource("PlaceholderTexture2D_40slb")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 13)
 
-[node name="@Sprite2D@155431" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21272" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_rmrht")
 position = Vector2(216, 216)
@@ -5951,7 +5960,7 @@ group_id = 60
 cell_type = 1
 world_grid_pos = Vector2i(13, 13)
 
-[node name="@Sprite2D@155433" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21274" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_gh70m")
 position = Vector2(232, 216)
@@ -5959,7 +5968,7 @@ texture = SubResource("PlaceholderTexture2D_4ajtd")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 13)
 
-[node name="@Sprite2D@155435" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21276" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_k6mbo")
 position = Vector2(248, 216)
@@ -5969,7 +5978,7 @@ group_id = 61
 cell_type = 1
 world_grid_pos = Vector2i(15, 13)
 
-[node name="@Sprite2D@155437" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21278" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_wb8k2")
 position = Vector2(264, 216)
@@ -5977,7 +5986,7 @@ texture = SubResource("PlaceholderTexture2D_leq3o")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 13)
 
-[node name="@Sprite2D@155439" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21280" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ykwdy")
 position = Vector2(280, 216)
@@ -5987,7 +5996,7 @@ group_id = 62
 cell_type = 1
 world_grid_pos = Vector2i(17, 13)
 
-[node name="@Sprite2D@155441" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21282" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_44ic4")
 position = Vector2(296, 216)
@@ -5995,7 +6004,7 @@ texture = SubResource("PlaceholderTexture2D_4q5n2")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 13)
 
-[node name="@Sprite2D@155443" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21284" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_i74tv")
 position = Vector2(8, 232)
@@ -6003,7 +6012,7 @@ texture = SubResource("PlaceholderTexture2D_lsivy")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 14)
 
-[node name="@Sprite2D@155445" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21286" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_2yffu")
 position = Vector2(24, 232)
@@ -6011,7 +6020,7 @@ texture = SubResource("PlaceholderTexture2D_0bslp")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 14)
 
-[node name="@Sprite2D@155447" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21288" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_tfco0")
 position = Vector2(40, 232)
@@ -6019,7 +6028,7 @@ texture = SubResource("PlaceholderTexture2D_62jss")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 14)
 
-[node name="@Sprite2D@155449" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21290" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ba4ag")
 position = Vector2(56, 232)
@@ -6027,7 +6036,7 @@ texture = SubResource("PlaceholderTexture2D_l6avp")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 14)
 
-[node name="@Sprite2D@155451" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21292" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_26x10")
 position = Vector2(72, 232)
@@ -6035,7 +6044,7 @@ texture = SubResource("PlaceholderTexture2D_57jfw")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 14)
 
-[node name="@Sprite2D@155453" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21294" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_72cwu")
 position = Vector2(88, 232)
@@ -6043,7 +6052,7 @@ texture = SubResource("PlaceholderTexture2D_qydsj")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 14)
 
-[node name="@Sprite2D@155455" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21296" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_jj6t1")
 position = Vector2(104, 232)
@@ -6051,7 +6060,7 @@ texture = SubResource("PlaceholderTexture2D_a4bc4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 14)
 
-[node name="@Sprite2D@155457" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21298" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_q3yx1")
 position = Vector2(120, 232)
@@ -6059,7 +6068,7 @@ texture = SubResource("PlaceholderTexture2D_o6wga")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 14)
 
-[node name="@Sprite2D@155459" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21300" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_qqwwm")
 position = Vector2(136, 232)
@@ -6067,7 +6076,7 @@ texture = SubResource("PlaceholderTexture2D_hqatr")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 14)
 
-[node name="@Sprite2D@155461" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21302" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_wmeq3")
 position = Vector2(152, 232)
@@ -6075,7 +6084,7 @@ texture = SubResource("PlaceholderTexture2D_tw0tx")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 14)
 
-[node name="@Sprite2D@155463" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21304" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_kt1oj")
 position = Vector2(168, 232)
@@ -6083,7 +6092,7 @@ texture = SubResource("PlaceholderTexture2D_74w7s")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 14)
 
-[node name="@Sprite2D@155465" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21306" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_f5rb0")
 position = Vector2(184, 232)
@@ -6091,7 +6100,7 @@ texture = SubResource("PlaceholderTexture2D_ox26d")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(11, 14)
 
-[node name="@Sprite2D@155467" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21308" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_g8uxk")
 position = Vector2(200, 232)
@@ -6099,7 +6108,7 @@ texture = SubResource("PlaceholderTexture2D_m3ep2")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 14)
 
-[node name="@Sprite2D@155469" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21310" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_6sgxd")
 position = Vector2(216, 232)
@@ -6107,7 +6116,7 @@ texture = SubResource("PlaceholderTexture2D_aawa4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(13, 14)
 
-[node name="@Sprite2D@155471" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21312" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_u874a")
 position = Vector2(232, 232)
@@ -6115,7 +6124,7 @@ texture = SubResource("PlaceholderTexture2D_y5o7v")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 14)
 
-[node name="@Sprite2D@155473" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21314" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_88o5x")
 position = Vector2(248, 232)
@@ -6123,7 +6132,7 @@ texture = SubResource("PlaceholderTexture2D_mf1ky")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(15, 14)
 
-[node name="@Sprite2D@155475" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21316" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_uijgl")
 position = Vector2(264, 232)
@@ -6131,7 +6140,7 @@ texture = SubResource("PlaceholderTexture2D_7m7q7")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 14)
 
-[node name="@Sprite2D@155477" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21318" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_gngcn")
 position = Vector2(280, 232)
@@ -6139,7 +6148,7 @@ texture = SubResource("PlaceholderTexture2D_p1wn0")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(17, 14)
 
-[node name="@Sprite2D@155479" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21320" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_gkyqb")
 position = Vector2(296, 232)
@@ -6147,7 +6156,7 @@ texture = SubResource("PlaceholderTexture2D_0h644")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 14)
 
-[node name="@Sprite2D@155481" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21322" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_nnlcx")
 position = Vector2(8, 248)
@@ -6155,7 +6164,7 @@ texture = SubResource("PlaceholderTexture2D_cqm1y")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 15)
 
-[node name="@Sprite2D@155483" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21324" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_2tqla")
 position = Vector2(24, 248)
@@ -6165,7 +6174,7 @@ group_id = 63
 cell_type = 1
 world_grid_pos = Vector2i(1, 15)
 
-[node name="@Sprite2D@155485" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21326" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_6pl5b")
 position = Vector2(40, 248)
@@ -6173,7 +6182,7 @@ texture = SubResource("PlaceholderTexture2D_ktbic")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 15)
 
-[node name="@Sprite2D@155487" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21328" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_k6hjk")
 position = Vector2(56, 248)
@@ -6183,7 +6192,7 @@ group_id = 64
 cell_type = 1
 world_grid_pos = Vector2i(3, 15)
 
-[node name="@Sprite2D@155489" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21330" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_a5em6")
 position = Vector2(72, 248)
@@ -6191,7 +6200,7 @@ texture = SubResource("PlaceholderTexture2D_54cyh")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 15)
 
-[node name="@Sprite2D@155491" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21332" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_hi8gh")
 position = Vector2(88, 248)
@@ -6201,7 +6210,7 @@ group_id = 65
 cell_type = 1
 world_grid_pos = Vector2i(5, 15)
 
-[node name="@Sprite2D@155493" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21334" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_gydqs")
 position = Vector2(104, 248)
@@ -6209,7 +6218,7 @@ texture = SubResource("PlaceholderTexture2D_xywwj")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 15)
 
-[node name="@Sprite2D@155495" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21336" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_rjj6d")
 position = Vector2(120, 248)
@@ -6219,7 +6228,7 @@ group_id = 66
 cell_type = 1
 world_grid_pos = Vector2i(7, 15)
 
-[node name="@Sprite2D@155497" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21338" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_h5d07")
 position = Vector2(136, 248)
@@ -6227,7 +6236,7 @@ texture = SubResource("PlaceholderTexture2D_xsy64")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 15)
 
-[node name="@Sprite2D@155499" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21340" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_d4nll")
 position = Vector2(152, 248)
@@ -6237,7 +6246,7 @@ group_id = 67
 cell_type = 1
 world_grid_pos = Vector2i(9, 15)
 
-[node name="@Sprite2D@155501" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21342" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_anpwe")
 position = Vector2(168, 248)
@@ -6245,7 +6254,7 @@ texture = SubResource("PlaceholderTexture2D_obxnh")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 15)
 
-[node name="@Sprite2D@155503" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21344" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_f0oti")
 position = Vector2(184, 248)
@@ -6255,7 +6264,7 @@ group_id = 68
 cell_type = 1
 world_grid_pos = Vector2i(11, 15)
 
-[node name="@Sprite2D@155505" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21346" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_sl35p")
 position = Vector2(200, 248)
@@ -6263,7 +6272,7 @@ texture = SubResource("PlaceholderTexture2D_n1odq")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 15)
 
-[node name="@Sprite2D@155507" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21348" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_fo407")
 position = Vector2(216, 248)
@@ -6273,7 +6282,7 @@ group_id = 69
 cell_type = 1
 world_grid_pos = Vector2i(13, 15)
 
-[node name="@Sprite2D@155509" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21350" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3f2qq")
 position = Vector2(232, 248)
@@ -6281,7 +6290,7 @@ texture = SubResource("PlaceholderTexture2D_b68l2")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 15)
 
-[node name="@Sprite2D@155511" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21352" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_200gx")
 position = Vector2(248, 248)
@@ -6291,7 +6300,7 @@ group_id = 70
 cell_type = 1
 world_grid_pos = Vector2i(15, 15)
 
-[node name="@Sprite2D@155513" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21354" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3mdog")
 position = Vector2(264, 248)
@@ -6299,7 +6308,7 @@ texture = SubResource("PlaceholderTexture2D_ew65x")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 15)
 
-[node name="@Sprite2D@155515" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21356" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_awuj8")
 position = Vector2(280, 248)
@@ -6309,7 +6318,7 @@ group_id = 71
 cell_type = 1
 world_grid_pos = Vector2i(17, 15)
 
-[node name="@Sprite2D@155517" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21358" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_70xfq")
 position = Vector2(296, 248)
@@ -6317,7 +6326,7 @@ texture = SubResource("PlaceholderTexture2D_fx4xr")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 15)
 
-[node name="@Sprite2D@155519" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21360" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_uk7yh")
 position = Vector2(8, 264)
@@ -6325,7 +6334,7 @@ texture = SubResource("PlaceholderTexture2D_c1mnm")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 16)
 
-[node name="@Sprite2D@155521" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21362" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ue6pj")
 position = Vector2(24, 264)
@@ -6333,7 +6342,7 @@ texture = SubResource("PlaceholderTexture2D_63dix")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 16)
 
-[node name="@Sprite2D@155523" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21364" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_8lxsg")
 position = Vector2(40, 264)
@@ -6341,7 +6350,7 @@ texture = SubResource("PlaceholderTexture2D_ktcei")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 16)
 
-[node name="@Sprite2D@155525" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21366" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_d2qq6")
 position = Vector2(56, 264)
@@ -6349,7 +6358,7 @@ texture = SubResource("PlaceholderTexture2D_u2egf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 16)
 
-[node name="@Sprite2D@155527" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21368" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_23ow5")
 position = Vector2(72, 264)
@@ -6357,7 +6366,7 @@ texture = SubResource("PlaceholderTexture2D_rcjrr")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 16)
 
-[node name="@Sprite2D@155529" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21370" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_05ik4")
 position = Vector2(88, 264)
@@ -6365,7 +6374,7 @@ texture = SubResource("PlaceholderTexture2D_ndr0m")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 16)
 
-[node name="@Sprite2D@155531" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21372" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_nwbm4")
 position = Vector2(104, 264)
@@ -6373,7 +6382,7 @@ texture = SubResource("PlaceholderTexture2D_wypmm")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 16)
 
-[node name="@Sprite2D@155533" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21374" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_eetqm")
 position = Vector2(120, 264)
@@ -6381,7 +6390,7 @@ texture = SubResource("PlaceholderTexture2D_dpmr5")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 16)
 
-[node name="@Sprite2D@155535" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21376" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_bi3st")
 position = Vector2(136, 264)
@@ -6389,7 +6398,7 @@ texture = SubResource("PlaceholderTexture2D_vyhk3")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 16)
 
-[node name="@Sprite2D@155537" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21378" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_v26lf")
 position = Vector2(152, 264)
@@ -6397,7 +6406,7 @@ texture = SubResource("PlaceholderTexture2D_jxjxf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 16)
 
-[node name="@Sprite2D@155539" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21380" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_4h31o")
 position = Vector2(168, 264)
@@ -6405,7 +6414,7 @@ texture = SubResource("PlaceholderTexture2D_d85ig")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 16)
 
-[node name="@Sprite2D@155541" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21382" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ad3li")
 position = Vector2(184, 264)
@@ -6413,7 +6422,7 @@ texture = SubResource("PlaceholderTexture2D_cfy0f")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(11, 16)
 
-[node name="@Sprite2D@155543" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21384" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_a2t40")
 position = Vector2(200, 264)
@@ -6421,7 +6430,7 @@ texture = SubResource("PlaceholderTexture2D_j7l2w")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 16)
 
-[node name="@Sprite2D@155545" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21386" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_qn1ca")
 position = Vector2(216, 264)
@@ -6429,7 +6438,7 @@ texture = SubResource("PlaceholderTexture2D_p6q5j")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(13, 16)
 
-[node name="@Sprite2D@155547" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21388" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_325g2")
 position = Vector2(232, 264)
@@ -6437,7 +6446,7 @@ texture = SubResource("PlaceholderTexture2D_hrc5f")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 16)
 
-[node name="@Sprite2D@155549" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21390" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_f4rmg")
 position = Vector2(248, 264)
@@ -6445,7 +6454,7 @@ texture = SubResource("PlaceholderTexture2D_rg1yh")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(15, 16)
 
-[node name="@Sprite2D@155551" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21392" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_c35sg")
 position = Vector2(264, 264)
@@ -6453,7 +6462,7 @@ texture = SubResource("PlaceholderTexture2D_l6wjd")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 16)
 
-[node name="@Sprite2D@155553" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21394" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_xc5v1")
 position = Vector2(280, 264)
@@ -6461,7 +6470,7 @@ texture = SubResource("PlaceholderTexture2D_ed5wy")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(17, 16)
 
-[node name="@Sprite2D@155555" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21396" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_vxrom")
 position = Vector2(296, 264)
@@ -6469,7 +6478,7 @@ texture = SubResource("PlaceholderTexture2D_4eb2o")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 16)
 
-[node name="@Sprite2D@155557" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21398" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_7og44")
 position = Vector2(8, 280)
@@ -6477,7 +6486,7 @@ texture = SubResource("PlaceholderTexture2D_7kh7q")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 17)
 
-[node name="@Sprite2D@155559" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21400" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_xt8ew")
 position = Vector2(24, 280)
@@ -6487,7 +6496,7 @@ group_id = 72
 cell_type = 1
 world_grid_pos = Vector2i(1, 17)
 
-[node name="@Sprite2D@155561" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21402" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_53njw")
 position = Vector2(40, 280)
@@ -6495,7 +6504,7 @@ texture = SubResource("PlaceholderTexture2D_rggm4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 17)
 
-[node name="@Sprite2D@155563" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21404" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_d2wgb")
 position = Vector2(56, 280)
@@ -6505,7 +6514,7 @@ group_id = 73
 cell_type = 1
 world_grid_pos = Vector2i(3, 17)
 
-[node name="@Sprite2D@155565" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21406" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_8w75h")
 position = Vector2(72, 280)
@@ -6513,7 +6522,7 @@ texture = SubResource("PlaceholderTexture2D_feb08")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 17)
 
-[node name="@Sprite2D@155567" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21408" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ax8iw")
 position = Vector2(88, 280)
@@ -6523,7 +6532,7 @@ group_id = 74
 cell_type = 1
 world_grid_pos = Vector2i(5, 17)
 
-[node name="@Sprite2D@155569" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21410" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_kayeh")
 position = Vector2(104, 280)
@@ -6531,7 +6540,7 @@ texture = SubResource("PlaceholderTexture2D_uns3k")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 17)
 
-[node name="@Sprite2D@155571" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21412" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_hsile")
 position = Vector2(120, 280)
@@ -6541,7 +6550,7 @@ group_id = 75
 cell_type = 1
 world_grid_pos = Vector2i(7, 17)
 
-[node name="@Sprite2D@155573" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21414" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_qowe3")
 position = Vector2(136, 280)
@@ -6549,7 +6558,7 @@ texture = SubResource("PlaceholderTexture2D_r4e4p")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 17)
 
-[node name="@Sprite2D@155575" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21416" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_d55p7")
 position = Vector2(152, 280)
@@ -6559,7 +6568,7 @@ group_id = 76
 cell_type = 1
 world_grid_pos = Vector2i(9, 17)
 
-[node name="@Sprite2D@155577" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21418" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_rk56b")
 position = Vector2(168, 280)
@@ -6567,7 +6576,7 @@ texture = SubResource("PlaceholderTexture2D_e11dw")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 17)
 
-[node name="@Sprite2D@155579" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21420" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_8krvg")
 position = Vector2(184, 280)
@@ -6577,7 +6586,7 @@ group_id = 77
 cell_type = 1
 world_grid_pos = Vector2i(11, 17)
 
-[node name="@Sprite2D@155581" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21422" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_j0xsv")
 position = Vector2(200, 280)
@@ -6585,7 +6594,7 @@ texture = SubResource("PlaceholderTexture2D_alxsq")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 17)
 
-[node name="@Sprite2D@155583" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21424" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_pbhdf")
 position = Vector2(216, 280)
@@ -6595,7 +6604,7 @@ group_id = 78
 cell_type = 1
 world_grid_pos = Vector2i(13, 17)
 
-[node name="@Sprite2D@155585" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21426" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_xf3fx")
 position = Vector2(232, 280)
@@ -6603,7 +6612,7 @@ texture = SubResource("PlaceholderTexture2D_e412o")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 17)
 
-[node name="@Sprite2D@155587" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21428" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_01ywc")
 position = Vector2(248, 280)
@@ -6613,7 +6622,7 @@ group_id = 79
 cell_type = 1
 world_grid_pos = Vector2i(15, 17)
 
-[node name="@Sprite2D@155589" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21430" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_p7713")
 position = Vector2(264, 280)
@@ -6621,7 +6630,7 @@ texture = SubResource("PlaceholderTexture2D_qm4pb")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 17)
 
-[node name="@Sprite2D@155591" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21432" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_i3ie5")
 position = Vector2(280, 280)
@@ -6631,7 +6640,7 @@ group_id = 80
 cell_type = 1
 world_grid_pos = Vector2i(17, 17)
 
-[node name="@Sprite2D@155593" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21434" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_5q1gm")
 position = Vector2(296, 280)
@@ -6639,7 +6648,7 @@ texture = SubResource("PlaceholderTexture2D_me47i")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(18, 17)
 
-[node name="@Sprite2D@155595" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21436" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_05c8d")
 position = Vector2(8, 296)
@@ -6647,7 +6656,7 @@ texture = SubResource("PlaceholderTexture2D_77xwq")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(0, 18)
 
-[node name="@Sprite2D@155597" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21438" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3dpax")
 position = Vector2(24, 296)
@@ -6655,7 +6664,7 @@ texture = SubResource("PlaceholderTexture2D_ersek")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(1, 18)
 
-[node name="@Sprite2D@155599" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21440" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_0tnu1")
 position = Vector2(40, 296)
@@ -6663,7 +6672,7 @@ texture = SubResource("PlaceholderTexture2D_71lc0")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(2, 18)
 
-[node name="@Sprite2D@155601" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21442" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_iylnr")
 position = Vector2(56, 296)
@@ -6671,7 +6680,7 @@ texture = SubResource("PlaceholderTexture2D_bpkt1")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(3, 18)
 
-[node name="@Sprite2D@155603" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21444" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_v6jiu")
 position = Vector2(72, 296)
@@ -6679,7 +6688,7 @@ texture = SubResource("PlaceholderTexture2D_t2mdb")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(4, 18)
 
-[node name="@Sprite2D@155605" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21446" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_bawhh")
 position = Vector2(88, 296)
@@ -6687,7 +6696,7 @@ texture = SubResource("PlaceholderTexture2D_7r148")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(5, 18)
 
-[node name="@Sprite2D@155607" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21448" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_wl3pr")
 position = Vector2(104, 296)
@@ -6695,7 +6704,7 @@ texture = SubResource("PlaceholderTexture2D_r0iwl")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(6, 18)
 
-[node name="@Sprite2D@155609" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21450" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_jrtnu")
 position = Vector2(120, 296)
@@ -6703,7 +6712,7 @@ texture = SubResource("PlaceholderTexture2D_ylm2m")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(7, 18)
 
-[node name="@Sprite2D@155611" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21452" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_hyobp")
 position = Vector2(136, 296)
@@ -6711,7 +6720,7 @@ texture = SubResource("PlaceholderTexture2D_ltwli")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(8, 18)
 
-[node name="@Sprite2D@155613" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21454" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ctfdf")
 position = Vector2(152, 296)
@@ -6719,7 +6728,7 @@ texture = SubResource("PlaceholderTexture2D_ksv1e")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(9, 18)
 
-[node name="@Sprite2D@155615" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21456" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_g3gf1")
 position = Vector2(168, 296)
@@ -6727,7 +6736,7 @@ texture = SubResource("PlaceholderTexture2D_5r8mo")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(10, 18)
 
-[node name="@Sprite2D@155617" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21458" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_hbki3")
 position = Vector2(184, 296)
@@ -6735,7 +6744,7 @@ texture = SubResource("PlaceholderTexture2D_d6eu8")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(11, 18)
 
-[node name="@Sprite2D@155619" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21460" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_tleym")
 position = Vector2(200, 296)
@@ -6743,7 +6752,7 @@ texture = SubResource("PlaceholderTexture2D_v6pxc")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(12, 18)
 
-[node name="@Sprite2D@155621" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21462" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_1cy08")
 position = Vector2(216, 296)
@@ -6751,7 +6760,7 @@ texture = SubResource("PlaceholderTexture2D_c24mw")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(13, 18)
 
-[node name="@Sprite2D@155623" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21464" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_uskot")
 position = Vector2(232, 296)
@@ -6759,7 +6768,7 @@ texture = SubResource("PlaceholderTexture2D_nxfwf")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(14, 18)
 
-[node name="@Sprite2D@155625" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21466" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_umg3q")
 position = Vector2(248, 296)
@@ -6767,7 +6776,7 @@ texture = SubResource("PlaceholderTexture2D_3e8f4")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(15, 18)
 
-[node name="@Sprite2D@155627" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21468" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_ndb17")
 position = Vector2(264, 296)
@@ -6775,7 +6784,7 @@ texture = SubResource("PlaceholderTexture2D_4o4cy")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(16, 18)
 
-[node name="@Sprite2D@155629" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21470" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3b1g0")
 position = Vector2(280, 296)
@@ -6783,7 +6792,7 @@ texture = SubResource("PlaceholderTexture2D_hlooq")
 script = ExtResource("4_7qn0m")
 world_grid_pos = Vector2i(17, 18)
 
-[node name="@Sprite2D@155631" type="Sprite2D" parent="Tiles"]
+[node name="@Sprite2D@21472" type="Sprite2D" parent="Tiles"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_eteis")
 position = Vector2(296, 296)

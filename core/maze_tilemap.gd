@@ -18,7 +18,7 @@
 @onready var player := $Player as Sprite2D
 @onready var camera := $Player/Camera2D as Camera2D
 @onready var keys_label := $Player/Camera2D/UI/TopLeft/KeysLabel as Label
-@onready var playerpos_label := $Player/Camera2D/UI/TopLeft/PosLabel as Label
+@onready var torches_label := $Player/Camera2D/UI/TopLeft/TorchesLabel as Label
 @onready var time_label := $Player/Camera2D/UI/TopCenter/TimeLabel as Label
 @onready var audio_key_pickup := $AudioKeyPickup as AudioStreamPlayer2D
 @onready var audio_door_open := $AudioDoorOpen as AudioStreamPlayer2D
@@ -70,6 +70,7 @@ var keys_inventory: Array[int] = []
 var player_path: Array[int] = []
 var player_sight := 3
 var player_won := false
+var player_lost := false
 var start_node: CellsNode
 
 var metro_stations: Dictionary[int, MetroStation] = {}
@@ -85,6 +86,8 @@ var plus_sight_cell := -1
 var bottom_message_scene := preload("res://core/bottom_message.tscn")
 var _last_action_time := 0
 var time_to_clear := 60.0
+var torches := 0
+var player_visited_areas: Dictionary[int, bool] = {}
 
 
 func i_to_xy(i: int) -> Vector2i:
@@ -101,6 +104,9 @@ func _ready() -> void:
 	#seed(4)
 	await _reset_grid()
 	if !Engine.is_editor_hint():
+		var maze_seed := randi_range(0, 123456789)
+		seed(maze_seed)
+		print("MAZE GENERATION USING SEED ", maze_seed)
 		powerups.resize(ui_size / 4)
 		kruskal_forest()
 		fix_single_cell_nodes()
@@ -230,6 +236,7 @@ func _combine_cells_nodes(edge: Edge) -> void:
 			i_edge.b = cnb.id
 	
 	visual_tiles[edge.i].cell_type = TileSprite.CellType.JOINED_CELLS
+	edge.tile.group_id = edge.a
 
 func find_potential_kruskal_edge() -> Edge:
 	const max_tries := 3
@@ -313,6 +320,16 @@ func fix_single_cell_nodes() -> void:
 		var selected_edge: Edge = node_edges.pick_random()
 		_combine_cells_nodes(selected_edge)
 		draw_grid()
+
+func for_valid_tiles_in_range(start_pos: Vector2i, min_range: Vector2i, max_range: Vector2i, do: Callable) -> void:
+	for y in range(min_range.y, max_range.y + 1):
+		for x in range(min_range.x, max_range.x + 1):
+			var pos := start_pos + Vector2i(x, y)
+			var i := xy_to_i(pos)
+			if i < 0 || i >= visual_tiles.size():
+				continue
+			
+			do.call(pos, i)
 
 func generate_doors_and_keys() -> void:
 	var edge_dict: Dictionary[String, Edge] = {}
@@ -558,6 +575,9 @@ func _process(dt: float) -> void:
 	if Engine.is_editor_hint():
 		return
 
+	if player_won || player_lost:
+		return
+
 	time_to_clear = maxf(0, time_to_clear - dt)
 
 	var dir := get_movement_dir()
@@ -569,6 +589,10 @@ func _process(dt: float) -> void:
 	
 	if is_walkable(player_pos + dir):
 		player_pos += dir
+
+	var player_i := xy_to_i(player_pos)
+
+	player_visited_areas[visual_tiles[player_i].group_id] = true
 
 	if Input.is_action_just_pressed("metro1") && player_metros.size() >= 1:
 		player_pos = i_to_xy(player_metros[0].i)
@@ -586,9 +610,17 @@ func _process(dt: float) -> void:
 		player_pos = i_to_xy(player_metros[3].i)
 		audio_metro_use.play()
 
+	if Input.is_action_just_pressed("place_torch") && torches > 0 && is_walkable(player_pos):
+		torches -= 1
+		visual_tiles[player_i].cell_type = TileSprite.CellType.TORCH
+		for_valid_tiles_in_range(player_pos, Vector2i(-3, -3), Vector2i(3, 3), func(_pos: Vector2i, i: int) -> void:
+			var tile := visual_tiles[i]
+			if tile.is_wall() || player_visited_areas.has(tile.group_id):
+				visual_tiles[i].constant_light = true
+		)
+
 	player.position = player_pos * Vector2i(16, 16) + Vector2i(8, 8)
 
-	var player_i := xy_to_i(player_pos)
 	if visual_tiles[player_i] != null:
 		if visual_tiles[player_i].is_key():
 			keys_inventory.append(visual_tiles[player_i].key_number)
@@ -613,8 +645,16 @@ func _process(dt: float) -> void:
 			player_metros.append(metro_stations[player_i])
 			audio_metro_open.play()
 			new_message("Metro activated! Press {0} to warp to it.".format([player_metros.size()]), 0.5)
-			visual_tiles[player_i].constant_light = true
+			for_valid_tiles_in_range(player_pos, Vector2i(-2, -2), Vector2i(2, 2), func(_pos: Vector2i, i: int) -> void:
+				var tile := visual_tiles[i]
+				if tile.is_wall() || player_visited_areas.has(tile.group_id):
+					visual_tiles[i].constant_light = true
+			)
 			
+	var lose_condition := time_to_clear < 0.01
+	if lose_condition && !player_lost:
+		player_lost = true
+		new_message("You lost...")
 	var win_condition: bool = (visual_tiles[player_i] != null && visual_tiles[player_i].group_id != -1 && visual_tiles[player_i].group_id == player_path.back())
 	if win_condition && !player_won:
 		player_won = true
@@ -629,7 +669,7 @@ func _process(dt: float) -> void:
 		floodfill_sight(player_i, player_sight)
 		
 	keys_label.text = ",".join(keys_inventory.map(str))
-	playerpos_label.text = str(player_pos)
+	torches_label.text = str(torches)
 	time_label.text = "{0}s".format([str(snappedf(time_to_clear, 0.1))])
 
 	# if dir != Vector2i.ZERO:

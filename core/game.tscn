@@ -58,32 +58,28 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/Continue"]
+[node name="PowerUps" type="VBoxContainer" parent="UI/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 40
+theme_override_constants/separation = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/Continue/HBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/MarginContainer/PowerUps"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
 
-[node name="Label2" type="Label" parent="UI/MarginContainer/Continue/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="UI/MarginContainer/PowerUps/HBoxContainer2"]
 texture_filter = 1
 layout_mode = 2
-text = "Next maze"
+text = "Money left:"
 label_settings = ExtResource("2_5sg27")
 
-[node name="ContinueButton" type="Button" parent="UI/MarginContainer/Continue/HBoxContainer/VBoxContainer"]
+[node name="MoneyLabel" type="Label" parent="UI/MarginContainer/PowerUps/HBoxContainer2"]
 texture_filter = 1
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_8xnxh")
-text = "Continue"
-
-[node name="PowerUps" type="VBoxContainer" parent="UI/MarginContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+text = "$10"
+label_settings = ExtResource("2_5sg27")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/PowerUps"]
 layout_mode = 2
@@ -97,7 +93,7 @@ layout_mode = 2
 [node name="Pup1Label" type="Label" parent="UI/MarginContainer/PowerUps/HBoxContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-text = "Powerup 1"
+text = "Time +10s"
 label_settings = ExtResource("2_5sg27")
 
 [node name="Pup1Button" type="Button" parent="UI/MarginContainer/PowerUps/HBoxContainer/VBoxContainer"]
@@ -112,7 +108,7 @@ layout_mode = 2
 [node name="Pup2Label" type="Label" parent="UI/MarginContainer/PowerUps/HBoxContainer/VBoxContainer2"]
 texture_filter = 1
 layout_mode = 2
-text = "Powerup 2"
+text = "Vision +1"
 label_settings = ExtResource("2_5sg27")
 
 [node name="Pup2Button" type="Button" parent="UI/MarginContainer/PowerUps/HBoxContainer/VBoxContainer2"]
@@ -127,7 +123,7 @@ layout_mode = 2
 [node name="Pup3Label" type="Label" parent="UI/MarginContainer/PowerUps/HBoxContainer/VBoxContainer3"]
 texture_filter = 1
 layout_mode = 2
-text = "Powerup 3"
+text = "Torch +1"
 label_settings = ExtResource("2_5sg27")
 
 [node name="Pup3Button" type="Button" parent="UI/MarginContainer/PowerUps/HBoxContainer/VBoxContainer3"]
@@ -135,3 +131,24 @@ texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_8xnxh")
 text = "Buy"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UI/MarginContainer/PowerUps"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/PowerUps/HBoxContainer3"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="UI/MarginContainer/PowerUps/HBoxContainer3/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Next maze"
+label_settings = ExtResource("2_5sg27")
+
+[node name="ContinueButton" type="Button" parent="UI/MarginContainer/PowerUps/HBoxContainer3/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8xnxh")
+text = "Continue"
