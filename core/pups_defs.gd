@@ -30,7 +30,7 @@ static var POWERUPS: Array[Pup] = [
     Pup.new(
         Pup.Type.Torch,
         "+1 metro station",
-        [30, 100],
+        [10, 50],
         func(state: GameState) -> GameState:
             state.starting_metros += 1
             return state

@@ -81,12 +81,12 @@ enum PowerUp {
 	PlusSight
 }
 
-var powerups: Array[PowerUp] = [PowerUp.Metro, PowerUp.PlusSight, PowerUp.Metro, PowerUp.PlusSight, PowerUp.Metro, PowerUp.PlusSight]
 var plus_sight_cell := -1
 var bottom_message_scene := preload("res://core/bottom_message.tscn")
 var _last_action_time := 0
 var time_to_clear := 60.0
 var torches := 0
+var metros := 0
 var player_visited_areas: Dictionary[int, bool] = {}
 
 
@@ -107,7 +107,6 @@ func _ready() -> void:
 		var maze_seed := randi_range(0, 123456789)
 		seed(maze_seed)
 		print("MAZE GENERATION USING SEED ", maze_seed)
-		powerups.resize(ui_size / 4)
 		kruskal_forest()
 		fix_single_cell_nodes()
 		set_start_node()
@@ -331,6 +330,25 @@ func for_valid_tiles_in_range(start_pos: Vector2i, min_range: Vector2i, max_rang
 			
 			do.call(pos, i)
 
+func find_empty_cell_closest_to_pos(pos: int) -> int:
+	if pos < 0 || pos >= visual_tiles.size():
+		return -1
+	if visual_tiles[pos].cell_type == TileSprite.CellType.ORIG_CELL:
+		return pos
+
+	var nbor_array: Array[Vector2i] = [Vector2i(-1, -1), Vector2i(0, -1), Vector2i(1, -1), Vector2i(-1, 0), Vector2i(1, 0), Vector2i(-1, 1), Vector2(0, 1), Vector2i(1, 1)]
+	nbor_array.shuffle()
+	for i in range(0, 5):
+		for dir in nbor_array:
+			var n_pos := pos + dir.x * i + dir.y * size * i
+			if n_pos < 0 || n_pos >= visual_tiles.size():
+				continue
+			
+			if visual_tiles[n_pos].cell_type == TileSprite.CellType.ORIG_CELL:
+				return n_pos
+
+	return -1
+
 func generate_doors_and_keys() -> void:
 	var edge_dict: Dictionary[String, Edge] = {}
 	for edge in edges.values():
@@ -360,20 +378,15 @@ func generate_doors_and_keys() -> void:
 
 	for node_id in edges_by_node_id:
 		var node_edges := edges_by_node_id[node_id]
+		node_edges.shuffle()
 		if node_edges.size() == 1:
 			valid_edges[node_edges[0].id()] = node_edges[0]
 			continue
 
-		var tmp := node_edges.duplicate()
-		var randomized_edges: Array[Edge] = []
-		for i in range(0, tmp.size()):
-			var edge: Edge = tmp.pick_random()
-			tmp.erase(edge)
-			randomized_edges.append(edge)
 		var node := cells_nodes[node_id]
 		if node.cells.size() == 1:
 			var valid_edge: Edge
-			for edge: Edge in randomized_edges:
+			for edge: Edge in node_edges:
 				valid_edge = edge
 				var node_a := cells_nodes[edge.a]
 				var node_b := cells_nodes[edge.b]
@@ -387,9 +400,9 @@ func generate_doors_and_keys() -> void:
 				valid_edges.erase(edge.id())
 			continue
 
-		var max_edges := randomized_edges.size()
+		var max_edges := node_edges.size()
 		for i in range(max_edges * randf(), max_edges):
-			var valid_edge: Edge = randomized_edges[i]
+			var valid_edge: Edge = node_edges[i]
 			valid_edges[valid_edge.id()] = valid_edge
 
 	var estr := valid_edges.values().map(func(e: Edge) -> String: return e.id())
@@ -456,41 +469,18 @@ func generate_doors_and_keys() -> void:
 		visual_tiles[key_i].key_number = i
 		visual_tiles[key_i].cell_type = TileSprite.CellType.KEY
 
-	var next_powerup_node := player_path.size() / 4
-	var increment := (player_path.size() - next_powerup_node) / powerups.size()
-	print("Powerups starting from {0} with increment of {1}. Total area size {2}, powerups count {3}".format([next_powerup_node, increment, player_path.size(), powerups.size()]))
-	for powerup in powerups:
-		if next_powerup_node >= player_path.size():
-			return
-		var node_id := player_path[next_powerup_node]
-		var node := cells_nodes[node_id]
-		var safety := 3
-		while node.cells.size() == 1 && safety > 0:
-			next_powerup_node += 1
-			if next_powerup_node >= player_path.size():
-				return
-			node_id = player_path[next_powerup_node]
-			node = cells_nodes[node_id]
-			safety -= 1
-		var powerup_i: int = node.cells.keys().pick_random()
-		safety = 3
-		while visual_tiles[powerup_i].cell_type != TileSprite.CellType.ORIG_CELL && safety > 0:
-			powerup_i = node.cells.keys().pick_random()
-			safety -= 1
-		if safety == 0:
-			continue
-
-		if powerup == PowerUp.PlusSight:
-			visual_tiles[powerup_i].cell_type = TileSprite.CellType.PLUSSIGHT
-		elif powerup == PowerUp.Metro:
-			visual_tiles[powerup_i].cell_type = TileSprite.CellType.METRO
-			var station := MetroStation.new()
-			station.i = powerup_i
-			station.activated = false
-			metro_stations[powerup_i] = station
-
-		next_powerup_node += increment
-
+	@warning_ignore("integer_division")
+	var corner_areas: Array[Vector2i] = [Vector2i(size / 8, size / 8), Vector2i(size / 8, size / 8 * 7), Vector2i(size / 8 * 7, size / 8), Vector2i(size / 8 * 7, size / 8 * 7)]
+	corner_areas.shuffle()
+	for i in range(0, metros):
+		var area := corner_areas[i]
+		var area_i := xy_to_i(area)
+		var metro_pos := find_empty_cell_closest_to_pos(area_i)
+		visual_tiles[metro_pos].cell_type = TileSprite.CellType.METRO
+		var station := MetroStation.new()
+		station.i = metro_pos
+		station.activated = false
+		metro_stations[metro_pos] = station
 
 func is_walkable(xy: Vector2i) -> bool:
 	var i := xy_to_i(xy)

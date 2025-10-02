@@ -27,12 +27,12 @@ func _process(_delta: float) -> void:
 	if maze.player_won:
 		changing_maze = true
 		state.money += int(maze.time_to_clear)
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(5.0).timeout
 		maze.queue_free()
 		show_pups()
 	elif maze.player_lost:
 		changing_maze = true
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(5.0).timeout
 		maze.queue_free()
 		show_new_game()
 
@@ -56,11 +56,7 @@ func new_game() -> void:
 	seed(used_seed)
 	print("New game using seed ", used_seed)
 	new_game_ui.hide()
-	state.money = 0
-	state.difficulty = 0
-	state.starting_time = 0.0
-	state.starting_vision = 0
-	state.starting_torches = 2
+	state.reset()
 
 	new_maze()
 
@@ -116,7 +112,7 @@ func new_maze() -> void:
 	maze.player_sight += state.starting_vision
 	maze.time_to_clear += state.starting_time
 	maze.torches += state.starting_torches
-	print("torches: ", state.starting_torches)
+	maze.metros += state.starting_metros
 	
 	add_child(maze)
 	changing_maze = false
