@@ -14,9 +14,10 @@ class_name Game extends Node2D
 
 var maze_scene := preload("res://core/maze_tilemap.tscn")
 var maze: Maze
+var powerup_defs := preload("res://core/pups_defs.gd").POWERUPS
 
 var changing_maze := true
-var meta_powerups: Array[Pup] = preload("res://core/pups_defs.gd").POWERUPS
+var next_possible_pups: Array[Pup] = []
 var pup_costs := [10, 20, 30]
 var state := GameState.new()
 
@@ -27,12 +28,12 @@ func _process(_delta: float) -> void:
 	if maze.player_won:
 		changing_maze = true
 		state.money += int(maze.time_to_clear)
-		await get_tree().create_timer(5.0).timeout
+		await get_tree().create_timer(4.0).timeout
 		maze.queue_free()
 		show_pups()
 	elif maze.player_lost:
 		changing_maze = true
-		await get_tree().create_timer(5.0).timeout
+		await get_tree().create_timer(4.0).timeout
 		maze.queue_free()
 		show_new_game()
 
@@ -50,6 +51,14 @@ func show_new_game() -> void:
 	pups_ui.hide()
 	new_game_ui.show()
 
+func get_next_possible_pups() -> void:
+	next_possible_pups = []
+	for pup in powerup_defs:
+		if pup.passes_prerequisites(state):
+			next_possible_pups.append(pup)
+
+	next_possible_pups.shuffle()
+
 
 func new_game() -> void:
 	var used_seed := int(Time.get_unix_time_from_system())
@@ -58,6 +67,8 @@ func new_game() -> void:
 	new_game_ui.hide()
 	state.reset()
 
+	get_next_possible_pups()
+
 	new_maze()
 
 
@@ -65,27 +76,33 @@ func show_pups() -> void:
 	new_game_ui.hide()
 	pups_ui.show()
 
-	meta_powerups.shuffle()
+	get_next_possible_pups()
 
 	for i in range(0, 2):
-		pup_costs[i] = randi_range(meta_powerups[i].cost_range[0], meta_powerups[i].cost_range[1])
+		pup_costs[i] = randi_range(next_possible_pups[i].cost_range[0], next_possible_pups[i].cost_range[1])
 	
 	update_pups()
 
 func update_pups() -> void:
-	pup1_label.text = meta_powerups[0].shop_description
-	pup2_label.text = meta_powerups[1].shop_description
-	pup3_label.text = meta_powerups[2].shop_description
+	if next_possible_pups.size() >= 1:
+		pup1_label.text = next_possible_pups[0].shop_description
+		pup1_button.text = "Buy ({0}$)".format([pup_costs[0]])
+		pup1_button.disabled = pup_costs[0] > state.money || !next_possible_pups[0].passes_prerequisites(state)
+		pup1_label.show()
+		pup1_button.show()
+	if next_possible_pups.size() >= 2:
+		pup2_label.text = next_possible_pups[1].shop_description
+		pup2_button.text = "Buy ({0}$)".format([pup_costs[1]])
+		pup2_button.disabled = pup_costs[1] > state.money || !next_possible_pups[1].passes_prerequisites(state)
+		pup2_label.show()
+		pup2_button.show()
+	if next_possible_pups.size() >= 3:
+		pup3_label.text = next_possible_pups[2].shop_description
+		pup3_button.text = "Buy ({0}$)".format([pup_costs[2]])
+		pup3_button.disabled = pup_costs[2] > state.money || !next_possible_pups[2].passes_prerequisites(state)
+		pup3_label.show()
+		pup3_button.show()
 	
-	pup1_button.text = "Buy ({0}$)".format([pup_costs[0]])
-	pup1_button.disabled = pup_costs[0] > state.money
-
-	pup2_button.text = "Buy ({0}$)".format([pup_costs[1]])
-	pup2_button.disabled = pup_costs[1] > state.money
-
-	pup3_button.text = "Buy ({0}$)".format([pup_costs[2]])
-	pup3_button.disabled = pup_costs[2] > state.money
-
 	money_label.text = "{0}$".format([str(state.money)])
 
 
@@ -93,7 +110,7 @@ func pup_selected(index: int) -> void:
 	print("Selected powerup ", index)
 
 	state.money -= pup_costs[index]
-	state = meta_powerups[index].buy(state)
+	state = next_possible_pups[index].buy(state)
 
 	update_pups()
 

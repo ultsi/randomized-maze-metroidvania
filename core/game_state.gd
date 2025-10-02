@@ -1,6 +1,6 @@
 class_name GameState extends RefCounted
 
-const DIFFICULTY_LEVELS: Array[int] = [5, 7, 7, 9, 9, 11, 13, 15, 17]
+const DIFFICULTY_LEVELS: Array[int] = [5, 5, 5, 5, 9, 11, 13, 15, 17]
 
 var money := 0
 var difficulty := 0
