@@ -118,41 +118,41 @@ func _update() -> void:
 	position = world_grid_pos * Vector2i(16, 16) + Vector2i(8, 8)
 
 	shader.set_shader_parameter("tile_pos", get_cell_tile_for_type(cell_type))
-	shader.set_shader_parameter("tint_amount", 0.2)
+	shader.set_shader_parameter("tint_amount", 0.5 if cell_type == CellType.ORIG_CELL else 0.05)
 
 	var orig_color := colors[group_id % 50]
 	var color := orig_color
-	if player_vision < 4:
-		color = color
-		color.a = 1.0
-		modulate.a = color.a
-	elif player_vision < 6:
-		color = color * 0.5
-		color.a = 0.5
-		modulate.a = color.a
-	elif player_vision < 8:
-		color = color * 0.25
-		color.a = 0.25
-		modulate.a = color.a
-	elif player_vision < 10:
-		color = color * 0.125
-		color.a = 0.125
-		modulate.a = color.a
-	elif player_vision < 12:
-		color = color * 0.075
-		color.a = 0.075
-		modulate.a = color.a
-	else:
-		color = color * 0.0
-		color.a = 0.0
-		modulate.a = color.a
+	# if player_vision < 4:
+	# 	color = color
+	# 	color.a = 1.0
+	# 	modulate.a = color.a
+	# elif player_vision < 6:
+	# 	color = color * 0.5
+	# 	color.a = 0.5
+	# 	modulate.a = color.a
+	# elif player_vision < 8:
+	# 	color = color * 0.25
+	# 	color.a = 0.25
+	# 	modulate.a = color.a
+	# elif player_vision < 10:
+	# 	color = color * 0.125
+	# 	color.a = 0.125
+	# 	modulate.a = color.a
+	# elif player_vision < 12:
+	# 	color = color * 0.075
+	# 	color.a = 0.075
+	# 	modulate.a = color.a
+	# else:
+	# 	color = color * 0.0
+	# 	color.a = 0.0
+	# 	modulate.a = color.a
 
-	if constant_light:
-		color.a = 1.0
-		modulate.a = color.a
-		color.r = maxf(color.r, orig_color.r * 0.2)
-		color.g = maxf(color.g, orig_color.g * 0.2)
-		color.b = maxf(color.b, orig_color.b * 0.2)
+	# if constant_light:
+	# 	color.a = 1.0
+	# 	modulate.a = color.a
+	# 	color.r = maxf(color.r, orig_color.r * 0.2)
+	# 	color.g = maxf(color.g, orig_color.g * 0.2)
+	# 	color.b = maxf(color.b, orig_color.b * 0.2)
 
 	shader.set_shader_parameter("tint", color)
 

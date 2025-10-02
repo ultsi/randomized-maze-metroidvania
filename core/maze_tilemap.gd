@@ -622,7 +622,7 @@ func _process(dt: float) -> void:
 	if Input.is_action_just_pressed("place_torch") && torches > 0 && is_walkable(player_pos):
 		torches -= 1
 		visual_tiles[player_i].cell_type = TileSprite.CellType.TORCH
-		for_valid_tiles_in_range(player_pos, Vector2i(-3, -3), Vector2i(3, 3), func(_pos: Vector2i, i: int) -> void:
+		for_valid_tiles_in_range(player_pos, Vector2i(-2, -2), Vector2i(2, 2), func(_pos: Vector2i, i: int) -> void:
 			visual_tiles[i].constant_light = true
 		)
 
@@ -653,7 +653,7 @@ func _process(dt: float) -> void:
 			player_metros.append(metro_stations[player_i])
 			audio_metro_open.play()
 			new_message("Metro activated! Press {0} to warp to it.".format([player_metros.size()]), 0.5)
-			for_valid_tiles_in_range(player_pos, Vector2i(-2, -2), Vector2i(2, 2), func(_pos: Vector2i, i: int) -> void:
+			for_valid_tiles_in_range(player_pos, Vector2i(-3, -3), Vector2i(3, 3), func(_pos: Vector2i, i: int) -> void:
 				visual_tiles[i].constant_light = true
 			)
 			
@@ -666,7 +666,7 @@ func _process(dt: float) -> void:
 		player_won = true
 		new_message("You won!!!")
 	for tile_i in range(0, visual_tiles.size()):
-		visual_tiles[tile_i].player_vision = player_pos.distance_squared_to(i_to_xy(tile_i))
+		# visual_tiles[tile_i].player_vision = player_pos.distance_squared_to(i_to_xy(tile_i))
 		if player_won || visual_tiles[tile_i].constant_light:
 			visual_tiles[tile_i].show()
 		else:
