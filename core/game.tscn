@@ -1,6 +1,137 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr3v4b7uak06y"]
+[gd_scene load_steps=4 format=3 uid="uid://dr3v4b7uak06y"]
 
 [ext_resource type="Script" uid="uid://100bqo6qhuqj" path="res://core/game.gd" id="1_d3un6"]
+[ext_resource type="LabelSettings" uid="uid://jq562yjccjbf" path="res://core/message_label.tres" id="2_5sg27"]
+[ext_resource type="FontFile" uid="uid://crkugn6nm3qtn" path="res://materials/Super Mario World Text Box.ttf" id="3_8xnxh"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_d3un6")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="NewGame" type="VBoxContainer" parent="UI/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/NewGame"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/NewGame/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="UI/MarginContainer/NewGame/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "New Game"
+label_settings = ExtResource("2_5sg27")
+
+[node name="NewGameButton" type="Button" parent="UI/MarginContainer/NewGame/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8xnxh")
+text = "Start"
+
+[node name="Continue" type="VBoxContainer" parent="UI/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/Continue"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/Continue/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="UI/MarginContainer/Continue/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Next maze"
+label_settings = ExtResource("2_5sg27")
+
+[node name="ContinueButton" type="Button" parent="UI/MarginContainer/Continue/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8xnxh")
+text = "Continue"
+
+[node name="PowerUps" type="VBoxContainer" parent="UI/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/PowerUps"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/PowerUps/HBoxContainer"]
+layout_mode = 2
+
+[node name="Pup1Label" type="Label" parent="UI/MarginContainer/PowerUps/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "Powerup 1"
+label_settings = ExtResource("2_5sg27")
+
+[node name="Pup1Button" type="Button" parent="UI/MarginContainer/PowerUps/HBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8xnxh")
+text = "Buy"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/MarginContainer/PowerUps/HBoxContainer"]
+layout_mode = 2
+
+[node name="Pup2Label" type="Label" parent="UI/MarginContainer/PowerUps/HBoxContainer/VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+text = "Powerup 2"
+label_settings = ExtResource("2_5sg27")
+
+[node name="Pup2Button" type="Button" parent="UI/MarginContainer/PowerUps/HBoxContainer/VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8xnxh")
+text = "Buy"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="UI/MarginContainer/PowerUps/HBoxContainer"]
+layout_mode = 2
+
+[node name="Pup3Label" type="Label" parent="UI/MarginContainer/PowerUps/HBoxContainer/VBoxContainer3"]
+texture_filter = 1
+layout_mode = 2
+text = "Powerup 3"
+label_settings = ExtResource("2_5sg27")
+
+[node name="Pup3Button" type="Button" parent="UI/MarginContainer/PowerUps/HBoxContainer/VBoxContainer3"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8xnxh")
+text = "Buy"

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://clcuqcjl3lc54"]
+
+[ext_resource type="FontFile" uid="uid://crkugn6nm3qtn" path="res://materials/Super Mario World Text Box.ttf" id="1_p4dog"]
+
+[resource]
+default_font = ExtResource("1_p4dog")
+default_font_size = 8
