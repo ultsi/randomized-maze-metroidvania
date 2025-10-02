@@ -666,6 +666,7 @@ func _process(dt: float) -> void:
 		player_won = true
 		new_message("You won!!!")
 	for tile_i in range(0, visual_tiles.size()):
+		visual_tiles[tile_i].player_vision = player_pos.distance_squared_to(i_to_xy(tile_i))
 		if player_won || visual_tiles[tile_i].constant_light:
 			visual_tiles[tile_i].show()
 		else:

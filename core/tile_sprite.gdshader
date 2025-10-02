@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 uniform sampler2D atlas_texture : filter_nearest;
 uniform vec2 tile_pos = vec2(0.0);
-uniform vec3 tint : source_color;
+uniform vec4 tint : source_color;
 uniform float tint_amount : hint_range(0, 1, 0.02) = 0.0;
 
 const float atlas_size = 256.0;
@@ -15,7 +15,8 @@ void vertex() {
 void fragment() {
 	vec2 p = tile_size / atlas_size * tile_pos + UV * tile_size / atlas_size / 4.0;
 	COLOR = texture(atlas_texture, p);
-	COLOR.rgb = mix(COLOR.rgb, tint, tint_amount);
+	COLOR.rgb = mix(COLOR.rgb, tint.rgb, tint_amount);
+	COLOR.a = tint.a;
 }
 
 //void light() {

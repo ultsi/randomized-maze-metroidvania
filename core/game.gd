@@ -77,7 +77,7 @@ func show_pups() -> void:
 	pups_ui.show()
 
 	get_next_possible_pups()
-	for i in range(0, next_possible_pups.size()):
+	for i in range(0, mini(next_possible_pups.size(), pup_costs.size())):
 		pup_costs[i] = randi_range(next_possible_pups[i].cost_range[0], next_possible_pups[i].cost_range[1])
 	
 	update_pups()

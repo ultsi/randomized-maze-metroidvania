@@ -1,7 +1,7 @@
 @tool
 class_name TileSprite extends Sprite2D
 
-var colors = [
+const colors: Array[Color] = [
 	Color(1, 0, 0), Color(0, 1, 0), Color(0, 0, 1), Color(1, 1, 0), Color(1, 0, 1),
 	Color(0, 1, 1), Color(1, 0.5, 0), Color(0.5, 1, 0), Color(0, 1, 0.5), Color(0.5, 0, 1),
 	Color(1, 0, 0.5), Color(0.5, 1, 1), Color(1, 1, 0.5), Color(0.5, 0.5, 1), Color(1, 0.5, 1),
@@ -52,6 +52,10 @@ var label: Label
 var door_number := -1
 var key_number := -1
 var constant_light := false
+@export var player_vision := 0:
+	set(value):
+		player_vision = value
+		_update()
 
 static func get_cell_tile_for_type(type: CellType) -> Vector2i:
 	match type:
@@ -114,8 +118,43 @@ func _update() -> void:
 	position = world_grid_pos * Vector2i(16, 16) + Vector2i(8, 8)
 
 	shader.set_shader_parameter("tile_pos", get_cell_tile_for_type(cell_type))
-	shader.set_shader_parameter("tint", colors[group_id % 50])
-	shader.set_shader_parameter("tint_amount", 0.5 if cell_type == CellType.ORIG_CELL else 0.01)
+	shader.set_shader_parameter("tint_amount", 0.2)
+
+	var orig_color := colors[group_id % 50]
+	var color := orig_color
+	if player_vision < 4:
+		color = color
+		color.a = 1.0
+		modulate.a = color.a
+	elif player_vision < 6:
+		color = color * 0.5
+		color.a = 0.5
+		modulate.a = color.a
+	elif player_vision < 8:
+		color = color * 0.25
+		color.a = 0.25
+		modulate.a = color.a
+	elif player_vision < 10:
+		color = color * 0.125
+		color.a = 0.125
+		modulate.a = color.a
+	elif player_vision < 12:
+		color = color * 0.075
+		color.a = 0.075
+		modulate.a = color.a
+	else:
+		color = color * 0.0
+		color.a = 0.0
+		modulate.a = color.a
+
+	if constant_light:
+		color.a = 1.0
+		modulate.a = color.a
+		color.r = maxf(color.r, orig_color.r * 0.2)
+		color.g = maxf(color.g, orig_color.g * 0.2)
+		color.b = maxf(color.b, orig_color.b * 0.2)
+
+	shader.set_shader_parameter("tint", color)
 
 	if cell_type == CellType.KEY:
 		label.text = str(key_number)
