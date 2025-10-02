@@ -20,6 +20,7 @@
 @onready var keys_label := $Player/Camera2D/UI/TopLeft/KeysLabel as Label
 @onready var torches_label := $Player/Camera2D/UI/TopLeft/TorchesLabel as Label
 @onready var time_label := $Player/Camera2D/UI/TopCenter/TimeLabel as Label
+@onready var money_label := $Player/Camera2D/UI/TopRight/MoneyLabel as Label
 @onready var audio_key_pickup := $AudioKeyPickup as AudioStreamPlayer2D
 @onready var audio_door_open := $AudioDoorOpen as AudioStreamPlayer2D
 @onready var audio_break_wall_impact := $AudioBreakWallImpact as AudioStreamPlayer2D
@@ -27,6 +28,7 @@
 @onready var audio_metro_open := $AudioMetroOpen as AudioStreamPlayer2D
 @onready var audio_metro_use := $AudioMetroUse as AudioStreamPlayer2D
 @onready var audio_powerup_pickup := $AudioPowerupPickup as AudioStreamPlayer2D
+@onready var audio_money := $AudioMoney as AudioStreamPlayer2D
 
 var size := 9
 var size2 := size * size
@@ -88,6 +90,7 @@ var time_to_clear := 60.0
 var torches := 0
 var metros := 0
 var player_visited_areas: Dictionary[int, bool] = {}
+var visual_money := 0.0
 
 
 func i_to_xy(i: int) -> Vector2i:
@@ -561,11 +564,27 @@ func get_movement_dir() -> Vector2i:
 
 	return dir
 
+func _count_money() -> void:
+	if time_to_clear > 0.0:
+		time_to_clear = maxf(0.0, time_to_clear - 0.4)
+		visual_money += 0.4
+		if int(visual_money * 10) % 3 == 0:
+			audio_money.play()
+
 func _process(dt: float) -> void:
 	if Engine.is_editor_hint():
 		return
 
-	if player_won || player_lost:
+	keys_label.text = ",".join(keys_inventory.map(str))
+	torches_label.text = str(torches)
+	time_label.text = "{0}s".format([str(snappedf(time_to_clear, 0.1))])
+	money_label.text = "{0}$".format([str(roundi(visual_money))])
+
+	if player_won:
+		_count_money()
+		return
+
+	if player_lost:
 		return
 
 	time_to_clear = maxf(0, time_to_clear - dt)
@@ -604,9 +623,7 @@ func _process(dt: float) -> void:
 		torches -= 1
 		visual_tiles[player_i].cell_type = TileSprite.CellType.TORCH
 		for_valid_tiles_in_range(player_pos, Vector2i(-3, -3), Vector2i(3, 3), func(_pos: Vector2i, i: int) -> void:
-			var tile := visual_tiles[i]
-			if tile.is_wall() || player_visited_areas.has(tile.group_id):
-				visual_tiles[i].constant_light = true
+			visual_tiles[i].constant_light = true
 		)
 
 	player.position = player_pos * Vector2i(16, 16) + Vector2i(8, 8)
@@ -630,15 +647,14 @@ func _process(dt: float) -> void:
 			edges[player_i].is_one_way = false
 			audio_break_wall.play()
 			visual_tiles[player_i].cell_type = TileSprite.CellType.BROKEN_WALL
+			visual_money += 2
 		if visual_tiles[player_i].cell_type == TileSprite.CellType.METRO && !metro_stations[player_i].activated:
 			metro_stations[player_i].activated = true
 			player_metros.append(metro_stations[player_i])
 			audio_metro_open.play()
 			new_message("Metro activated! Press {0} to warp to it.".format([player_metros.size()]), 0.5)
 			for_valid_tiles_in_range(player_pos, Vector2i(-2, -2), Vector2i(2, 2), func(_pos: Vector2i, i: int) -> void:
-				var tile := visual_tiles[i]
-				if tile.is_wall() || player_visited_areas.has(tile.group_id):
-					visual_tiles[i].constant_light = true
+				visual_tiles[i].constant_light = true
 			)
 			
 	var lose_condition := time_to_clear < 0.01
@@ -657,10 +673,6 @@ func _process(dt: float) -> void:
 	
 	if !player_won:
 		floodfill_sight(player_i, player_sight)
-		
-	keys_label.text = ",".join(keys_inventory.map(str))
-	torches_label.text = str(torches)
-	time_label.text = "{0}s".format([str(snappedf(time_to_clear, 0.1))])
 
 	# if dir != Vector2i.ZERO:
 	# 	print(player_pos, visual_tiles[player_i].group_id)

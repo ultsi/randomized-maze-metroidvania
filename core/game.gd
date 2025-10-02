@@ -27,8 +27,8 @@ func _process(_delta: float) -> void:
 	
 	if maze.player_won:
 		changing_maze = true
-		state.money += int(maze.time_to_clear)
 		await get_tree().create_timer(4.0).timeout
+		state.money = roundi(maze.visual_money)
 		maze.queue_free()
 		show_pups()
 	elif maze.player_lost:
@@ -77,8 +77,7 @@ func show_pups() -> void:
 	pups_ui.show()
 
 	get_next_possible_pups()
-
-	for i in range(0, 2):
+	for i in range(0, next_possible_pups.size()):
 		pup_costs[i] = randi_range(next_possible_pups[i].cost_range[0], next_possible_pups[i].cost_range[1])
 	
 	update_pups()
@@ -112,6 +111,8 @@ func pup_selected(index: int) -> void:
 	state.money -= pup_costs[index]
 	state = next_possible_pups[index].buy(state)
 
+	pup_costs[index] = randi_range(next_possible_pups[index].cost_range[0], next_possible_pups[index].cost_range[1])
+
 	update_pups()
 
 func continue_pressed() -> void:
@@ -130,6 +131,7 @@ func new_maze() -> void:
 	maze.time_to_clear += state.starting_time
 	maze.torches += state.starting_torches
 	maze.metros += state.starting_metros
+	maze.visual_money = state.money
 	
 	add_child(maze)
 	changing_maze = false
