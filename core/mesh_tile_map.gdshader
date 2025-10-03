@@ -11,8 +11,8 @@ void vertex() {
 }
 
 void fragment() {
-	float x = COLOR.r * 255.0;
-	float y = COLOR.g * 255.0;
+	float x = COLOR.r * 16.0;
+	float y = COLOR.g * 16.0;
 	vec2 p = tile_size / atlas_size * vec2(x,y) + (1.0-UV) * tile_size / atlas_size;
 	COLOR = texture(atlas_texture, p);
 	//COLOR = color;

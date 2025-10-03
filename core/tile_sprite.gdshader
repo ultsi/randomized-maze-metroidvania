@@ -13,6 +13,7 @@ void vertex() {
 }
 
 void fragment() {
+
 	vec2 p = tile_size / atlas_size * tile_pos + UV * tile_size / atlas_size / 4.0;
 	COLOR = texture(atlas_texture, p);
 	COLOR.rgb = mix(COLOR.rgb, tint.rgb, tint_amount);

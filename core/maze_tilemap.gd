@@ -30,6 +30,7 @@
 @onready var audio_powerup_pickup := $AudioPowerupPickup as AudioStreamPlayer2D
 @onready var audio_money := $AudioMoney as AudioStreamPlayer2D
 @onready var audio_complete := $AudioComplete as AudioStreamPlayer2D
+@onready var mesh_tile_map := $MeshTileMap as MeshTileMap
 
 var size := 9
 var size2 := size * size
@@ -187,6 +188,8 @@ func _reset_grid() -> void:
 
 
 func draw_grid() -> void:
+	mesh_tile_map.wide = size
+	mesh_tile_map.reset()
 	for y in range(0, size):
 		for x in range(0, size):
 			var xy := Vector2i(x, y)
@@ -194,7 +197,9 @@ func draw_grid() -> void:
 			var type := visual_tiles[i].cell_type
 			var tile_sprite := visual_tiles[i]
 			tile_sprite.cell_type = type
+			mesh_tile_map.grid[i] = MeshTileMap.CellType.WALL if type == TileSprite.CellType.WALL else MeshTileMap.CellType.FLOOR
 
+	mesh_tile_map.draw_grid()
 
 func set_start_node() -> void:
 	if cells_nodes.size() < 3:
