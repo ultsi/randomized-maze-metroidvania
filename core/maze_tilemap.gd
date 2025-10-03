@@ -29,6 +29,7 @@
 @onready var audio_metro_use := $AudioMetroUse as AudioStreamPlayer2D
 @onready var audio_powerup_pickup := $AudioPowerupPickup as AudioStreamPlayer2D
 @onready var audio_money := $AudioMoney as AudioStreamPlayer2D
+@onready var audio_complete := $AudioComplete as AudioStreamPlayer2D
 
 var size := 9
 var size2 := size * size
@@ -327,6 +328,8 @@ func for_valid_tiles_in_range(start_pos: Vector2i, min_range: Vector2i, max_rang
 	for y in range(min_range.y, max_range.y + 1):
 		for x in range(min_range.x, max_range.x + 1):
 			var pos := start_pos + Vector2i(x, y)
+			if pos.x < 0 || pos.x >= size || pos.y < 0 || pos.y >= size:
+				continue
 			var i := xy_to_i(pos)
 			if i < 0 || i >= visual_tiles.size():
 				continue
@@ -564,12 +567,28 @@ func get_movement_dir() -> Vector2i:
 
 	return dir
 
+func _money_fx(money: float, pos := Vector2.ZERO) -> void:
+	audio_money.play()
+	var more_money := MoreMoney.new()
+	more_money.text = "+ {0}$".format([str(roundi(money))])
+	time_label.add_child(more_money)
+	if pos == Vector2.ZERO:
+		more_money.position += Vector2(0.0, 30.0)
+	else:
+		more_money.global_position = pos
+
 func _count_money() -> void:
 	if time_to_clear > 0.0:
 		time_to_clear = maxf(0.0, time_to_clear - 0.4)
 		visual_money += 0.4
 		if int(visual_money * 10) % 3 == 0:
-			audio_money.play()
+			_money_fx(1.0)
+		
+func win() -> void:
+	player_won = true
+	player_lost = false
+	audio_complete.play()
+	new_message("You won!!!")
 
 func _process(dt: float) -> void:
 	if Engine.is_editor_hint():
@@ -618,6 +637,9 @@ func _process(dt: float) -> void:
 	if Input.is_action_just_pressed("metro4") && player_metros.size() >= 4:
 		player_pos = i_to_xy(player_metros[3].i)
 		audio_metro_use.play()
+	
+	if Input.is_action_just_pressed("cheat"):
+		win()
 
 	if Input.is_action_just_pressed("place_torch") && torches > 0 && is_walkable(player_pos):
 		torches -= 1
@@ -647,7 +669,8 @@ func _process(dt: float) -> void:
 			edges[player_i].is_one_way = false
 			audio_break_wall.play()
 			visual_tiles[player_i].cell_type = TileSprite.CellType.BROKEN_WALL
-			visual_money += 2
+			visual_money += 5.0
+			_money_fx(5.0, visual_tiles[player_i].global_position)
 		if visual_tiles[player_i].cell_type == TileSprite.CellType.METRO && !metro_stations[player_i].activated:
 			metro_stations[player_i].activated = true
 			player_metros.append(metro_stations[player_i])
@@ -663,8 +686,7 @@ func _process(dt: float) -> void:
 		new_message("You lost...")
 	var win_condition: bool = (visual_tiles[player_i] != null && visual_tiles[player_i].group_id != -1 && visual_tiles[player_i].group_id == player_path.back())
 	if win_condition && !player_won:
-		player_won = true
-		new_message("You won!!!")
+		win()
 	for tile_i in range(0, visual_tiles.size()):
 		# visual_tiles[tile_i].player_vision = player_pos.distance_squared_to(i_to_xy(tile_i))
 		if player_won || visual_tiles[tile_i].constant_light:

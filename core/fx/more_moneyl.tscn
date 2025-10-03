@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://csmhvqs3myx2h"]
+
+[ext_resource type="LabelSettings" uid="uid://c7pqgwsacx353" path="res://core/more_money.tres" id="1_txrkq"]
+[ext_resource type="Script" uid="uid://fll1m5hn067s" path="res://core/fx/more_money.gd" id="2_noeji"]
+
+[node name="Label" type="Label"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+offset_left = -13650.903
+offset_top = 126754090.0
+offset_right = -13610.903
+offset_bottom = 126754110.0
+scale = Vector2(1e-05, 1e-05)
+text = "+2$"
+label_settings = ExtResource("1_txrkq")
+script = ExtResource("2_noeji")

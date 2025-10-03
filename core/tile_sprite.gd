@@ -60,19 +60,19 @@ var constant_light := false
 static func get_cell_tile_for_type(type: CellType) -> Vector2i:
 	match type:
 		CellType.WALL:
-			return Vector2i(1, 0)
+			return Vector2i(5, 6)
 		CellType.ORIG_CELL:
-			return Vector2i(0, 0)
+			return Vector2i(6, 7)
 		CellType.JOINED_CELLS:
-			return Vector2i(0, 1)
+			return Vector2i(6, 7)
 		CellType.DOOR:
 			return Vector2i(1, 1)
 		CellType.OPENED_DOOR:
 			return Vector2i(1, 2)
 		CellType.ONEWAY_WALL:
-			return Vector2i(0, 2)
+			return Vector2i(8, 5)
 		CellType.BROKEN_WALL:
-			return Vector2i(0, 3)
+			return Vector2i(8, 6)
 		CellType.KEY:
 			return Vector2i(2, 1)
 		CellType.PLUSSIGHT:
@@ -118,7 +118,7 @@ func _update() -> void:
 	position = world_grid_pos * Vector2i(16, 16) + Vector2i(8, 8)
 
 	shader.set_shader_parameter("tile_pos", get_cell_tile_for_type(cell_type))
-	shader.set_shader_parameter("tint_amount", 0.5 if cell_type == CellType.ORIG_CELL else 0.05)
+	shader.set_shader_parameter("tint_amount", 0.0 if cell_type == CellType.ORIG_CELL else 0.0)
 
 	var orig_color := colors[group_id % 50]
 	var color := orig_color
