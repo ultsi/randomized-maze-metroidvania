@@ -34,13 +34,11 @@
 
 var size := 9
 var size2 := size * size
-const WALL := 9
-const ORIG_CELL := 0
-const JOINED_CELLS := 1
 
 class CellsNode:
 	var id := 0
 	var cells: Dictionary[int, TileSprite] = {}
+	var tiles: Dictionary[int, Tile] = {}
 	var edges: Array[Edge] = []
 	var keys := []
 	var processed_step := 0
@@ -50,7 +48,8 @@ class Edge:
 	var b: int
 	var type := TileSprite.CellType.WALL
 	var dir: int = -1
-	var tile: TileSprite
+	var tile_sprite: TileSprite
+	var tile: Tile
 	var pos: Vector2i
 	var i: int
 	var is_one_way := false
@@ -67,6 +66,7 @@ class MetroStation:
 
 
 var visual_tiles: Array[TileSprite] = []
+var tiles: Array[Tile] = []
 var edges: Dictionary[int, Edge] = {}
 var cells_nodes: Dictionary[int, CellsNode] = {}
 var player_pos := Vector2i.ZERO
@@ -133,6 +133,7 @@ func _reset_grid() -> void:
 		return
 
 	visual_tiles.resize(size2)
+	tiles.resize(size2)
 
 	for child in tiles_parent.get_children():
 		#print("freeing child ", child)
@@ -150,17 +151,26 @@ func _reset_grid() -> void:
 			visual_tiles[i] = tile_sprite
 			tile_sprite.owner = self
 
+			var tile := Tile.new()
+			tile.type = Tile.WALL
+			tile.pos = xy
+			tile.pos_i = i
 			var type := TileSprite.CellType.WALL
 			if x % 2 == 1 && y % 2 == 1:
 				type = TileSprite.CellType.ORIG_CELL
+				tile.type = Tile.FLOOR
 
 				var cells_node := CellsNode.new()
 				cells_node.cells[i] = tile_sprite
+				cells_node.tiles[i] = tile
 				cells_node.id = cells_nodes.size()
 				cells_nodes[cells_node.id] = cells_node
 				tile_sprite.group_id = cells_node.id
 
+
+			tiles[i] = tile
 			tile_sprite.cell_type = type
+
 
 	for y in range(0, size):
 		for x in range(0, size):
@@ -170,7 +180,8 @@ func _reset_grid() -> void:
 				var i := xy_to_i(xy)
 				var tile_sprite := visual_tiles[i]
 				var edge := Edge.new()
-				edge.tile = tile_sprite
+				edge.tile_sprite = tile_sprite
+				edge.tile = tiles[i]
 				edge.pos = xy
 				edge.i = i
 				if y % 2 == 0:
@@ -195,9 +206,16 @@ func draw_grid() -> void:
 			var xy := Vector2i(x, y)
 			var i := xy_to_i(xy)
 			var type := visual_tiles[i].cell_type
+			var tile := tiles[i]
 			var tile_sprite := visual_tiles[i]
 			tile_sprite.cell_type = type
-			mesh_tile_map.grid[i] = MeshTileMap.CellType.WALL if type == TileSprite.CellType.WALL else MeshTileMap.CellType.FLOOR
+			mesh_tile_map.grid[i] = tile.type
+			
+			if !tile.is_wall():
+				var color := tile_sprite.colors[tile_sprite.group_id % 50]
+				mesh_tile_map.set_color(i, color)
+			else:
+				mesh_tile_map.set_color(i, Color8(46.0, 66.0, 91.0))
 
 	mesh_tile_map.draw_grid()
 
@@ -244,7 +262,7 @@ func _combine_cells_nodes(edge: Edge) -> void:
 			i_edge.b = cnb.id
 	
 	visual_tiles[edge.i].cell_type = TileSprite.CellType.JOINED_CELLS
-	edge.tile.group_id = edge.a
+	tiles[edge.i].type = Tile.FLOOR
 
 func find_potential_kruskal_edge() -> Edge:
 	const max_tries := 3
@@ -427,7 +445,9 @@ func generate_doors_and_keys() -> void:
 	edges_by_node_id.clear()
 	for edge: Edge in valid_edges.values():
 		edge.type = TileSprite.CellType.DOOR
-		edge.tile.cell_type = TileSprite.CellType.DOOR
+		edge.tile_sprite.cell_type = TileSprite.CellType.DOOR
+		edge.tile.type = Tile.FLOOR
+		edge.tile_sprite.group_id = edge.a
 		if edges_by_node_id.has(edge.a):
 			edges_by_node_id[edge.a].append(edge)
 		else:
@@ -454,15 +474,15 @@ func generate_doors_and_keys() -> void:
 			continue
 		handled_edges[edge.id()] = true
 		if visited_nodes.has(edge.a) && visited_nodes.has(edge.b):
-			edge.tile.door_number = -1
-			edge.tile.cell_type = TileSprite.CellType.WALL
+			edge.tile_sprite.door_number = -1
+			edge.tile_sprite.cell_type = TileSprite.CellType.WALL
 			edge.is_one_way = true
 			edge.dir = edge.b if player_path.find(edge.a) < player_path.find(edge.b) else edge.a
-			edge.tile.group_id = edge.dir
+			edge.tile_sprite.group_id = edge.dir
 		else:
-			edge.tile.door_number = door_number
+			edge.tile_sprite.door_number = door_number
 			door_number += 1
-			edge.tile.cell_type = TileSprite.CellType.DOOR
+			edge.tile_sprite.cell_type = TileSprite.CellType.DOOR
 
 		if !visited_nodes.has(edge.a):
 			if edges_by_node_id.has(edge.a):
@@ -493,6 +513,8 @@ func generate_doors_and_keys() -> void:
 		station.activated = false
 		metro_stations[metro_pos] = station
 
+	draw_grid()
+
 func is_walkable(xy: Vector2i) -> bool:
 	var i := xy_to_i(xy)
 	if i <= 0 || i > size2:
@@ -516,6 +538,11 @@ func floodfill_sight(pos: int, sight_left := 0, visited: Dictionary[int, bool] =
 
 	visited[pos] = true
 	visual_tiles[pos].show()
+	if !visual_tiles[pos].is_wall():
+		var color := visual_tiles[pos].colors[visual_tiles[pos].group_id % 50]
+		mesh_tile_map.set_color(pos, color)
+	else:
+		mesh_tile_map.set_color(pos, Color8(46.0, 66.0, 91.0))
 	var player_i := xy_to_i(player_pos)
 	var group_id := visual_tiles[player_i].group_id
 	if group_id >= 0 && edges.has(pos):
@@ -593,6 +620,7 @@ func win() -> void:
 	player_won = true
 	player_lost = false
 	audio_complete.play()
+	mesh_tile_map.shuffling = true
 	new_message("You won!!!")
 
 func _process(dt: float) -> void:
@@ -696,8 +724,10 @@ func _process(dt: float) -> void:
 		# visual_tiles[tile_i].player_vision = player_pos.distance_squared_to(i_to_xy(tile_i))
 		if player_won || visual_tiles[tile_i].constant_light:
 			visual_tiles[tile_i].show()
+			mesh_tile_map.set_color(tile_i, Color(1.0, 1.0, 1.0, 1.0))
 		else:
 			visual_tiles[tile_i].hide()
+			mesh_tile_map.set_color(tile_i, Color(1.0, 1.0, 1.0, 0.0))
 	
 	if !player_won:
 		floodfill_sight(player_i, player_sight)

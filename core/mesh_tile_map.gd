@@ -5,12 +5,6 @@ class_name MeshTileMap extends Node2D
 
 var multimesh: MultiMesh
 
-enum CellType {
-	ASD,
-	WALL,
-	FLOOR
-}
-
 class AtlasTiles:
 	const VERT := Vector2i(5, 6)
 	const HORIZ := Vector2i(6, 5)
@@ -24,16 +18,24 @@ class AtlasTiles:
 	const INNER_S := Vector2i(11, 5)
 	const CENTER := Vector2i(8, 3)
 
-var grid: Array[CellType] = [CellType.WALL, CellType.WALL, CellType.WALL, CellType.FLOOR, CellType.FLOOR, CellType.FLOOR, CellType.WALL, CellType.FLOOR, CellType.WALL]
+	const DOOR := Vector2i(7, 4)
+
+var grid: Array[Tile.Type] = []
 var grid_nbors: Array[int] = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 var cw_nbors: Array[Vector2i] = [
 	Vector2i(0, -1), Vector2i(1, -1), Vector2i(1, 0), Vector2i(1, 1), Vector2i(0, 1), Vector2i(-1, 1), Vector2(-1, 0), Vector2i(-1, -11)
 ]
+var shuffle_start := 0
+var fly_dir := Vector2.ONE
+@export var shuffling := false:
+	set(value):
+		shuffling = value
+		shuffle_start = Time.get_ticks_msec()
 
 func _ready() -> void:
 	reset()
 
-func calc_pos_nbors_mask(pos: Vector2i, match_type: CellType) -> int:
+func calc_pos_nbors_mask(pos: Vector2i, match_type: Tile.Type) -> int:
 	# clockwise
 	var mask := 0
 	for i in range(0, 8):
@@ -110,7 +112,7 @@ func get_wall_tile_for_pos(pos: int) -> Vector2i:
 	return Vector2i(5, 15)
 
 func get_tile_for_pos(pos: int) -> Vector2i:
-	if grid[pos] == CellType.WALL:
+	if grid[pos] == Tile.WALL:
 		return get_wall_tile_for_pos(pos)
 
 
@@ -124,8 +126,13 @@ func draw_grid() -> void:
 			var t2d := global_transform
 			t2d.origin += Vector2(16 * x, 16 * y) + Vector2(8, 8)
 			var tile := get_tile_for_pos(i)
+			var palette_idx := 0 if grid[i] == Tile.WALL else 1
 			multimesh.set_instance_transform_2d(i, t2d)
-			multimesh.set_instance_color(i, Color(tile.x / 16.0, tile.y / 16.0, 0, 1))
+			multimesh.set_instance_custom_data(i, Color(tile.x / 16.0, tile.y / 16.0, palette_idx, 1))
+			#multimesh.set_instance_color(i, Color(1.0, 1.0, 1.0, 1.0))
+
+func set_color(i: int, color: Color) -> void:
+	multimesh.set_instance_color(i, color)
 
 
 func reset() -> void:
@@ -142,3 +149,17 @@ func reset() -> void:
 	grid.resize(wide * wide)
 
 	draw_grid()
+
+func _process(delta: float) -> void:
+	if !shuffling:
+		return
+
+
+	for y in range(0, wide):
+		for x in range(0, wide):
+			var i := x + y * wide
+			var t2d := global_transform
+			var angle := i + Time.get_ticks_msec() / 500.0
+			var peak := 2
+			t2d.origin += Vector2(16 * x, 16 * y) + Vector2(8, 8) + Vector2(cos(angle), sin(angle)) * peak
+			multimesh.set_instance_transform_2d(i, t2d)
