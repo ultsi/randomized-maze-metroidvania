@@ -161,7 +161,7 @@ func form_initial_edges() -> void:
 
 func combine_rooms_with_edge(edge: Edge) -> void:
 	#print("Combining with edge ", edge.id())
-	var old_edge_id := edge.id()
+	# var old_edge_id := edge.id()
 	var room_a := room_with_id(edge.a)
 	var room_b := room_with_id(edge.b)
 	var old_id := room_b.id
@@ -189,7 +189,7 @@ func combine_rooms_with_edge(edge: Edge) -> void:
 	# update other edges links to room b to link to room b
 	for edge_ipos in edges:
 		var other_edge := edges[edge_ipos]
-		var edge_id := other_edge.id()
+		# var edge_id := other_edge.id()
 		if other_edge.a == old_id:
 			other_edge.a = room_a.id
 		if other_edge.b == old_id:
@@ -216,9 +216,9 @@ func one_step_kruskal() -> void:
 	kruskal_edges.erase(edge.ipos)
 	
 	#print("Trying edge ", edge.id())
-	var ipos := edge.ipos
 	var room_a := room_with_id(edge.a)
 	var room_b := room_with_id(edge.b)
+	@warning_ignore("integer_division")
 	if room_a.id != room_b.id && room_a.tiles.size() < wide / 2 && room_b.tiles.size() < wide / 2:
 		combine_rooms_with_edge(edge)
 
