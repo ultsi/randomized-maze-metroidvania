@@ -99,16 +99,30 @@ func reset() -> void:
 
 # this is kruskal first step
 func form_initial_rooms() -> void:
+	var big_room_id := 999
+	# var big_room := RoomNode.new()
+	# big_room.id = big_room_id
+	# room_add(big_room)
+
+	# for y in range(0, 5):
+	# 	for x in range(0, 5):
+	# 		var xy := Vector2i(wide / 2, wide / 2) + Vector2i(x, y)
+	# 		var ipos := xy_to_ipos(xy)
+	# 		var tile := tile_at(ipos)
+	# 		tile.room = big_room.id
+	# 		tile.type = Tile.FLOOR
+	# 		big_room.tiles[ipos] = tile
+
 	for ipos in range(0, tiles.size()):
 		var xy := ipos_to_xy(ipos)
-		if xy.x % 2 != 1 || xy.y % 2 != 1:
-			#not a room
+		var tile := tile_at(ipos)
+		if tile.room == big_room_id || xy.x % 2 != 1 || xy.y % 2 != 1:
+			#not a new room
 			continue
 		# it's a room!
 		var room := RoomNode.new()
 		room.id = rooms.size()
 
-		var tile := tile_at(ipos)
 		tile.room = room.id
 		tile.type = Tile.FLOOR
 
@@ -118,14 +132,15 @@ func form_initial_rooms() -> void:
 func form_initial_edges() -> void:
 	for ipos in range(0, tiles.size()):
 		var xy := ipos_to_xy(ipos)
-		if xy.x % 2 == xy.y % 2 || xy.x <= 0 || xy.y <= 0 || xy.x >= wide - 1 || xy.y >= wide - 1:
+		var tile := tile_at(ipos)
+		if tile.is_floor() || xy.x % 2 == xy.y % 2 || xy.x <= 0 || xy.y <= 0 || xy.x >= wide - 1 || xy.y >= wide - 1:
 			continue
 		
 		# valid edge between initial rooms
 		var edge := Edge.new()
 		edge.ipos = ipos
 		edge.pos = xy
-		edge.tile = tile_at(ipos)
+		edge.tile = tile
 
 		#print("Found edge at xy ", xy, " size ", _size)
 
