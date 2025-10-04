@@ -25,7 +25,9 @@ void fragment() {
 	float x = data.r * 16.0;
 	float y = data.g * 16.0;
 	int palette_idx = int(round(data.b));
-	vec2 p = tile_size / atlas_size * vec2(x,y) + (1.0-UV) * tile_size / atlas_size;
+	vec2 uv = UV;
+	uv.y = 1.0-uv.y;
+	vec2 p = tile_size / atlas_size * vec2(x,y) + uv * tile_size / atlas_size;
 	COLOR = texture(atlas_texture, p);
 	int idx = int(round(COLOR.r));
 	vec3[2] palette = palette_idx == 0 ? wall_palette : floor_palette;

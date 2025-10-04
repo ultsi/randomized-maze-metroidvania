@@ -38,10 +38,10 @@ func has(obj_type: GameObject.Type) -> bool:
 
 func get_color() -> Color:
     var mult := 1.0
-    if ipos % 3 == 0:
+    if ipos % 2 == 0:
         mult = 0.9
-    elif ipos % 3 == 1:
-        mult = 0.95
+    # elif ipos % 3 == 1:
+    #     mult = 0.95
     return colors[room % 50] * mult
 
 func add_game_object(obj: GameObject) -> void:
