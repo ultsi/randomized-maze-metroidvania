@@ -1,29 +1,44 @@
 [gd_scene load_steps=7 format=3 uid="uid://c4c707kfbr4s8"]
 
 [ext_resource type="Script" uid="uid://bo7l81nmaqatx" path="res://core/gameobjects/door.gd" id="1_trbih"]
-[ext_resource type="Shader" uid="uid://gnrhu03jlj7c" path="res://core/tile_sprite.gdshader" id="2_i2pen"]
+[ext_resource type="Shader" uid="uid://6ous2b4uk4ca" path="res://core/gameobjects/door.gdshader" id="2_er4cj"]
 [ext_resource type="Texture2D" uid="uid://c2putltgbrngm" path="res://materials/tiles.png" id="3_e1j0w"]
-[ext_resource type="Script" uid="uid://dhgo7gwlodwp6" path="res://core/tile_sprite.gd" id="4_i1axd"]
+[ext_resource type="LabelSettings" uid="uid://d4lkooy4is0y5" path="res://core/tile_sprite_label_settings.tres" id="3_er4cj"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggxmf"]
-shader = ExtResource("2_i2pen")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trbih"]
+shader = ExtResource("2_er4cj")
 shader_parameter/atlas_texture = ExtResource("3_e1j0w")
-shader_parameter/tile_pos = Vector2(0, 0)
-shader_parameter/tint = Color(0.3, 0.3, 0.6, 1)
-shader_parameter/tint_amount = 0.0
+shader_parameter/color1 = Color(1, 0, 0, 1)
+shader_parameter/color2 = Color(0, 1, 0, 1)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sgctq"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_i2pen"]
 size = Vector2(16, 16)
 
 [node name="Door" type="Node2D"]
 script = ExtResource("1_trbih")
 metadata/_custom_type_script = "uid://bo7l81nmaqatx"
 
-[node name="TileSprite" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-material = SubResource("ShaderMaterial_ggxmf")
+material = SubResource("ShaderMaterial_trbih")
 position = Vector2(8, 8)
-texture = SubResource("PlaceholderTexture2D_sgctq")
-script = ExtResource("4_i1axd")
-cell_type = 3
-metadata/_custom_type_script = "uid://dhgo7gwlodwp6"
+texture = SubResource("PlaceholderTexture2D_i2pen")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+z_index = 2
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.5
+offset_top = -13.0
+offset_right = -4.5
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "1"
+label_settings = ExtResource("3_er4cj")
+horizontal_alignment = 1

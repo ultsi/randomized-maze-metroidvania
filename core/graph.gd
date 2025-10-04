@@ -20,6 +20,23 @@ class Edge extends RefCounted:
 			node_ids = [b, a]
 		return "{0}-{1}".format(node_ids)
 
+
+const colors: Array[Color] = [
+	Color(1, 0, 0), Color(0, 1, 0), Color(0, 0, 1), Color(1, 1, 0), Color(1, 0, 1),
+	Color(0, 1, 1), Color(1, 0.5, 0), Color(0.5, 1, 0), Color(0, 1, 0.5), Color(0.5, 0, 1),
+	Color(1, 0, 0.5), Color(0.5, 1, 1), Color(1, 1, 0.5), Color(0.5, 0.5, 1), Color(1, 0.5, 1),
+	Color(0.25, 0.75, 0.25), Color(0.75, 0.25, 0.75), Color(0.25, 0.25, 0.75), Color(0.75, 0.75, 0.25), Color(0.25, 0.75, 0.75),
+	Color(0.6, 0.2, 0.2), Color(0.2, 0.6, 0.2), Color(0.2, 0.2, 0.6), Color(0.6, 0.6, 0.2), Color(0.6, 0.2, 0.6),
+	Color(0.2, 0.6, 0.6), Color(0.9, 0.3, 0.3), Color(0.3, 0.9, 0.3), Color(0.3, 0.3, 0.9), Color(0.9, 0.9, 0.3),
+	Color(0.9, 0.3, 0.9), Color(0.3, 0.9, 0.9), Color(0.8, 0.4, 0.2), Color(0.2, 0.8, 0.4), Color(0.4, 0.2, 0.8),
+	Color(0.8, 0.2, 0.4), Color(0.4, 0.8, 0.2), Color(0.2, 0.4, 0.8), Color(0.7, 0.3, 0.5), Color(0.5, 0.7, 0.3),
+	Color(0.3, 0.5, 0.7), Color(0.7, 0.5, 0.3), Color(0.5, 0.3, 0.7), Color(0.3, 0.7, 0.5), Color(0.6, 0.3, 0.6),
+	Color(0.3, 0.6, 0.3), Color(0.6, 0.6, 0.3), Color(0.3, 0.6, 0.6), Color(0.6, 0.3, 0.3), Color(0.3, 0.3, 0.6)
+]
+
+func get_color(i: int) -> Color:
+	return colors[i % 50]
+
 var _size := wide * wide
 var wide: int = 3:
 	set(value):
@@ -42,6 +59,7 @@ var edges: Dictionary[int, Edge] = {}
 # in them, and a few edges leading to other rooms
 # here the key is the Room.id
 var rooms: Dictionary[int, RoomNode] = {}
+var start_room: RoomNode
 
 # these are just the potential edges collection the kruskal algorithm picks from
 var kruskal_edges: Dictionary[int, Edge] = {}
@@ -263,11 +281,20 @@ func fix_single_tile_rooms() -> void:
 	
 	print("fixed to {0} rooms".format([rooms.size()]))
 
+func set_start_room() -> void:
+	if rooms.size() < 3:
+		start_room = rooms.values().pick_random()
+		return
+
+	var start_rooms_sorted: Array[RoomNode] = rooms.values()
+	start_rooms_sorted.sort_custom(func(a: RoomNode, b: RoomNode) -> bool: return a.tiles.size() > b.tiles.size())
+	start_room = start_rooms_sorted[2]
+
 class RoomEdges:
 	var id: int
 	var edges: Array[Edge] = []
 
-func generate_door_from_edge(edge: Edge) -> void:
+func convert_edge_to_door(edge: Edge) -> Tile:
 	var room_a := room_with_id(edge.a)
 	
 	var tile := edge.tile
@@ -279,13 +306,43 @@ func generate_door_from_edge(edge: Edge) -> void:
 	for tile_ipos in room_a.tiles:
 		room_a.tiles[tile_ipos].room = room_a.id
 		room_a.tiles[tile_ipos].type = Tile.FLOOR
-
+	
 	var door: Door = preload("res://core/gameobjects/door.tscn").instantiate()
+	door.color1 = get_color(edge.a)
+	door.color2 = get_color(edge.b)
+	door.top_down = edge.pos.y % 2 != 1
 	node_parent.add_child(door)
 	tile.add_game_object(door)
 	
 	edge_erase_all_refs(edge.ipos)
 	
+	return tile
+
+func convert_edge_to_breakable_wall(edge: Edge) -> Tile:
+	var room_a := room_with_id(edge.a)
+	
+	var tile := edge.tile
+	tile.breakable = true
+	tile.breakable_from = edge.a
+	# #edge tile belongs now to room A
+	# room_a.tiles[edge.ipos] = tile
+
+	# # set room id for all tiles correct
+	# # and the tile type
+	# for tile_ipos in room_a.tiles:
+	# 	room_a.tiles[tile_ipos].room = room_a.id
+	# 	room_a.tiles[tile_ipos].type = Tile.FLOOR
+	
+	# var door: Door = preload("res://core/gameobjects/door.tscn").instantiate()
+	# door.color1 = get_color(edge.a)
+	# door.color2 = get_color(edge.b)
+	# door.top_down = edge.pos.y % 2 != 1
+	# node_parent.add_child(door)
+	# tile.add_game_object(door)
+	
+	edge_erase_all_refs(edge.ipos)
+	
+	return tile
 
 func generate_doors() -> void:
 	var edges_by_room_id: Dictionary[int, RoomEdges] = {}
@@ -299,12 +356,14 @@ func generate_doors() -> void:
 		else:
 			edges_by_room_id[edge.a] = RoomEdges.new()
 			edges_by_room_id[edge.a].id = edge.a
+			edges_by_room_id[edge.a].edges = [edge]
 
 		if edges_by_room_id.has(edge.b):
 			edges_by_room_id[edge.b].edges.append(edge)
 		else:
 			edges_by_room_id[edge.b] = RoomEdges.new()
 			edges_by_room_id[edge.b].id = edge.b
+			edges_by_room_id[edge.b].edges = [edge]
 
 	var unique_edges: Dictionary[String, Edge] = {}
 
@@ -325,70 +384,69 @@ func generate_doors() -> void:
 		for i in range(randi_range(0, max_edges), max_edges):
 			var edge := room_edges.edges[i]
 			unique_edges[edge.id()] = edge
+	
+	edges_by_room_id.clear()
 		
 	for edge_id in unique_edges:
 		var edge := unique_edges[edge_id]
-		generate_door_from_edge(edge)
+		#edge.tile.type = Tile.FLOOR
+		if edges_by_room_id.has(edge.a):
+			edges_by_room_id[edge.a].edges.append(edge)
+		else:
+			edges_by_room_id[edge.a] = RoomEdges.new()
+			edges_by_room_id[edge.a].id = edge.a
+			edges_by_room_id[edge.a].edges = [edge]
+
+		if edges_by_room_id.has(edge.b):
+			edges_by_room_id[edge.b].edges.append(edge)
+		else:
+			edges_by_room_id[edge.b] = RoomEdges.new()
+			edges_by_room_id[edge.b].id = edge.b
+			edges_by_room_id[edge.b].edges = [edge]
+
+	for id: int in rooms.keys():
+		if !edges_by_room_id.has(id):
+			print("Room ", id, " doesnt have edges!")
+
+	var edge_queue: Array[Edge] = edges_by_room_id[start_room.id].edges
+	var door_number := 0
+	var processed_edges: Dictionary[String, bool] = {}
+	var visited_rooms: Dictionary[int, bool] = {start_room.id: true}
+	var visit_path: Array[int] = [start_room.id]
+	var door_tiles: Dictionary[int, Tile] = {}
+	while !edge_queue.is_empty():
+		var edge: Edge = edge_queue.pick_random()
+		#edge.tile.type = Tile.FLOOR
+		edge_queue.erase(edge)
+		if processed_edges.has(edge.id()):
+			continue
+		processed_edges[edge.id()] = true
+
+		if visited_rooms.has(edge.a) && visited_rooms.has(edge.b):
+			# extra edge case i.e. oneway breakable wall
+			convert_edge_to_breakable_wall(edge)
+		else:
+			var door_tile := convert_edge_to_door(edge)
+			door_tile.get_door().number = door_number
+			door_tiles[door_tile.ipos] = door_tile
+			door_number += 1
+
+		if !visited_rooms.has(edge.a):
+			if edges_by_room_id.has(edge.a):
+				edge_queue.append_array(edges_by_room_id[edge.a].edges)
+			visited_rooms[edge.a] = true
+			visit_path.append(edge.a)
+
+		if !visited_rooms.has(edge.b):
+			if edges_by_room_id.has(edge.b):
+				edge_queue.append_array(edges_by_room_id[edge.b].edges)
+			visited_rooms[edge.b] = true
+			visit_path.append(edge.b)
+	
+	print(edge_queue)
+	print(visit_path)
 
 # func generate_doors_and_keys() -> void:
-# 	var edge_dict: Dictionary[String, Edge] = {}
-# 	for edge in edges.values():
-# 		edge_dict[edge.id()] = edge
-
-# 	var edges_by_node_id: Dictionary[int, Array] = {}
-
-# 	for edge: Edge in edge_dict.values():
-# 		if edge.a == edge.b:
-# 			continue
-# 		if edges_by_node_id.has(edge.a):
-# 			edges_by_node_id[edge.a].append(edge)
-# 		else:
-# 			edges_by_node_id[edge.a] = [edge]
-
-# 		if edges_by_node_id.has(edge.b):
-# 			edges_by_node_id[edge.b].append(edge)
-# 		else:
-# 			edges_by_node_id[edge.b] = [edge]
-
-# 	var valid_edges: Dictionary[String, Edge] = {}
-
-# 	for node_id in edges_by_node_id:
-# 		var edges := edges_by_node_id[node_id]
-# 		var estr := edges.map(func(e: Edge) -> String: return e.id())
-# 		print("Node {0} edges: {1}".format([node_id, str(estr)]))
-
-# 	for node_id in edges_by_node_id:
-# 		var node_edges := edges_by_node_id[node_id]
-# 		node_edges.shuffle()
-# 		if node_edges.size() == 1:
-# 			valid_edges[node_edges[0].id()] = node_edges[0]
-# 			continue
-
-# 		var node := cells_nodes[node_id]
-# 		if node.cells.size() == 1:
-# 			var valid_edge: Edge
-# 			for edge: Edge in node_edges:
-# 				valid_edge = edge
-# 				var node_a := cells_nodes[edge.a]
-# 				var node_b := cells_nodes[edge.b]
-# 				if node_a.cells.size() > 1 || node_b.cells.size() > 1:
-# 					break
-			
-# 			valid_edges[valid_edge.id()] = valid_edge
-# 			for edge in node_edges:
-# 				if edge.id() == valid_edge.id():
-# 					continue
-# 				valid_edges.erase(edge.id())
-# 			continue
-
-# 		var max_edges := node_edges.size()
-# 		for i in range(max_edges * randf(), max_edges):
-# 			var valid_edge: Edge = node_edges[i]
-# 			valid_edges[valid_edge.id()] = valid_edge
-
-# 	var estr := valid_edges.values().map(func(e: Edge) -> String: return e.id())
-# 	print("Valid edges: ", estr)
-	
 # 	# for node_id in edges_by_node_id:
 # 	# 	var node := cells_nodes[node_id]
 # 	# 	var node_edges := edges_by_node_id[node_id]

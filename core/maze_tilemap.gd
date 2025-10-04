@@ -214,14 +214,19 @@ func draw_grid() -> void:
 			mesh_tile_map.grid[ipos] = tile.type
 			
 			if !tile.is_wall():
-				var color := tile.get_color()
+				var color := maze_graph.get_color(tile.room)
 				mesh_tile_map.set_color(ipos, color)
 			else:
-				mesh_tile_map.set_color(ipos, Color8(46.0, 66.0, 91.0))
+				if tile.breakable:
+					mesh_tile_map.set_color(ipos, Color8(80.0, 66.0, 91.0))
+				else:
+					mesh_tile_map.set_color(ipos, Color8(46.0, 66.0, 91.0))
 
 	mesh_tile_map.draw_grid()
 
 func set_start_node() -> void:
+	maze_graph.set_start_room()
+	return
 	if cells_nodes.size() < 3:
 		start_node = cells_nodes.values().pick_random()
 		return

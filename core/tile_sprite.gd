@@ -17,21 +17,21 @@ const colors: Array[Color] = [
 @export_range(0, 200, 1) var group_id := -1:
 	set(value):
 		group_id = value
-		_update()
+		update()
 @export var cell_type := CellType.WALL:
 	set(value):
 		cell_type = value
-		_update()
+		update()
 
 @export var world_grid_pos := Vector2i.ZERO:
 	set(value):
 		world_grid_pos = value
-		_update()
+		update()
 
 @export var label_text := "":
 	set(value):
 		label_text = value
-		_update()
+		update()
 
 enum CellType {
 	WALL,
@@ -55,7 +55,7 @@ var constant_light := false
 @export var player_vision := 0:
 	set(value):
 		player_vision = value
-		_update()
+		update()
 
 static func get_cell_tile_for_type(type: CellType) -> Vector2i:
 	match type:
@@ -109,9 +109,9 @@ func _ready() -> void:
 	label.text = "A"
 	label.label_settings = preload("res://core/tile_sprite_label_settings.tres")
 	label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	_update()
+	update()
 
-func _update() -> void:
+func update() -> void:
 	if !is_node_ready():
 		return
 	

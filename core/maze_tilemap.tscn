@@ -80,7 +80,7 @@ stream_0/stream = ExtResource("16_jevav")
 
 [node name="TileMapLayer" type="Node2D"]
 script = ExtResource("1_oaaqp")
-ui_size = 5
+ui_size = 11
 
 [node name="Player" type="Sprite2D" parent="."]
 z_index = 5
@@ -207,4 +207,4 @@ max_polyphony = 5
 
 [node name="MeshTileMap" parent="." instance=ExtResource("18_nea3f")]
 z_index = -2
-wide = 11
+wide = 23
