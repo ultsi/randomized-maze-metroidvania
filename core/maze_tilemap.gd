@@ -196,6 +196,7 @@ func _reset_grid() -> void:
 
 	# 			edges[i] = edge
 	maze_graph.wide = size
+	maze_graph.node_parent = self
 	maze_graph.reset()
 	maze_graph.form_initial_rooms()
 	maze_graph.form_initial_edges()

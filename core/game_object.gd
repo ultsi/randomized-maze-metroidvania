@@ -1,4 +1,4 @@
-class_name GameObject extends Node2D
+@abstract class_name GameObject extends Node2D
 
 enum Type {
     DOOR,
@@ -9,3 +9,6 @@ enum Type {
 }
 
 var type := Type.DOOR
+
+func update() -> void:
+    pass

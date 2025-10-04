@@ -37,4 +37,20 @@ func has(obj_type: GameObject.Type) -> bool:
     return is_instance_valid(object) && object.type == obj_type
 
 func get_color() -> Color:
-    return colors[room % 50]
+    var mult := 1.0
+    if ipos % 3 == 0:
+        mult = 0.9
+    elif ipos % 3 == 1:
+        mult = 0.95
+    return colors[room % 50] * mult
+
+func add_game_object(obj: GameObject) -> void:
+    obj.position = Vector2i(pos) * Vector2i(16, 16)
+    object = obj
+    obj.update()
+
+func get_door() -> Door:
+    if has(GameObject.Type.DOOR):
+        return object
+
+    return null

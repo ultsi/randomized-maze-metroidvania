@@ -33,6 +33,7 @@ var fly_dir := Vector2.ONE
 		shuffle_start = Time.get_ticks_msec()
 
 func _ready() -> void:
+	z_index = -2
 	reset()
 
 func calc_pos_nbors_mask(pos: Vector2i, match_type: Tile.Type) -> int:

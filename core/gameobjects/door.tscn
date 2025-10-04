@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4c707kfbr4s8"]
+
+[ext_resource type="Script" uid="uid://bo7l81nmaqatx" path="res://core/gameobjects/door.gd" id="1_trbih"]
+[ext_resource type="Shader" uid="uid://gnrhu03jlj7c" path="res://core/tile_sprite.gdshader" id="2_i2pen"]
+[ext_resource type="Texture2D" uid="uid://c2putltgbrngm" path="res://materials/tiles.png" id="3_e1j0w"]
+[ext_resource type="Script" uid="uid://dhgo7gwlodwp6" path="res://core/tile_sprite.gd" id="4_i1axd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ggxmf"]
+shader = ExtResource("2_i2pen")
+shader_parameter/atlas_texture = ExtResource("3_e1j0w")
+shader_parameter/tile_pos = Vector2(0, 0)
+shader_parameter/tint = Color(0.3, 0.3, 0.6, 1)
+shader_parameter/tint_amount = 0.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sgctq"]
+size = Vector2(16, 16)
+
+[node name="Door" type="Node2D"]
+script = ExtResource("1_trbih")
+metadata/_custom_type_script = "uid://bo7l81nmaqatx"
+
+[node name="TileSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_ggxmf")
+position = Vector2(8, 8)
+texture = SubResource("PlaceholderTexture2D_sgctq")
+script = ExtResource("4_i1axd")
+cell_type = 3
+metadata/_custom_type_script = "uid://dhgo7gwlodwp6"

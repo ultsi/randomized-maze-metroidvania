@@ -206,5 +206,5 @@ stream = ExtResource("17_4vtj7")
 max_polyphony = 5
 
 [node name="MeshTileMap" parent="." instance=ExtResource("18_nea3f")]
+z_index = -2
 wide = 11
-shuffling = false

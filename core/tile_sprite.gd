@@ -66,7 +66,7 @@ static func get_cell_tile_for_type(type: CellType) -> Vector2i:
 		CellType.JOINED_CELLS:
 			return Vector2i(6, 7)
 		CellType.DOOR:
-			return Vector2i(1, 1)
+			return Vector2i(7, 4)
 		CellType.OPENED_DOOR:
 			return Vector2i(1, 2)
 		CellType.ONEWAY_WALL:

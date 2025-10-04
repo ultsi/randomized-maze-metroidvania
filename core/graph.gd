@@ -27,6 +27,8 @@ var wide: int = 3:
 			wide = value
 			_size = wide * wide
 
+var node_parent: Node2D
+
 # tiles are all things in the maze, walls, floors, oneways etc
 # tiles can have keys and doors in them (see Tile)
 # tiles are just an array, and the index is the ipos (xy as an int)
@@ -268,8 +270,9 @@ class RoomEdges:
 func generate_door_from_edge(edge: Edge) -> void:
 	var room_a := room_with_id(edge.a)
 	
+	var tile := edge.tile
 	#edge tile belongs now to room A
-	room_a.tiles[edge.ipos] = edge.tile
+	room_a.tiles[edge.ipos] = tile
 
 	# set room id for all tiles correct
 	# and the tile type
@@ -277,7 +280,9 @@ func generate_door_from_edge(edge: Edge) -> void:
 		room_a.tiles[tile_ipos].room = room_a.id
 		room_a.tiles[tile_ipos].type = Tile.FLOOR
 
-	edge.tile.room = 49
+	var door: Door = preload("res://core/gameobjects/door.tscn").instantiate()
+	node_parent.add_child(door)
+	tile.add_game_object(door)
 	
 	edge_erase_all_refs(edge.ipos)
 	
