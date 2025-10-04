@@ -219,12 +219,14 @@ func one_step_kruskal() -> void:
 	var room_a := room_with_id(edge.a)
 	var room_b := room_with_id(edge.b)
 	@warning_ignore("integer_division")
-	if room_a.id != room_b.id && room_a.tiles.size() < wide / 2 && room_b.tiles.size() < wide / 2:
+	if room_a.id != room_b.id && room_a.tiles.size() < wide / 4 * 3 && room_b.tiles.size() < wide / 4 * 3:
 		combine_rooms_with_edge(edge)
 
 func kruskal_forest() -> void:
 	while !kruskal_edges.is_empty():
 		one_step_kruskal()
+
+	print("generated {0} rooms".format([rooms.size()]))
 
 func find_edges_around_ipos(ipos: int) -> Array[Edge]:
 	var found_edges: Array[Edge] = []
@@ -256,3 +258,186 @@ func fix_single_tile_rooms() -> void:
 		
 		var selected_edge: Edge = room_edges.pick_random()
 		combine_rooms_with_edge(selected_edge)
+	
+	print("fixed to {0} rooms".format([rooms.size()]))
+
+class RoomEdges:
+	var id: int
+	var edges: Array[Edge] = []
+
+func generate_door_from_edge(edge: Edge) -> void:
+	var room_a := room_with_id(edge.a)
+	
+	#edge tile belongs now to room A
+	room_a.tiles[edge.ipos] = edge.tile
+
+	# set room id for all tiles correct
+	# and the tile type
+	for tile_ipos in room_a.tiles:
+		room_a.tiles[tile_ipos].room = room_a.id
+		room_a.tiles[tile_ipos].type = Tile.FLOOR
+
+	edge.tile.room = 49
+	
+	edge_erase_all_refs(edge.ipos)
+	
+
+func generate_doors() -> void:
+	var edges_by_room_id: Dictionary[int, RoomEdges] = {}
+
+	for edge: Edge in edges.values():
+		if edge.a == edge.b:
+			print("Self referencing room edge found ", edge.id())
+			continue
+		if edges_by_room_id.has(edge.a):
+			edges_by_room_id[edge.a].edges.append(edge)
+		else:
+			edges_by_room_id[edge.a] = RoomEdges.new()
+			edges_by_room_id[edge.a].id = edge.a
+
+		if edges_by_room_id.has(edge.b):
+			edges_by_room_id[edge.b].edges.append(edge)
+		else:
+			edges_by_room_id[edge.b] = RoomEdges.new()
+			edges_by_room_id[edge.b].id = edge.b
+
+	var unique_edges: Dictionary[String, Edge] = {}
+
+	for room_id in edges_by_room_id:
+		var room := room_with_id(room_id)
+		var room_edges := edges_by_room_id[room_id]
+		if room_edges.edges.size() <= 1:
+			continue
+		room_edges.edges.shuffle()
+
+		if room.tiles.size() == 1:
+			print("Weird, room {0} has 1 tile only. Shouldn't happen? ".format([room_id]))
+			var edge := room_edges.edges[0]
+			unique_edges[edge.id()] = edge
+			continue
+
+		var max_edges := room_edges.edges.size()
+		for i in range(randi_range(0, max_edges), max_edges):
+			var edge := room_edges.edges[i]
+			unique_edges[edge.id()] = edge
+		
+	for edge_id in unique_edges:
+		var edge := unique_edges[edge_id]
+		generate_door_from_edge(edge)
+
+# func generate_doors_and_keys() -> void:
+# 	var edge_dict: Dictionary[String, Edge] = {}
+# 	for edge in edges.values():
+# 		edge_dict[edge.id()] = edge
+
+# 	var edges_by_node_id: Dictionary[int, Array] = {}
+
+# 	for edge: Edge in edge_dict.values():
+# 		if edge.a == edge.b:
+# 			continue
+# 		if edges_by_node_id.has(edge.a):
+# 			edges_by_node_id[edge.a].append(edge)
+# 		else:
+# 			edges_by_node_id[edge.a] = [edge]
+
+# 		if edges_by_node_id.has(edge.b):
+# 			edges_by_node_id[edge.b].append(edge)
+# 		else:
+# 			edges_by_node_id[edge.b] = [edge]
+
+# 	var valid_edges: Dictionary[String, Edge] = {}
+
+# 	for node_id in edges_by_node_id:
+# 		var edges := edges_by_node_id[node_id]
+# 		var estr := edges.map(func(e: Edge) -> String: return e.id())
+# 		print("Node {0} edges: {1}".format([node_id, str(estr)]))
+
+# 	for node_id in edges_by_node_id:
+# 		var node_edges := edges_by_node_id[node_id]
+# 		node_edges.shuffle()
+# 		if node_edges.size() == 1:
+# 			valid_edges[node_edges[0].id()] = node_edges[0]
+# 			continue
+
+# 		var node := cells_nodes[node_id]
+# 		if node.cells.size() == 1:
+# 			var valid_edge: Edge
+# 			for edge: Edge in node_edges:
+# 				valid_edge = edge
+# 				var node_a := cells_nodes[edge.a]
+# 				var node_b := cells_nodes[edge.b]
+# 				if node_a.cells.size() > 1 || node_b.cells.size() > 1:
+# 					break
+			
+# 			valid_edges[valid_edge.id()] = valid_edge
+# 			for edge in node_edges:
+# 				if edge.id() == valid_edge.id():
+# 					continue
+# 				valid_edges.erase(edge.id())
+# 			continue
+
+# 		var max_edges := node_edges.size()
+# 		for i in range(max_edges * randf(), max_edges):
+# 			var valid_edge: Edge = node_edges[i]
+# 			valid_edges[valid_edge.id()] = valid_edge
+
+# 	var estr := valid_edges.values().map(func(e: Edge) -> String: return e.id())
+# 	print("Valid edges: ", estr)
+	
+# 	# for node_id in edges_by_node_id:
+# 	# 	var node := cells_nodes[node_id]
+# 	# 	var node_edges := edges_by_node_id[node_id]
+# 	# 	if node.cells.size() == 1 && node_edges.size() > 1:
+# 	# 		print("LOL?", node.id)
+# 	edges_by_node_id.clear()
+# 	for edge: Edge in valid_edges.values():
+# 		edge.type = TileSprite.CellType.DOOR
+# 		edge.tile_sprite.cell_type = TileSprite.CellType.DOOR
+# 		edge.tile.type = Tile.FLOOR
+# 		edge.tile_sprite.group_id = edge.a
+# 		if edges_by_node_id.has(edge.a):
+# 			edges_by_node_id[edge.a].append(edge)
+# 		else:
+# 			edges_by_node_id[edge.a] = [edge]
+
+# 		if edges_by_node_id.has(edge.b):
+# 			edges_by_node_id[edge.b].append(edge)
+# 		else:
+# 			edges_by_node_id[edge.b] = [edge]
+
+# 	# form directed graph here
+# 	# important because player path is directed and that way
+# 	# we then know which doors are actual blockers
+# 	# and which ones are openable shortcuts from the other side
+# 	var edge_queue: Array = edges_by_node_id[start_node.id]
+# 	var door_number := 0
+# 	var handled_edges: Dictionary[String, bool] = {}
+# 	var visited_nodes: Dictionary[int, bool] = {start_node.id: true}
+# 	player_path = [start_node.id]
+# 	while !edge_queue.is_empty():
+# 		var edge: Edge = edge_queue.pick_random()
+# 		edge_queue.erase(edge)
+# 		if handled_edges.has(edge.id()):
+# 			continue
+# 		handled_edges[edge.id()] = true
+# 		if visited_nodes.has(edge.a) && visited_nodes.has(edge.b):
+# 			edge.tile_sprite.door_number = -1
+# 			edge.tile_sprite.cell_type = TileSprite.CellType.WALL
+# 			edge.is_one_way = true
+# 			edge.dir = edge.b if player_path.find(edge.a) < player_path.find(edge.b) else edge.a
+# 			edge.tile_sprite.group_id = edge.dir
+# 		else:
+# 			edge.tile_sprite.door_number = door_number
+# 			door_number += 1
+# 			edge.tile_sprite.cell_type = TileSprite.CellType.DOOR
+
+# 		if !visited_nodes.has(edge.a):
+# 			if edges_by_node_id.has(edge.a):
+# 				edge_queue.append_array(edges_by_node_id[edge.a])
+# 				visited_nodes[edge.a] = true
+# 				player_path.append(edge.a)
+# 		if !visited_nodes.has(edge.b):
+# 			if edges_by_node_id.has(edge.b):
+# 				edge_queue.append_array(edges_by_node_id[edge.b])
+# 				visited_nodes[edge.b] = true
+# 				player_path.append(edge.b)

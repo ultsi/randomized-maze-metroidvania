@@ -323,7 +323,7 @@ func fix_single_cell_nodes() -> void:
 	maze_graph.fix_single_tile_rooms()
 	draw_grid()
 	return
-	
+
 	for node_id: int in cells_nodes.keys():
 		if !cells_nodes.has(node_id):
 			continue
@@ -373,6 +373,9 @@ func find_empty_cell_closest_to_pos(pos: int) -> int:
 	return -1
 
 func generate_doors_and_keys() -> void:
+	maze_graph.generate_doors()
+	draw_grid()
+	return
 	var edge_dict: Dictionary[String, Edge] = {}
 	for edge in edges.values():
 		edge_dict[edge.id()] = edge
