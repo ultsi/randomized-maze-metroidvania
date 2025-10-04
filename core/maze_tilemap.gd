@@ -93,6 +93,7 @@ var torches := 0
 var metros := 0
 var player_visited_areas: Dictionary[int, bool] = {}
 var visual_money := 0.0
+var maze_graph := MazeGraph.new()
 
 
 func i_to_xy(i: int) -> Vector2i:
@@ -141,60 +142,63 @@ func _reset_grid() -> void:
 		#print("freed")
 
 
-	for y in range(0, size):
-		for x in range(0, size):
-			var tile_sprite := TileSprite.new()
-			var xy := Vector2i(x, y)
-			var i := xy_to_i(xy)
-			tile_sprite.world_grid_pos = xy
-			tiles_parent.add_child(tile_sprite)
-			visual_tiles[i] = tile_sprite
-			tile_sprite.owner = self
+	# for y in range(0, size):
+	# 	for x in range(0, size):
+	# 		var tile_sprite := TileSprite.new()
+	# 		var xy := Vector2i(x, y)
+	# 		var i := xy_to_i(xy)
+	# 		tile_sprite.world_grid_pos = xy
+	# 		tiles_parent.add_child(tile_sprite)
+	# 		visual_tiles[i] = tile_sprite
+	# 		tile_sprite.owner = self
 
-			var tile := Tile.new()
-			tile.type = Tile.WALL
-			tile.pos = xy
-			tile.pos_i = i
-			var type := TileSprite.CellType.WALL
-			if x % 2 == 1 && y % 2 == 1:
-				type = TileSprite.CellType.ORIG_CELL
-				tile.type = Tile.FLOOR
+	# 		var tile := Tile.new()
+	# 		tile.type = Tile.WALL
+	# 		tile.pos = xy
+	# 		tile.ipos = i
+	# 		var type := TileSprite.CellType.WALL
+	# 		if x % 2 == 1 && y % 2 == 1:
+	# 			type = TileSprite.CellType.ORIG_CELL
+	# 			tile.type = Tile.FLOOR
 
-				var cells_node := CellsNode.new()
-				cells_node.cells[i] = tile_sprite
-				cells_node.tiles[i] = tile
-				cells_node.id = cells_nodes.size()
-				cells_nodes[cells_node.id] = cells_node
-				tile_sprite.group_id = cells_node.id
-
-
-			tiles[i] = tile
-			tile_sprite.cell_type = type
+	# 			var cells_node := CellsNode.new()
+	# 			cells_node.cells[i] = tile_sprite
+	# 			cells_node.tiles[i] = tile
+	# 			cells_node.id = cells_nodes.size()
+	# 			cells_nodes[cells_node.id] = cells_node
+	# 			tile_sprite.group_id = cells_node.id
 
 
-	for y in range(0, size):
-		for x in range(0, size):
-			if x % 2 != y % 2 && x > 0 && y > 0 && x < size - 1 && y < size - 1:
-				# valid edge
-				var xy := Vector2i(x, y)
-				var i := xy_to_i(xy)
-				var tile_sprite := visual_tiles[i]
-				var edge := Edge.new()
-				edge.tile_sprite = tile_sprite
-				edge.tile = tiles[i]
-				edge.pos = xy
-				edge.i = i
-				if y % 2 == 0:
-					edge.a = _get_cells_node_at_i(i - size).id
-					edge.b = _get_cells_node_at_i(i + size).id
-				else:
-					edge.a = _get_cells_node_at_i(i - 1).id
-					edge.b = _get_cells_node_at_i(i + 1).id
+	# 		tiles[i] = tile
+	# 		tile_sprite.cell_type = type
 
-				#print("found edge ", edge.id())
 
-				edges[i] = edge
+	# for y in range(0, size):
+	# 	for x in range(0, size):
+	# 		if x % 2 != y % 2 && x > 0 && y > 0 && x < size - 1 && y < size - 1:
+	# 			# valid edge
+	# 			var xy := Vector2i(x, y)
+	# 			var i := xy_to_i(xy)
+	# 			var tile_sprite := visual_tiles[i]
+	# 			var edge := Edge.new()
+	# 			edge.tile_sprite = tile_sprite
+	# 			edge.tile = tiles[i]
+	# 			edge.pos = xy
+	# 			edge.i = i
+	# 			if y % 2 == 0:
+	# 				edge.a = _get_cells_node_at_i(i - size).id
+	# 				edge.b = _get_cells_node_at_i(i + size).id
+	# 			else:
+	# 				edge.a = _get_cells_node_at_i(i - 1).id
+	# 				edge.b = _get_cells_node_at_i(i + 1).id
 
+	# 			#print("found edge ", edge.id())
+
+	# 			edges[i] = edge
+	maze_graph.wide = size
+	maze_graph.reset()
+	maze_graph.form_initial_rooms()
+	maze_graph.form_initial_edges()
 	draw_grid()
 
 
@@ -204,18 +208,15 @@ func draw_grid() -> void:
 	for y in range(0, size):
 		for x in range(0, size):
 			var xy := Vector2i(x, y)
-			var i := xy_to_i(xy)
-			var type := visual_tiles[i].cell_type
-			var tile := tiles[i]
-			var tile_sprite := visual_tiles[i]
-			tile_sprite.cell_type = type
-			mesh_tile_map.grid[i] = tile.type
+			var ipos := xy_to_i(xy)
+			var tile := maze_graph.tile_at(ipos)
+			mesh_tile_map.grid[ipos] = tile.type
 			
 			if !tile.is_wall():
-				var color := tile_sprite.colors[tile_sprite.group_id % 50]
-				mesh_tile_map.set_color(i, color)
+				var color := tile.get_color()
+				mesh_tile_map.set_color(ipos, color)
 			else:
-				mesh_tile_map.set_color(i, Color8(46.0, 66.0, 91.0))
+				mesh_tile_map.set_color(ipos, Color8(46.0, 66.0, 91.0))
 
 	mesh_tile_map.draw_grid()
 
@@ -296,24 +297,13 @@ func find_potential_kruskal_edge() -> Edge:
 		
 
 func one_step_kruskal() -> void:
-	var edge: Edge = find_potential_kruskal_edge()
-	if !edge:
-		return
-	edges.erase(edge.i)
-	var pos_i := xy_to_i(edge.pos)
-	var cellnode_a := cells_nodes[edge.a]
-	var cellnode_b := cells_nodes[edge.b]
-	if edge.type == TileSprite.CellType.WALL && cellnode_a.id != cellnode_b.id && cellnode_a.cells.size() < size / 2 && cellnode_b.cells.size() < size / 2:
-		_combine_cells_nodes(edge)
-		draw_grid()
+	maze_graph.one_step_kruskal()
+	draw_grid()
+	return
 
 
 func kruskal_forest() -> void:
-	var safety := 100
-	while cells_nodes.size() > size && safety > 0:
-		print(cells_nodes.size())
-		safety -= 1
-		one_step_kruskal()
+	maze_graph.kruskal_forest()
 
 	draw_grid()
 
@@ -330,6 +320,10 @@ func find_edges_for_cell(cell_i: int) -> Array[Edge]:
 	return found_edges
 
 func fix_single_cell_nodes() -> void:
+	maze_graph.fix_single_tile_rooms()
+	draw_grid()
+	return
+	
 	for node_id: int in cells_nodes.keys():
 		if !cells_nodes.has(node_id):
 			continue

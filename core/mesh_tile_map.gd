@@ -108,7 +108,7 @@ func get_wall_tile_for_pos(pos: int) -> Vector2i:
 	if (mask & 0b10101010) == 0b10101010:
 		return AtlasTiles.CENTER
 
-	print("default for ", pos, " and mask ", String.num_int64(mask, 2).pad_zeros(8))
+	#print("default for ", pos, " and mask ", String.num_int64(mask, 2).pad_zeros(8))
 	return Vector2i(5, 15)
 
 func get_tile_for_pos(pos: int) -> Vector2i:
